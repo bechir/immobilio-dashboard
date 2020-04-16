@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "immobilio-dashboard": {
+    "immobilio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/immobilio-dashboard",
+            "outputPath": "dist/immobilio",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/feather-icons-web/feather.css",
+              "src/styles/app.scss"
             ],
             "scripts": []
           },
@@ -66,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "immobilio-dashboard:build"
+            "browserTarget": "immobilio:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "immobilio-dashboard:build:production"
+              "browserTarget": "immobilio:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "immobilio-dashboard:build"
+            "browserTarget": "immobilio:build"
           }
         },
         "test": {
@@ -114,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "immobilio-dashboard:serve"
+            "devServerTarget": "immobilio:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "immobilio-dashboard:serve:production"
+              "devServerTarget": "immobilio:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "immobilio-dashboard"
+  "defaultProject": "immobilio"
 }

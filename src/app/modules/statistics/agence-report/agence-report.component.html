@@ -1,0 +1,20 @@
+<div class="container mt-3">
+    <app-heading icon="fa fa-chart-bar" [title]="title"></app-heading>
+    <div class="main">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-invoice-by-agence-bar-chart *ngIf="agence" [agenceId]="agence.id"></app-invoice-by-agence-bar-chart>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-expenses-pie-chart *ngIf="agence" [agenceId]="agence.id"></app-expenses-pie-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my-3">
+    <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

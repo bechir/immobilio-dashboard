@@ -1,0 +1,12 @@
+<h2 class="h6 text-muted pt-3">Dépenses réalisées par nature de la dépense</h2>
+<canvas baseChart *ngIf="barChartData.length"
+    [datasets]="barChartData"
+    [labels]="barChartLabel"
+    [options]="barChartOptions"
+    [legend]="barChartLegend"
+    [plugins]="barChartPlugins"
+    [chartType]="barChartType">
+</canvas>
+<div class="my-5" *ngIf="errorMessage">
+    <p class="text-danger">{{ errorMessage }}</p>
+</div>

@@ -1,0 +1,81 @@
+.animated--fadein {
+    @include animation(.8s cubic-bezier(.25,.8,.25,1) 0s normal forwards 1 fadein);
+}
+
+@-webkit-keyframes fadein {
+    from {
+        @include transform(translate3d(0, 6px, 0));
+        opacity:0
+    }
+
+    to {
+        @include transform(translate3d(0, 0, 0));
+        opacity:1
+    }
+}
+
+@keyframes fadein {
+    from {
+        @include transform(translate3d(0, 6px, 0));
+        opacity:0
+    }
+
+    to {
+        @include transform(translate3d(0, 0, 0));
+        opacity:1
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        @include transform(rotate(0));
+    }
+
+    100% {
+        @include transform(rotate(259deg))
+    }
+}
+
+@keyframes spin {
+    0% {
+        @include transform(rotate(0));
+    }
+
+    100% {
+        @include transform(rotate(259deg))
+    }
+}
+
+@-webkit-keyframes ripple {
+    0% {
+        -webkit-box-shadow: 0 0 0 1px transparent;
+        box-shadow:0 0 0 1px transparent
+    }
+
+    50% {
+        -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.05);
+        box-shadow:0 0 0 10px rgba(0, 0, 0, 0.05)
+    }
+
+    100% {
+        -webkit-box-shadow: 0 0 0 10px transparent;
+        box-shadow:0 0 0 10px transparent
+    }
+}
+
+@keyframes ripple {
+    0% {
+        -webkit-box-shadow: 0 0 0 1px transparent;
+        box-shadow:0 0 0 1px transparent
+    }
+
+    50% {
+        -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.05);
+        box-shadow:0 0 0 10px rgba(0, 0, 0, 0.05)
+    }
+
+    100% {
+        -webkit-box-shadow: 0 0 0 10px transparent;
+        box-shadow:0 0 0 10px transparent
+    }
+}

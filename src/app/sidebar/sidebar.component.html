@@ -1,0 +1,9 @@
+<div class="main-menu main-menu-light">
+    <nav class="main-menu__nav pt-3">
+        <div class="nav accordion" id="accordionSideNav">
+            <ng-container *ngFor="let item of items">
+                <app-sidebar-item [item]="item"></app-sidebar-item>
+            </ng-container>
+        </div>
+    </nav>
+</div>

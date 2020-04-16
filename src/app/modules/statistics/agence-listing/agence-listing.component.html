@@ -1,0 +1,22 @@
+<h2 class="subtitle">Afficher les statistiques d'une agence</h2>
+<table class="table table-hover table-bordered" *ngIf="!errorMessage">
+    <thead class="thead-default">
+        <tr>
+            <th># Id</th>
+            <th>Nom</th>
+            <th>Code</th>
+            <th>Ville</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let agence of agences; let i = index">
+                <td scope="row">{{ i + 1 }}</td>
+                <td><a [routerLink]="['agence', agence.id]" class="table-link">{{ agence.name }}</a></td>
+                <td>{{ agence.code }}</td>
+                <td>{{ agence.ville.name }}</td>
+            </tr>
+        </tbody>
+</table>
+<div class="my-3">
+    <p class="text-danger">{{ errorMessage }}</p>
+</div>

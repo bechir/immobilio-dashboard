@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'immobilio-dashboard'`, () => {
+  it(`should have as title 'courat-admin'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('immobilio-dashboard');
+    expect(app.title).toEqual('courat-admin');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('immobilio-dashboard app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('courat-admin app is running!');
   });
 });

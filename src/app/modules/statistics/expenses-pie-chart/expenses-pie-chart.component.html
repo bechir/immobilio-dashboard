@@ -1,0 +1,12 @@
+<h2 class="h6 text-muted pt-3 text-center">Dépenses réalisées par nature de la dépense</h2>
+<canvas baseChart *ngIf="pieChartData.length"
+    [data]="pieChartData"
+    [labels]="pieChartLabel"
+    [options]="pieChartOptions"
+    [legend]="pieChartLegend"
+    [plugins]="pieChartPlugins"
+    [chartType]="pieChartType">
+</canvas>
+<div class="my-5" *ngIf="errorMessage">
+    <p class="text-danger">{{ errorMessage }}</p>
+</div>

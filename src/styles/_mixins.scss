@@ -1,0 +1,51 @@
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+    transform: $property;
+}
+
+@mixin transition($property) {
+    -webkit-transition: $property;
+    -moz-transition: $property;
+    -ms-transition: $property;
+    -o-transition: $property;
+    transition: $property;
+}
+
+@mixin animation($properties) {
+    -webkit-animation: $properties;
+    animation: $properties;
+}
+
+@mixin shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+@mixin shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+@mixin shadow-md {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.075) !important;
+}
+
+@mixin shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+@mixin d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin rounded($radius: 3px) {
+    border-radius: $radius;
+}
+
+@mixin appearance-none {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

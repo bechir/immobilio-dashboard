@@ -1,0 +1,136 @@
+/**
+ * ---------------------------------------
+ * Main navigation menu
+ * ---------------------------------------
+ */
+.main-menu {
+    padding-top: $top_nav--height;
+    width: $sidebar--width;
+    @include transform(translateX(0));
+    @include transition(transform 0.15s ease-in-out);
+    flex-basis: $sidebar--width;
+    flex-shrink: 0;
+    z-index: 1038;
+    height: 100vh;
+    position: relative;
+
+    .nav-link {
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-align: start!important;
+        align-items: flex-start!important;
+        padding: .75rem 1.75rem;
+        width: 100%;
+        font-weight: 300;
+        font-size: 0.9rem;
+
+        .nav-icon {
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            margin-right: 0.5rem;
+            color: #407da8;
+
+            .feather{
+                width: 1.615rem;
+                height: 1.615rem;
+                padding-bottom: 0.25rem;
+            }
+        }
+
+        &.active, &:hover, &:focus{
+            .nav-icon, .feather {
+                color: $success;
+            }
+        }
+    }    
+
+    &__nav {
+        height: 100%;
+        background-color: #fff;
+        padding-bottom: 3.25rem;
+        overflow-y: scroll;
+        @include shadow;
+
+        .heading{
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.7rem;
+            color: #a7aeb8;
+            padding: 1.75rem 1rem 0.75rem;
+            width: 100%;
+        }
+
+        .nav-link.active{
+            font-weight: 700;
+        }
+        
+        .nav-link .collapse-arrow{
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .nav-link .collapse-arrow .fa-angle-right {
+            width: 0.85rem;
+            height: 0.85rem;
+            transition: .2s;
+            color: #9f9f9f;
+        }
+        
+        .nav-link:not(.collapsed) .collapse-arrow .fa-angle-right {
+            @include transform(rotate(90deg))
+        }
+        
+        .nav.subnav{
+            margin-left: 2.35rem;
+            border-left: thin solid #cfcfcf;
+        }
+    }
+
+    &.main-menu-light {
+        .main-menu__nav {
+            background-color: #fff;
+        }
+
+        .nav-link {
+            color: $dark-2;
+        }
+
+        .nav-link:not(.active) {
+            &.feather, &.fa-lg{
+                color: #7f7f7f;
+            }
+        }
+
+        .nav-link {
+            &.active, &:hover, &:focus{
+                color: $success;
+            }
+        }
+    }
+
+    &.main-menu-dark {
+        .main-menu__nav {
+            background-color: $dark;
+        }
+    
+        .nav-link {
+            color: #fff;
+        }
+
+        .nav-link:not(.active) {
+            &.feather, &.fa-lg{
+                color: #cfe0f9;
+            }
+        }
+        
+        .nav-link {
+            &.active, &:hover, &:focus {
+                color: #9bbff4;
+            }
+        }
+    }
+}
+
+.main-menu-toggled .main-menu {
+    @include transform(translateX(-$sidebar--width));
+}

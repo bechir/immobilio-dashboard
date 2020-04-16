@@ -1,0 +1,124 @@
+/**
+ * ---------------------------------------
+ * Theme customizer
+ * ---------------------------------------
+ */
+.customizer {
+    position: fixed;
+    z-index: 99999;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 23rem;
+    right: -23rem;
+    padding: 0;
+    background-color: #FFF;
+    color: $dark;
+    @include transition(right .4s cubic-bezier(.05,.74,.2,.99));
+    margin-top: $top_nav--height;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+
+    &.open {
+        right: 0;
+    }
+
+    .customizer-close{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #FFF;
+    
+        &:hover {
+            @include transform(rotate(180deg));
+            @include transition(transform .3s);
+            color: #FFF;
+        }
+
+        .feather {
+            stroke-width: 4px;
+        }
+    }
+
+    .customizer-toggler {
+        background: $dark;
+        color: #FFF;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        @include shadow-lg;
+        top: 50%;
+        width: 38px;
+        height: 38px;
+        left: -38px;
+    }
+
+    .card-header{
+        padding: 0.75rem 1rem;
+        background-color: $success;
+        @include shadow;
+    
+        h1{
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            color: #FFF;
+        }
+    
+        p{
+            font-size: 0.825rem;
+            color: #FFF;
+        }
+    }
+
+    .card-body{
+        h2 {
+            color: $primary;
+            font-size: 1.25rem;
+            font-weight: normal;
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+            padding-bottom: .75rem;
+        }
+    }
+
+    .option {
+        margin-bottom: 2rem;
+
+        &.navbar-color {
+            .btn {
+                border-radius: 5px;
+                margin: .25rem;
+                box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+                height: 2rem;
+        
+                &.active {
+                    outline: 2px solid rgba(52,144,220,.5);
+                    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+        
+                    ::before{
+                        content: "";
+                        display: block;
+                        height: 5px;
+                        width: 5px;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: -10px;
+                        left: 50%;
+                        color: $dark;
+                        background-color: $dark;
+                        @include transform(translateX(-50%))
+                    }
+                }
+                &.bg-white{
+                    border: 1px solid rgba(0, 0, 0, 0.175)
+                }
+                &:first-child{
+                    margin-left: 0;
+                }
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.ka-dark-theme {
+    background-color: $dark;
+
+    table, .card, .ka-fixed-right {
+        background-color: $dark;
+    }
+    table, .card, label, p {
+        color: #fff;
+    }
+
+    .list-group, .list-group-item {
+        background-color: transparent;
+    }
+
+    .customizer .customizer-toggler {
+        color: $dark;
+        background-color: #FFF;
+    }
+}

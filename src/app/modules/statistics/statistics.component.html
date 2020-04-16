@@ -1,0 +1,23 @@
+<div class="container mt-3">
+    <app-heading icon="fa fa-chart-bar" title="Statistiques"></app-heading>
+    <div class="main">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-invoice-by-payment-method></app-invoice-by-payment-method>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-expenses-by-nature-expense></app-expenses-by-nature-expense>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap border-top mt-5 pb-3 justify-content-between">
+            <div class="px-0 col-md-6">
+                <app-agence-stat-listing></app-agence-stat-listing>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,223 @@
+/**
+ * ---------------------------------------
+ * Top navigation bar
+ * ---------------------------------------
+ */
+.navbar {
+    font-size: 0.9rem;
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    @include shadow-md;
+
+    &.ka-topnav {
+        z-index: 1039;
+        padding-left: 0;
+        height: $top_nav--height;
+
+        &.navbar-expand {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-flow: row nowrap;
+            -webkit-box-pack: start;
+            justify-content: flex-start;
+        }
+
+        &.navbar-light{
+            background-color: #fff;
+        }
+        &.navbar-success {
+            background-color: var(--green);
+        }
+        &.navbar-primary {
+            background-color: var(--blue);
+        }
+        &.navbar-info {
+            background-color: var(--info);
+        }
+        &.navbar-dark {
+            background-color: $dark;
+        }
+        &.navbar-warning {
+            background-color: var(--yellow);
+        }
+        &.navbar-danger {
+            background-color: #ff3a3b;
+        }
+        &.navbar-light .ka-dropdown-user-title {
+            color: rgba(34, 39, 46, 0.7);
+        }
+        &.navbar-light .navbar-brand:hover, &.navbar-light .navbar-brand:focus {
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        &.navbar-dark .ka-dropdown-user-title,
+        &.navbar-dark .feather,
+        &.navbar-dark .btn-outline-primary,
+        &.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus,
+        &.navbar-dark .dropdown-header,
+        &.navbar-dark .dropdown-item{
+            color: rgba(255, 255, 255, 0.97);
+        }
+        &.navbar-dark .dropdown-item:hover,
+        &.navbar-dark .dropdown-item:hover .feather {
+            color: $dark;
+        }
+        &.navbar-dark .dropdown-menu{
+            background: rgba(0,0,0,0.65);
+        }
+        &.navbar-dark .btn-outline-primary{
+            border-color: rgba(255, 255, 255, 0.97);
+        }
+        &.navbar-warning .btn-outline-primary:hover,
+        &.navbar-warning .btn-outline-primary:focus,
+        &.navbar-warning .btn-outline-primary:active{
+            border-color: #FFF;
+            background-color: transparent;
+        }
+        
+        &.navbar-success .ka-dropdown-user::before,
+        &.navbar-success .btn-outline-primary,
+        &.navbar-success .feather,
+        &.navbar-success .ka-dropdown-user-title,
+        &.navbar-success .navbar-brand,
+        &.navbar-success .navbar-brand:hover,
+        &.navbar-success .navbar-brand:focus,
+        
+        &.navbar-primary .ka-dropdown-user::before,
+        &.navbar-primary .btn-outline-primary,
+        &.navbar-primary .feather,
+        &.navbar-primary .ka-dropdown-user-title,
+        &.navbar-primary .navbar-brand,
+        &.navbar-primary .navbar-brand:hover,
+        &.navbar-primary .navbar-brand:focus,
+        
+        &.navbar-info .ka-dropdown-user::before,
+        &.navbar-info .btn-outline-primary,
+        &.navbar-info .feather,
+        &.navbar-info .ka-dropdown-user-title,
+        &.navbar-info .navbar-brand,
+        &.navbar-info .navbar-brand:hover,
+        &.navbar-info .navbar-brand:focus,
+        
+        &.navbar-danger .ka-dropdown-user::before,
+        &.navbar-danger .btn-outline-primary,
+        &.navbar-danger .feather,
+        &.navbar-danger .ka-dropdown-user-title,
+        &.navbar-danger .navbar-brand,
+        &.navbar-danger .navbar-brand:hover,
+        &.navbar-danger .navbar-brand:focus{
+            border-color: #FFF;
+            color: #FFF;
+        }
+        
+        &.navbar-warning .ka-dropdown-user::before,
+        &.navbar-warning .btn-outline-primary,
+        &.navbar-warning .feather,
+        &.navbar-warning .ka-dropdown-user-title,
+        &.navbar-warning .navbar-brand,
+        &.navbar-warning .navbar-brand:hover,
+        &.navbar-warning .navbar-brand:focus{
+            border-color: $dark;
+            color: $dark;
+        }
+        
+        &:not(.navbar-dark) .dropdown-menu .feather {
+            color: $dark;
+        }
+        
+        &.navbar-success .ka-dropdown-user::before,
+        &.navbar-primary .ka-dropdown-user::before,
+        &.navbar-info .ka-dropdown-user::before,
+        &.navbar-danger .ka-dropdown-user::before{
+            background-color: #cfcfcf;
+        }
+        
+        &.navbar-dark .btn-outline-primary:hover,
+        &.navbar-dark .btn-outline-primary:focus,
+        &.navbar-dark .btn-outline-primary:active {
+            border-color: var(--primary);
+        }
+
+        .no-caret .dropdown-toggle::after {
+            display: none;
+        }
+
+        .ka-dropdown-user {
+            &:before {
+                display: inline-block;
+                content: "";
+                width: 1px;
+                height: 1.25rem;
+                color: #7f7f7f;
+                background-color: #7f7f7f;
+                position: absolute;
+                top: 50%;
+                left: -1rem;
+                @include transform(translateY(-50%))
+            }
+
+            .ka-dropdown-user-link {
+                &:hover, &:focus, &:active  {
+                    text-decoration: none!important;
+                    outline: none;
+
+                    .ka-btn-transparent-dark {
+                        background-color: rgba(0, 123, 255, 0.29);
+                    }
+                }
+
+                .ka-dropdown-user-title{
+                    display: inline-block;
+                    margin-top: 0.55rem;
+                    margin-right: .25rem;
+                }
+            }
+
+            .dropdown-menu {
+                top: 119%;
+    
+                .dropdown-header .ka-dropdown-user-img {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    margin-right: 1rem;
+                }
+    
+                .dropdown-item{
+                    font-weight: 400;
+                    font-size: 0.85rem;
+    
+                    .feather{
+                        width: 1rem;
+                        padding-bottom: 0.25rem;
+                    }
+                }
+            }
+        }
+
+        .navbar-brand {
+            display: inline-block;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: inherit;
+            white-space: nowrap;
+            width: $sidebar--width;
+            padding: 1rem;
+            margin: 0;
+
+            .text-logo{
+                text-transform: uppercase;
+                margin-bottom: auto;
+                margin-top: auto;
+                font-size: 1.25rem;
+            }
+        }
+    }    
+}
