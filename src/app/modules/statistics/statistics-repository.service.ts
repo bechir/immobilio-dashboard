@@ -49,6 +49,10 @@ export class StatisticsRepository {
   }
 
   getCollectionPaymentByAgence() {
-    return this.httpClient.get<Agence>(`${this.URL}/operation-caisse/encaissement/etat/par-agence`, this.httpOptions);
+    return this.httpClient.get<any>(`${this.URL}/operation-caisse/encaissement/etat/par-agence`, this.httpOptions);
+  }
+
+  getCollectionByCustomerType() {
+    return this.httpClient.get<any>(`${this.URL}/operation-caisse/encaissement/etat/par-type-client`, this.httpOptions);
   }
 }

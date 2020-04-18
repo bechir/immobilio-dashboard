@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticsRepository } from './statistics-repository.service';
 import { ChartDataSets } from 'chart.js';
-import { BarChart } from 'src/app/models/charts.model';
+import { BarChart, PieChart } from 'src/app/models/charts.model';
 import { ChartUtilsService } from 'src/app/services/chart-utils.service';
+import { SingleDataSet } from 'ng2-charts';
 
 @Component({
   selector: 'app-statistics',
@@ -17,7 +18,9 @@ export class StatisticsComponent implements OnInit {
 
   collectionsChart?: BarChart;
   invoiceByPaymentMethodChart?: BarChart;
-  expensesByNatureExpenseChart: BarChart;
+  expensesByNatureExpenseChart?: BarChart;
+  collectionByCustomerType?: PieChart;
+
 
   DATA_UNAVAILABLE = "Données non disponibles.";
 
@@ -25,6 +28,7 @@ export class StatisticsComponent implements OnInit {
     this.handleCollectionPaymentByAgence();
     this.handleInvoiceByPaymentMethodChart();
     this.handleExpensesByNatureExpense();
+    this.handleCollectionByCustomerType();
   }
 
   handleCollectionPaymentByAgence() {
@@ -35,7 +39,8 @@ export class StatisticsComponent implements OnInit {
           let labels = [];
           let newData = [];
           await Object.values(data).forEach(entry => {
-            const { name, total } = entry;
+            const name = entry['name'];
+            const total = entry['total'];
             labels.push(name);
             newData.push(total);
           });
@@ -52,6 +57,31 @@ export class StatisticsComponent implements OnInit {
       }
     },
       resp => this.errors.set('collections', resp.error.message)
+    );
+  }
+
+  handleCollectionByCustomerType() {
+    this.repository.getCollectionByCustomerType()
+      .subscribe((data) => {
+        const handleData = async () => {
+          let dataset: SingleDataSet = [];
+          let label = [];
+          let sum: number = 0;
+          Object.values(data).forEach(entry => {
+            const value = entry['total'];
+            label.push(entry['label'] ? entry['label'] : 'Inconnu');
+            dataset.push(value);
+            sum += +value;
+          });
+          this.collectionByCustomerType = {label, data: dataset, sum};
+        }
+        if (Object.keys(data).length !== 0) {
+          handleData();
+        } else {
+          this.errors.set('collectionByCustomer', this.DATA_UNAVAILABLE)
+        }
+      },
+      resp => this.errors.set('collectionByCustomer', resp.error.message)
     );
   }
 

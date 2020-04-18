@@ -18,6 +18,20 @@
                     </p>
                 </div>
             </div>
+
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-pie-chart
+                        *ngIf="collectionByCustomerType"
+                        heading="Encaissements par type de client"
+                        [pieChart]="collectionByCustomerType"
+                        type="doughnut">
+                    </app-pie-chart>
+                    <p class="text-danger" *ngIf="errors.has('collectionByCustomer')">
+                        {{ errors.get('collectionByCustomer') }}
+                    </p>
+                </div>
+            </div>
             <div class="col mb-4">
                 <div class="card px-2 pb-3">
                     <app-bar-chart

@@ -51,10 +51,14 @@ export class AgenceReportComponent implements OnInit {
         this.title += agence.name;
         this.handleTauxOccupation();
         this.handleInvoiceByAgence();
+        this.handleExpensesByNatureExpense();
       },
         errResp => this.errorMessage = errResp.error.errorMessage
       );
-    this.repository.getExpensesByNatureExpense(id)
+  }
+
+  handleExpensesByNatureExpense() {
+    this.repository.getExpensesByNatureExpense(this.agence.id)
       .subscribe((data) => {
         if (Object.keys(data).length !== 0) {
           this.pieChartLabel = Object.keys(data);
