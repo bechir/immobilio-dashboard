@@ -21,12 +21,12 @@ export class ExpensesPieChartComponent implements OnInit {
     responsive: true
   };
 
-  public pieChartLabel: Label[] = ['Débit', 'Crédit'];
+  public pieChartLabel: Label[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend: boolean = true;
   public pieChartPlugins = [];
 
-  public pieChartData: SingleDataSet = [12300, 43020];
+  public pieChartData: SingleDataSet = [];
 
   constructor(private repository: StatisticsRepository, private chartUtils: ChartUtilsService) {
     monkeyPatchChartJsTooltip();
@@ -34,20 +34,22 @@ export class ExpensesPieChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.repository.getExpensesByNatureExpense(this.agenceId)
-    //   .subscribe((data) => {
-    //     console.log(data);
+    this.repository.getExpensesByNatureExpense(this.agenceId)
+      .subscribe((data) => {
+        console.log(data);
         
-    //     if(Object.keys(data).length !== 0) {
-    //       this.pieChartLabel = Object.keys(data);
-    //       Object.keys(data).forEach((value, index) => {
-    //         this.pieChartData.push([Number(value)])
-    //       })
-    //     } else {
-    //       this.errorMessage = "Données non disponibles."
-    //     }
-    //   },
-    //   resp => this.errorMessage = resp.error.message
-    // );
+        if(Object.keys(data).length !== 0) {
+          this.pieChartLabel = Object.keys(data);
+          Object.keys(data).forEach((value) => {
+            console.log(value);
+            
+            this.pieChartData.push(Number(value))
+          })
+        } else {
+          this.errorMessage = "Données non disponibles."
+        }
+      },
+      resp => this.errorMessage = resp.error.message
+    );
   }
 }

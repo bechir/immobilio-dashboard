@@ -1,22 +1,51 @@
 <div class="container mt-3">
     <app-heading icon="fa fa-chart-bar" title="Statistiques"></app-heading>
     <div class="main">
-        <div class="row row-cols-1 row-cols-md-2">
-            <div class="col mb-4">
-                <div class="card px-2 pb-3">
-                    <app-invoice-by-payment-method></app-invoice-by-payment-method>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card px-2 pb-3">
-                    <app-expenses-by-nature-expense></app-expenses-by-nature-expense>
-                </div>
-            </div>
-        </div>
+        <div class="p panel-headline">
 
-        <div class="d-flex flex-wrap border-top mt-5 pb-3 justify-content-between">
-            <div class="px-0 col-md-6">
-                <app-agence-stat-listing></app-agence-stat-listing>
+        </div>
+        <div class="row row-cols-1 row-cols-lg-2">
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-bar-chart
+                        *ngIf="invoiceByPaymentMethodChart"
+                        heading="Paiements de factures par nature de paiement"
+                        [chart]="invoiceByPaymentMethodChart"
+                        stepSize="10_000_000">
+                    </app-bar-chart>
+                    <p class="text-danger" *ngIf="errors.has('invoicesByPayment')">
+                        {{ errors.get('invoicesByPayment') }}
+                    </p>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-bar-chart
+                        *ngIf="expensesByNatureExpenseChart"
+                        heading="Dépenses réalisées par nature de la dépense"
+                        [chart]="expensesByNatureExpenseChart">
+                    </app-bar-chart>
+                    <p class="text-danger" *ngIf="errors.has('expensesByNature')">
+                        {{ errors.get('expensesByNature') }}
+                    </p>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-basic-h-bar-chart
+                        *ngIf="collectionsChart"
+                        heading="Encaissements par agences"
+                        [chart]="collectionsChart">
+                    </app-basic-h-bar-chart>
+                    <p class="text-danger" *ngIf="errors.has('collections')">
+                        {{ errors.get('collections') }}
+                    </p>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card px-2 pb-3">
+                    <app-agence-stat-listing></app-agence-stat-listing>
+                </div>
             </div>
         </div>
     </div>

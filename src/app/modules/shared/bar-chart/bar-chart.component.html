@@ -1,0 +1,12 @@
+<h2 class="h6 text-muted pt-3 text-center">{{ heading }}</h2>
+<canvas baseChart *ngIf="chart"
+    [datasets]="chart.datasets"
+    [labels]="chart.labels"
+    [options]="chartOptions"
+    [legend]="chartLegend"
+    [plugins]="chartPlugins"
+    [chartType]="chartType">
+</canvas>
+<div class="my-5" *ngIf="errorMessage">
+    <p class="text-danger">{{ errorMessage }}</p>
+</div>

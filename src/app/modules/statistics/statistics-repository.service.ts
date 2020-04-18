@@ -20,6 +20,10 @@ export class StatisticsRepository {
 
   constructor(private httpClient: HttpClient) { }
 
+  getTauxOccupationByAgenceByNatureEspace(agenceCode: string) {
+    return this.httpClient.get<any>(`${this.URL}/bien-immobilier/etat/taux-occupation/par-nature/agence/${agenceCode}`, this.httpOptions);
+  }
+
   getInvoiceByPaymentMethod() {
     return this.httpClient.get<any>(`${this.URL}/paiement-factures/etat/mode-paiement`, this.httpOptions);
   }
@@ -42,5 +46,9 @@ export class StatisticsRepository {
 
   getAgence(id) {
     return this.httpClient.get<Agence>(`${this.URL}/agences/${id}`, this.httpOptions);
+  }
+
+  getCollectionPaymentByAgence() {
+    return this.httpClient.get<Agence>(`${this.URL}/operation-caisse/encaissement/etat/par-agence`, this.httpOptions);
   }
 }

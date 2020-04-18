@@ -2,5 +2,8 @@
     <h1 class="h3 text-success">
         <span [class]="icon" *ngIf="icon"></span>
         {{ title }}
+        <a *ngIf="backTo" [routerLink]="[backTo]" class="btn btn-link btn-sm text-dark text-decoration-none">
+            <span class="fa fa-arrow-left"></span> Retour
+        </a>
     </h1>
 </div>
