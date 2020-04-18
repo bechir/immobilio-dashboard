@@ -80,7 +80,7 @@ export class StatisticsComponent implements OnInit {
               label: key
             })
           }
-          legends.sort((a,b) => a > b);
+          legends.sort();
           this.operationsByTypeOperation = {
             labels: this.chartUtils.getChartLabelsForMonths(legends),
             datasets,
