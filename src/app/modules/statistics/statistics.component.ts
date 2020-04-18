@@ -20,6 +20,7 @@ export class StatisticsComponent implements OnInit {
   invoiceByPaymentMethodChart?: BarChart;
   expensesByNatureExpenseChart?: BarChart;
   collectionByCustomerType?: PieChart;
+  operationsByTypeOperation?: BarChart;
 
 
   DATA_UNAVAILABLE = "Données non disponibles.";
@@ -29,6 +30,7 @@ export class StatisticsComponent implements OnInit {
     this.handleInvoiceByPaymentMethodChart();
     this.handleExpensesByNatureExpense();
     this.handleCollectionByCustomerType();
+    this.handleOperationsByTypeOperation();
   }
 
   handleCollectionPaymentByAgence() {
@@ -57,6 +59,41 @@ export class StatisticsComponent implements OnInit {
       }
     },
       resp => this.errors.set('collections', resp.error.message)
+    );
+  }
+
+  handleOperationsByTypeOperation() {
+    this.repository.getOperationsByTypeOperation()
+      .subscribe((data) => {
+        const handleData = async () => {
+          let datasets: ChartDataSets[] = [];
+          let legends = [];
+
+          for(const [key, values] of Object.entries(data)) {
+            Object.keys(values).map(value => {
+              if(!legends.includes(value)) {
+                legends.push(value);
+              }
+            });
+            datasets.push({
+              data: Object.values(values),
+              label: key
+            })
+          }
+          legends.sort((a,b) => a > b);
+          this.operationsByTypeOperation = {
+            labels: this.chartUtils.getChartLabelsForMonths(legends),
+            datasets,
+            legend: true
+          };
+        }
+        if(Object.keys(data).length !== 0) {
+          handleData();
+        } else {
+          this.errors.set('operationsByTypeOperation', this.DATA_UNAVAILABLE)
+        }
+      },
+      resp => this.errors.set('operationsByTypeOperation', resp.error.message)
     );
   }
 

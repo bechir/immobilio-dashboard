@@ -48,6 +48,10 @@ export class StatisticsRepository {
     return this.httpClient.get<Agence>(`${this.URL}/agences/${id}`, this.httpOptions);
   }
 
+  getOperationsByTypeOperation() {
+    return this.httpClient.get<any>(`${this.URL}/operation-caisse/par-type-operation`, this.httpOptions);
+  }
+
   getCollectionPaymentByAgence() {
     return this.httpClient.get<any>(`${this.URL}/operation-caisse/encaissement/etat/par-agence`, this.httpOptions);
   }

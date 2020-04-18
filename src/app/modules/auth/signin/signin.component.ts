@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
             this.authService.emitAuthStateChanged();
             this.router.navigate(['/dashboard']);
           } catch (e) {
-            alert('Your web browser does not support storing settings locally.');
+            alert('Votre navigateur ne supporte pas le stockage local. Êtes-vous en mode navigation privée?');
           }
         },
         resp => this.errorMessage = resp.error.message

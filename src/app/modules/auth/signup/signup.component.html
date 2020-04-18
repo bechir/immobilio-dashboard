@@ -1,17 +1,17 @@
 
 <div class="card-header justify-content-center">
-    <h3 class="font-weight-light my-4">Sign up</h3>
+    <h3 class="font-weight-light my-4">Inscription</h3>
 </div>
 <div class="card-body">
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
-            <label for="username">Username or email</label>
+            <label for="username">Nom d'utilisateur ou emai</label>
             <input type="text" id="username" formControlName="username" class="form-control ka-form-control-solid">
         </div>
 
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Mot de passe</label>
             <input type="password" id="password" formControlName="password" class="form-control ka-form-control-solid">
         </div>
 
@@ -20,13 +20,12 @@
         </div>
 
         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-            <a class="small" href="#">Forgot Password?</a>
             <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">
-                <span class="feather-user-plus"></span> Sign up
+                <span class="feather-user-plus"></span> Inscription
             </button>
         </div>
     </form>
 </div>
 <div class="card-footer text-center">
-    <div class="small"><a routerLink="/auth/signin" class="btn btn-link">Have an account? Go to login</a></div>
+    <div class="small"><a routerLink="/auth/signin" class="btn btn-link">Vous avez un compte? Connectez-vous</a></div>
 </div>

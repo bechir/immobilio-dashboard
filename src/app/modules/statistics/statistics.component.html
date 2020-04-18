@@ -1,26 +1,23 @@
 <div class="container mt-3">
     <app-heading icon="fa fa-chart-bar" title="Statistiques"></app-heading>
     <div class="main">
-        <div class="p panel-headline">
-
-        </div>
-        <div class="row row-cols-1 row-cols-lg-2">
-            <div class="col mb-4">
-                <div class="card px-2 pb-3">
+        <div class="row">
+            <div class="col-md-7 mb-4 pr-0">
+                <div class="card shadow-sm px-2 pb-3">
                     <app-bar-chart
-                        *ngIf="invoiceByPaymentMethodChart"
-                        heading="Paiements de factures par nature de paiement"
-                        [chart]="invoiceByPaymentMethodChart"
-                        stepSize="10_000_000">
+                        *ngIf="operationsByTypeOperation"
+                        heading="Évolution globale des opérations"
+                        [chart]="operationsByTypeOperation"
+                        stepSize="10_000_000"
+                        type="line">
                     </app-bar-chart>
-                    <p class="text-danger" *ngIf="errors.has('invoicesByPayment')">
-                        {{ errors.get('invoicesByPayment') }}
+                    <p class="text-danger" *ngIf="errors.has('operationsByTypeOperation')">
+                        {{ errors.get('operationsByTypeOperation') }}
                     </p>
                 </div>
             </div>
-
-            <div class="col mb-4">
-                <div class="card px-2 pb-3">
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-sm px-2 pb-3">
                     <app-pie-chart
                         *ngIf="collectionByCustomerType"
                         heading="Encaissements par type de client"
@@ -32,8 +29,24 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="row row-cols-1 row-cols-lg-2">
             <div class="col mb-4">
-                <div class="card px-2 pb-3">
+                <div class="card shadow-sm px-2 pb-3">
+                    <app-bar-chart
+                        *ngIf="invoiceByPaymentMethodChart"
+                        heading="Paiements de factures par nature de paiement"
+                        [chart]="invoiceByPaymentMethodChart"
+                        stepSize="10_000_000"
+                        type="bar">
+                    </app-bar-chart>
+                    <p class="text-danger" *ngIf="errors.has('invoicesByPayment')">
+                        {{ errors.get('invoicesByPayment') }}
+                    </p>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card shadow-sm px-2 pb-3">
                     <app-bar-chart
                         *ngIf="expensesByNatureExpenseChart"
                         heading="Dépenses réalisées par nature de la dépense"
@@ -45,7 +58,7 @@
                 </div>
             </div>
             <div class="col mb-4">
-                <div class="card px-2 pb-3">
+                <div class="card shadow-sm px-2 pb-3">
                     <app-basic-h-bar-chart
                         *ngIf="collectionsChart"
                         heading="Encaissements par agences"
@@ -57,7 +70,7 @@
                 </div>
             </div>
             <div class="col mb-4">
-                <div class="card px-2 pb-3">
+                <div class="card shadow-sm px-2 pb-3">
                     <app-agence-stat-listing></app-agence-stat-listing>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import { SingleDataSet, Label } from 'ng2-charts';
-import { ChartDataSets } from 'chart.js';
+import { ChartDataSets, ChartColor, ChartType } from 'chart.js';
 
 export interface PieChart {
     data?: SingleDataSet;
@@ -10,5 +10,6 @@ export interface PieChart {
 export interface BarChart {
     datasets?: ChartDataSets[];
     labels?: Label[];
+    color?: ChartColor;
     legend: boolean;
 }

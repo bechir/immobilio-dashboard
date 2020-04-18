@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { ChartOptions, ChartType } from 'chart.js';
+import { ChartOptions, ChartType, ChartColor } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels'
 
 import { ChartUtilsService } from 'src/app/services/chart-utils.service';
 import { BarChart } from 'src/app/models/charts.model';
+import { Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-bar-chart',
@@ -15,6 +16,7 @@ export class BarChartComponent implements OnInit {
   @Input() chart: BarChart;
   @Input() heading: string;
   @Input() stepSize?: number;
+  @Input() type?: ChartType = 'bar';
 
   errorMessage?: string;
 
@@ -58,14 +60,40 @@ export class BarChartComponent implements OnInit {
     }
   };
 
-  public chartType: ChartType = 'bar';
+  public chartType?: ChartType;
+  public chartColor?: ChartColor | Color[];
   public chartLegend: boolean = true;
   public chartPlugins = [pluginDataLabels];
+  public lineChartColors: Color[] = [
+    {
+      borderColor: '#999',
+      borderWidth: 1,
+      backgroundColor: 'rgba(155,100,100,0.3)',
+    },
+    {
+      borderColor: '#777',
+      borderWidth: 1,
+      backgroundColor: 'rgba(15,200,100,0.3)',
+    },
+    {
+      borderColor: '#999',
+      borderWidth: 1,
+      backgroundColor: 'rgba(0,8,100,0.3)',
+    },
+  ];
 
 
   constructor(private chartUtils: ChartUtilsService) { }
 
   ngOnInit(): void {
     this.chartLegend = this.chart.legend
+    this.chartType = this.type;
+    if(this.chartType == 'line') {
+      this.chartColor = this.lineChartColors;
+      this.chartOptions.legend = {
+        position: 'chartArea'
+      }
+    }
+
   }
 }
