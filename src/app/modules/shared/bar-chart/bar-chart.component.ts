@@ -17,6 +17,7 @@ export class BarChartComponent implements OnInit {
   @Input() heading: string;
   @Input() stepSize?: number;
   @Input() type?: ChartType = 'bar';
+  @Input() useCustomColor: boolean = false;
 
   errorMessage?: string;
 
@@ -89,11 +90,10 @@ export class BarChartComponent implements OnInit {
     this.chartLegend = this.chart.legend
     this.chartType = this.type;
     if(this.chartType == 'line') {
-      this.chartColor = this.lineChartColors;
-      this.chartOptions.legend = {
-        position: 'chartArea'
-      }
+      this.chartOptions.legend = { position: 'chartArea' }
     }
-
+    if(this.chartType == 'line' || this.useCustomColor) {
+      this.chartColor = this.lineChartColors;
+    }
   }
 }

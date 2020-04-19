@@ -35,7 +35,7 @@
                 <div class="card shadow-sm px-2 pb-3">
                     <app-bar-chart
                         *ngIf="invoiceByPaymentMethodChart"
-                        heading="Paiements de factures par nature de paiement"
+                        heading="Paiements de factures par mode de paiement"
                         [chart]="invoiceByPaymentMethodChart"
                         stepSize="10_000_000"
                         type="bar">
@@ -50,7 +50,8 @@
                     <app-bar-chart
                         *ngIf="expensesByNatureExpenseChart"
                         heading="Dépenses réalisées par nature de la dépense"
-                        [chart]="expensesByNatureExpenseChart">
+                        [chart]="expensesByNatureExpenseChart"
+                        useCustomColor="true">
                     </app-bar-chart>
                     <p class="text-danger" *ngIf="errors.has('expensesByNature')">
                         {{ errors.get('expensesByNature') }}

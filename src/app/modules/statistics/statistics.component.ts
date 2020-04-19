@@ -147,8 +147,8 @@ export class StatisticsComponent implements OnInit {
 
   handleExpensesByNatureExpense() {
     this.repository.getExpensesByNatureExpense()
-    .subscribe((data) => {
-      const handleData = async () => {
+    .subscribe(async (data) => {
+      if(Object.keys(data).length !== 0) {
         let datasets: ChartDataSets[] = [];
         let labels = this.chartUtils.getChartLabelsForMonths(Object.keys(data));
         await this.chartUtils.transFormJsonForBarChart(data)
@@ -156,10 +156,6 @@ export class StatisticsComponent implements OnInit {
             datasets.push({ data: items, label: label });
         });
         this.expensesByNatureExpenseChart = { datasets, labels, legend: true };
-      };
-      
-      if(Object.keys(data).length !== 0) {
-        handleData();
       } else {
         this.errors.set('expensesByNature', this.DATA_UNAVAILABLE)
       }
