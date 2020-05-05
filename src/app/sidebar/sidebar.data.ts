@@ -14,36 +14,50 @@ export const sidebarItems: SideBarMenu[] = [
             {
                 icon: 'fa fa-chart-bar',
                 text: 'Statistiques',
-                link: '/statistics'
+                link: '/analyse/statistics'
             },
             {
                 icon: 'fa fa-file-invoice-dollar',
                 text: 'Facturation et Paiements',
-                link: '/billing'
+                link: '/analyse/billing'
             },
             {
                 icon: 'fa fa-cash-register',
                 text: 'Dépenses',
-                link: '/expenses'
+                link: '/analyse/expenses'
             },
             {
                 icon: 'fa fa-address-book',
                 text: 'Clients et Contrats',
-                link: '/customers'
+                link: '/analyse/customers'
             },
             {
                 icon: 'fa fa-building',
                 text: 'Patrimoine',
-                link: '/building'
+                link: '/analyse/building'
             }
         ]
     },
     {
         icon: 'fa fa-columns',
-        text: 'Etats',
+        text: 'États',
         id: 'Etats',
         submenu: [
-
+            {
+                icon: 'fa fa-donate',
+                text: 'Encaissements',
+                link: '/etat/encaissements'
+            },
+            {
+                icon: 'fa fa-landmark',
+                text: 'Arrières',
+                link: '/etat/arriere'
+            },
+            {
+                icon: 'fa fa-cash-register',
+                text: 'Dépenses',
+                link: '/etat/depenses'
+            } 
         ]
     }
 ];
