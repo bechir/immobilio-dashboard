@@ -6,6 +6,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { BasicHBarChartComponent } from './basic-h-bar-chart/basic-h-bar-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { AgenceListingComponent } from './agence-listing/agence-listing.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     HeadingComponent,
     PieChartComponent,
     BasicHBarChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    AgenceListingComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     HeadingComponent,
     PieChartComponent,
     BasicHBarChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    AgenceListingComponent
   ]
 })
 export class SharedModule { }

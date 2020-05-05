@@ -1,4 +1,4 @@
-<h2 class="h6 text-muted pt-3 text-center">Afficher les statistiques d'une agence</h2>
+<h2 class="h6 text-muted pt-3 text-center">{{ title }}</h2>
 <table class="table table-hover table-bordered" *ngIf="!errorMessage">
     <thead class="thead-default">
         <tr>
@@ -11,7 +11,7 @@
         <tbody>
             <tr *ngFor="let agence of agences; let i = index">
                 <td scope="row">{{ i + 1 }}</td>
-                <td><a [routerLink]="['agence', agence.id]" class="table-link">{{ agence.name }}</a></td>
+                <td><a [routerLink]="[targetPathPrefix, 'agence', agence.id]" class="table-link">{{ agence.name }}</a></td>
                 <td>{{ agence.code }}</td>
                 <td>{{ agence.city.name }}</td>
             </tr>

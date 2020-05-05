@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { StatisticsRepository } from '../statistics-repository.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { StatisticsRepository } from '../../analyse/statistics/statistics-repository.service';
 import { Agence } from 'src/app/models/agence';
 
 @Component({
-  selector: 'app-agence-stat-listing',
+  selector: 'app-agence-listing',
   templateUrl: './agence-listing.component.html',
   styleUrls: ['./agence-listing.component.scss']
 })
 export class AgenceListingComponent implements OnInit {
+  @Input() title?: string = 'Séléctionnez une agence';
+  @Input() targetPathPrefix: string;
 
   constructor(private repository: StatisticsRepository) { }
 
