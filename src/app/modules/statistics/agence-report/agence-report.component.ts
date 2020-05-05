@@ -25,6 +25,7 @@ export class AgenceReportComponent implements OnInit {
 
   occupationsPieChart?: PieChart;
   invoiceByAgenceChart?: BarChart;
+  expensesByNatureExpenseChart?: BarChart;
 
   public pieChartOptions: ChartOptions = {
     responsive: true
@@ -58,19 +59,22 @@ export class AgenceReportComponent implements OnInit {
   }
 
   handleExpensesByNatureExpense() {
-    this.repository.getExpensesByNatureExpense(this.agence.id)
-      .subscribe((data) => {
-        if (Object.keys(data).length !== 0) {
-          this.pieChartLabel = Object.keys(data);
-          Object.keys(data).forEach((value) => {
-            this.pieChartData.push(Number(data[value]));
-          })
-        } else {
-          this.errorMessage = "Données non disponibles."
-        }
-      },
-      resp => this.errorMessage = resp.error.message
-    );
+    this.repository.getExpensesByNatureExpense()
+    .subscribe(async (data) => {
+      if(Object.keys(data).length !== 0) {
+        let datasets: ChartDataSets[] = [];
+        let labels = this.chartUtils.getChartLabelsForMonths(Object.keys(data));
+        await this.chartUtils.transFormJsonForBarChart(data)
+          .forEach((items, label) => {
+            datasets.push({ data: items, label: label });
+        });
+        this.expensesByNatureExpenseChart = { datasets, labels, legend: true };
+      } else {
+        this.errors.set('expensesByNature', this.DATA_UNAVAILABLE)
+      }
+    },
+    resp => this.errors.set('expensesByNature', resp.error.message)
+  );
   }
 
   handleTauxOccupation() {
@@ -116,5 +120,9 @@ export class AgenceReportComponent implements OnInit {
     },
     resp => this.errors.set('invoiceByAgence', resp.error.message)
   );
+  }
+
+  handleAgenceExpensesBySci() {
+    
   }
 }

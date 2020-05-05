@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class AuthService {
 
-  URL: string = 'https://localhost:8000/api';
+  URL: string = 'http://immobilio.local/api';
 
   authSubject = new Subject<boolean>();
   

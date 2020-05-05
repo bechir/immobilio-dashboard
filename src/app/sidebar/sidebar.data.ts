@@ -1,42 +1,51 @@
-import { SidebarItem } from './sidebar-item';
+import { SideBarMenu } from './sidebar-item';
 
-export const sidebarItems: SidebarItem[] = [
+export const sidebarItems: SideBarMenu[] = [
     {
         icon: 'fa fa-home',
         text: 'Tableau de bord',
         link: '/dashboard'
     },
-    // {
-    //     icon: 'feather-youtube',
-    //     text: 'Cours',
-    //     link: '/courses'
-    // },
     {
-        icon: 'fa fa-chart-bar',
-        text: 'Statistiques',
-        link: '/statistics'
+        icon: 'fa fa-chart-pie',
+        text: 'Analyse',
+        id: 'Analyse',
+        submenu: [
+            {
+                icon: 'fa fa-chart-bar',
+                text: 'Statistiques',
+                link: '/statistics'
+            },
+            {
+                icon: 'fa fa-file-invoice-dollar',
+                text: 'Facturation et Paiements',
+                link: '/billing'
+            },
+            {
+                icon: 'fa fa-cash-register',
+                text: 'Dépenses',
+                link: '/expenses'
+            },
+            {
+                icon: 'fa fa-address-book',
+                text: 'Clients et Contrats',
+                link: '/customers'
+            },
+            {
+                icon: 'fa fa-building',
+                text: 'Patrimoine',
+                link: '/building'
+            }
+        ]
     },
     {
-        icon: 'fa fa-file-invoice-dollar',
-        text: 'Facturation et Paiements',
-        link: '/billing'
-    },
-    {
-        icon: 'fa fa-cash-register',
-        text: 'Dépenses',
-        link: '/expenses'
-    },
-    {
-        icon: 'fa fa-address-book',
-        text: 'Clients et Contrats',
-        link: '/customers'
-    },
-    {
-        icon: 'fa fa-building',
-        text: 'Patrimoine',
-        link: '/building'
-    }
+        icon: 'fa fa-columns',
+        text: 'Etats',
+        id: 'Etats',
+        submenu: [
 
+        ]
+    }
 ];
 
 // <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">

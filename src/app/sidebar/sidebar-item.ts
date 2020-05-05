@@ -1,10 +1,13 @@
-export interface SidebarItem {
+export interface SideBarMenu {
     icon?: string;
     text: string;
     link?: string;
-    // submenu?: SideBarItem[];
+    id?: string;
+    submenu?: SideBarMenuItem[];
 }
 
-export interface SidebarItems {
-    [index: string]: SidebarItem;
+export interface SideBarMenuItem {
+    icon?: string;
+    text: string;
+    link?: string;
 }

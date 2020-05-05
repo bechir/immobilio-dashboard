@@ -15,6 +15,8 @@ import { SignupComponent } from './modules/auth/signup/signup.component';
 import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SharedModule } from './modules/shared/shared.module';
 
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { SharedModule } from './modules/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    SharedModule
+    SharedModule,
+    NgbCollapseModule
   ],
   providers: [
     FormsModule,

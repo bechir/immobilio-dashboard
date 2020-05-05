@@ -14,6 +14,8 @@ export class AppComponent implements OnInit, OnDestroy {
   APP_NAME = 'ImmoBiLio'
   isAuth: boolean = false;
 
+  private _isToggled = false;
+
   authSubscription: Subscription;
 
   constructor(private authService: AuthService, public router: Router, private titleService: Title) {
@@ -37,5 +39,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.authSubscription.unsubscribe();
+  }
+
+  onToggleMenu() {
+    this._isToggled = !this._isToggled;
+  }
+
+  get isToggled(): boolean {
+    return this._isToggled;
   }
 }

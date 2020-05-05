@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SidebarItem } from '../sidebar-item';
+import { SideBarMenu } from '../sidebar-item';
 
 @Component({
   selector: 'app-sidebar-item',
@@ -7,7 +7,9 @@ import { SidebarItem } from '../sidebar-item';
   styleUrls: ['./sidebar-item.component.scss']
 })
 export class SidebarItemComponent implements OnInit {
-  @Input() item: SidebarItem
+  @Input() item: SideBarMenu
+
+  public isCollapsed = false;
 
   constructor() { }
 

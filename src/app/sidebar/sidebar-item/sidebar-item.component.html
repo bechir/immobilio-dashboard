@@ -1,6 +1,30 @@
-<a [routerLink]="item.link" routerLinkActive="active" class="nav-link">
-    <div class="nav-icon">
-        <i [ngClass]="item.icon" class="fa-lg"></i>
+<ng-container *ngIf="!item.submenu">
+    <a [routerLink]="item.link" routerLinkActive="active" class="nav-link">
+        <div class="nav-icon">
+            <i [ngClass]="item.icon"></i>
+        </div>
+        {{ item.text }}
+    </a>
+</ng-container>
+
+<ng-container *ngIf="item.submenu">
+    <a routerLinkActive="active" [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" [attr.aria-controls]="'collapse' + item.id" [ngClass]="{'nav-link': true, 'collapsed': isCollapsed}">
+        <div class="nav-icon">
+            <i [ngClass]="item.icon"></i>
+        </div>
+        {{ item.text }}
+        <div class="collapse-arrow d-flex">
+            <i class="fa fa-angle-right"></i>
+        </div>
+    </a>
+    <div class="collapse" [id]="'collapse' + item.id" [ngbCollapse]="isCollapsed">
+        <nav class="nav subnav">
+            <a routerLinkActive="active" [routerLink]="subItem.link" class="nav-link" *ngFor="let subItem of item.submenu" >
+                <div class="nav-icon">
+                    <i [ngClass]="subItem.icon"></i>
+                </div>
+                {{ subItem.text }}
+            </a>
+        </nav>
     </div>
-    {{ item.text }}
-</a>
+</ng-container>

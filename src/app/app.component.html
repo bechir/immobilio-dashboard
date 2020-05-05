@@ -1,14 +1,16 @@
-<app-top-nav [appName]="APP_NAME" [isAuth]="isAuth" *ngIf="isAuth"></app-top-nav>
-<div id="wrapper">
-	<!-- SIDEBAR-->
-	<app-sidebar *ngIf="isAuth"></app-sidebar>
-	<!-- END SIDEBAR-->
-	<div [ngClass]="{'main-content': isAuth}">
-		<main>
-			<div class="container-fluid px-0">
-				<router-outlet></router-outlet>
-				<div id="content-blocker"></div>
-			</div>
-		</main>
+<div [ngClass]="{'ka-nav-fixed': true, 'main-menu-toggled': isToggled}">
+	<app-top-nav [appName]="APP_NAME" [isAuth]="isAuth" (toggled)="onToggleMenu()" *ngIf="isAuth"></app-top-nav>
+	<div id="wrapper">
+		<!-- SIDEBAR-->
+		<app-sidebar *ngIf="isAuth"></app-sidebar>
+		<!-- END SIDEBAR-->
+		<div [ngClass]="{'main-content': isAuth}">
+			<main>
+				<div class="container-fluid px-0">
+					<router-outlet></router-outlet>
+					<div id="content-blocker"></div>
+				</div>
+			</main>
+		</div>
 	</div>
 </div>

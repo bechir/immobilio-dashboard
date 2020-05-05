@@ -140,6 +140,17 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         }
     }
 }
+@include media-breakpoint-down(sm) {
+    .main-content {
+        margin-left: 0;
+    }
+    .main-menu {
+        @include transform(translateX(-$sidebar--width));
+    }
+    .main-menu-toggled .main-menu {
+        @include transform(translateX(0));
+    }
+}
 
 .text-t-initial{
     text-transform: initial!important;

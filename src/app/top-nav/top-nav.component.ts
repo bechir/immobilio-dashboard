@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class TopNavComponent implements OnInit, OnDestroy {
   @Input() appName: string;
   @Input() isAuth: boolean;
+  @Output() toggled = new EventEmitter();
 
   // authSubscription: Subscription;
 
@@ -30,5 +31,9 @@ export class TopNavComponent implements OnInit, OnDestroy {
   onSignOut() {
     this.authService.signout();
     this.router.navigate(['/auth/signin']);
+  }
+
+  toggleMenu() {
+    this.toggled.emit();
   }
 }

@@ -1,8 +1,8 @@
-import { Ville } from './ville';
+import { City } from './city';
 
 export interface Agence {
     id: number;
     code?: string;
     name: string;
-    ville?: string|Ville
+    city?: string|City
 }

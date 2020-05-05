@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import { Agence } from 'src/app/models/agence';
@@ -9,7 +8,7 @@ import { Agence } from 'src/app/models/agence';
 })
 export class StatisticsRepository {
 
-  URL = 'https://localhost:8000/api';
+  URL = 'http://immobilio.local/api';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -17,6 +16,8 @@ export class StatisticsRepository {
       'Authorization': `Bearer ${AuthService.prototype.getAuthToken()}`
     })
   };
+
+  // encaissement arriere depenses 
 
   constructor(private httpClient: HttpClient) { }
 
@@ -37,6 +38,7 @@ export class StatisticsRepository {
     if(agenceId !== undefined) {
       path += `-par-agence/${agenceId}`;
     }
+
     return this.httpClient.get<any>(`${this.URL}/${path}`, this.httpOptions);
   }
 
