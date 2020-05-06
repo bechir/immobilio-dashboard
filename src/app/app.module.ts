@@ -15,7 +15,7 @@ import { SignupComponent } from './modules/auth/signup/signup.component';
 import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SharedModule } from './modules/shared/shared.module';
 
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCollapseModule, NgbDatepickerModule, NgbModule, NgbDatepickerMonth, NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
     DashboardComponent,
     SidebarItemComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
     ReactiveFormsModule,
     ChartsModule,
     SharedModule,
-    NgbCollapseModule
+    NgbModule
   ],
   providers: [
     FormsModule,

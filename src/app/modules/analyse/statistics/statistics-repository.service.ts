@@ -15,9 +15,7 @@ export class StatisticsRepository {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${AuthService.prototype.getAuthToken()}`
     })
-  };
-
-  // encaissement arriere depenses 
+  }; 
 
   constructor(private httpClient: HttpClient) { }
 

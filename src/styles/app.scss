@@ -254,12 +254,30 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
  * -------------------------------------
  */
 .ka-datatable {
+    font-size: .9rem;
     label{
         font-weight: normal;
     }
 
     thead th{
         color: $bg-primary;
+    }
+}
+
+@mixin width {
+    width: auto !important;
+}
+
+table {
+    &.table-fit {
+        @include width;
+        table-layout: auto !important;
+        thead th, tfoot th  {
+            @include width;
+        }
+        tbody td, tfoot td {
+            @include width;
+        }
     }
 }
 

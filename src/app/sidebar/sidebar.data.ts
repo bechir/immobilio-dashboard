@@ -4,7 +4,19 @@ export const sidebarItems: SideBarMenu[] = [
     {
         icon: 'fa fa-home',
         text: 'Tableau de bord',
-        link: '/dashboard'
+        link: '/dashboard',
+        submenu: [
+            {
+                icon: 'fa fa-exclamation-circle',
+                text: 'Pilotage et Alertes',
+                link: 'ii'
+            },
+            {
+                icon: 'fa fa-chart-bar',
+                text: 'Statistiques',
+                link: '/analyse/statistics'
+            }
+        ]
     },
     {
         icon: 'fa fa-chart-pie',
@@ -12,14 +24,14 @@ export const sidebarItems: SideBarMenu[] = [
         id: 'Analyse',
         submenu: [
             {
-                icon: 'fa fa-chart-bar',
-                text: 'Statistiques',
-                link: '/analyse/statistics'
+                icon: 'fa fa-file-invoice-dollar',
+                text: 'Facturation',
+                link: '/analyse/billing'
             },
             {
-                icon: 'fa fa-file-invoice-dollar',
-                text: 'Facturation et Paiements',
-                link: '/analyse/billing'
+                icon: 'fa fa-donate',
+                text: 'Encaissements',
+                link: '/analyse/encaissements'
             },
             {
                 icon: 'fa fa-cash-register',
@@ -61,6 +73,9 @@ export const sidebarItems: SideBarMenu[] = [
         ]
     }
 ];
+
+// Client cont: Contrats - Clients - 
+// Patrimoine: Bien immobilier - Espace Locatif - Proprietaire
 
 // <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
 // <div class="nav-icon">
