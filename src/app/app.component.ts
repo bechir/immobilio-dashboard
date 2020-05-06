@@ -1,9 +1,10 @@
+import { Config } from './config';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { Router, ChildActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { filter } from 'rxjs/operators'
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { filter } from 'rxjs/operators'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  APP_NAME = 'ImmoBiLio'
+  // APP_NAME = 'ImmoBiLio'
+  APP_NAME = Config.appName;
   isAuth: boolean = false;
 
   private _isToggled = false;
