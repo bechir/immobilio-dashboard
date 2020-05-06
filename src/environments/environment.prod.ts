@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl:  'http://api.immobi.test',
+  apiUrl:  'http://api.immo.test',
   appName: 'Immobilio Dashbord'
 };
