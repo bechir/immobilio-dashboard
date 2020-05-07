@@ -38,8 +38,6 @@ export class ArriereComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({
-      startDate: new FormControl(this.formatter.format(this.fromDate)),
-      endDate:   new FormControl(this.formatter.format(this.toDate)),
       clientId:  new FormControl(''),
       agenceCode:  new FormControl('')
     });
@@ -55,7 +53,14 @@ export class ArriereComponent implements OnInit, OnDestroy {
   }
 
   onFilter() {
-    const  params = this.filterForm.value;
+    let  params = this.filterForm.value;
+
+    params = {
+      ...params,
+      startDate: `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`,
+      endDate: `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`
+    };
+
     console.log('fetching with params ', params);
 
     this.service.getArrierees(params);

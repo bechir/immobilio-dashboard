@@ -33,7 +33,6 @@
                             <input #dpFromDate
                                 class="form-control form-control-sm" placeholder="yyyy-mm-dd"
                                 name="dpFromDate"
-                                formControlName="startDate"
                                 [value]="formatter.format(fromDate)"
                                 (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
                             <div class="input-group-append">
@@ -48,7 +47,6 @@
                             <input #dpToDate
                                 class="form-control form-control-sm" placeholder="yyyy-mm-dd"
                                 name="dpToDate"
-                                formControlName="endDate"
                                 [value]="formatter.format(toDate)"
                                 (input)="toDate = validateInput(toDate, dpToDate.value)">
                             <div class="input-group-append">

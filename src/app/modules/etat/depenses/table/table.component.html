@@ -1,0 +1,32 @@
+<table *ngIf="depenses" class="table table-striped table-responsive table-hover ka-datatable">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Date</th>
+            <th>Bénéficiaire</th>
+            <th>Contact bénéf.</th>
+            <th>Montant</th>
+            <th>N° pièce justif.</th>
+            <th>Motif</th>
+            <th>Opérateur</th>
+            <th>Ordonnateur</th>
+            <th>Agence</th>
+            <th>SCI</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of depenses; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.beneficiaire }}</td>
+            <td>{{ item.contact }}</td>
+            <td>{{ item.montant }}</td>
+            <td>{{ item.numFacturePiece }}</td>
+            <td>{{ item.motif }}</td>
+            <td>{{ item.operateur }}</td>
+            <td>{{ item.ordonnateur }}</td>
+            <td>{{ item.nomAgence }}</td>
+            <td>{{ item.sci }}</td>
+        </tr>
+    </tbody>
+</table>

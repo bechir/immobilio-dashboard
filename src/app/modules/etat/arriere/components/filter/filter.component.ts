@@ -1,25 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { Agence } from 'src/app/models/agence';
 import { Client } from 'src/app/models/client';
-import { SharedService } from '../../shared/shared.service';
-import { EtatService } from '../etat.service';
+import { SharedService } from 'src/app/modules/shared/shared.service';
 
 @Component({
-  selector: 'app-depenses',
-  templateUrl: './depenses.component.html',
-  styleUrls: ['./depenses.component.scss']
+  selector: 'app-filter',
+  templateUrl: './filter.component.html',
+  styleUrls: ['./filter.component.scss']
 })
-export class DepensesComponent implements OnInit, OnDestroy {
-
-  depenses: any[] | null = null;
-  private depensesObserver: Subscription;
-
+export class FilterComponent implements OnInit {
   agences?: Agence[];
   clients?: Client[];
-  
+
   filterForm: FormGroup;
 
   hoveredDate: NgbDate | null = null;
@@ -30,7 +24,6 @@ export class DepensesComponent implements OnInit, OnDestroy {
   constructor(
     private calendar: NgbCalendar,
     public formatter: NgbDateParserFormatter,
-    private service: EtatService,
     private sharedService: SharedService) {
     this.fromDate = calendar.getPrev(calendar.getToday(), 'm');
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 0);
@@ -38,36 +31,19 @@ export class DepensesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({
-      clientId:  new FormControl(''),
-      agenceCode:  new FormControl('')
+      startDate:  new FormControl(this.formatter.format(this.fromDate)),
+      endDate:    new FormControl(this.formatter.format(this.toDate)),
+      clientId:   new FormControl(''),
+      agenceCode: new FormControl('')
     });
-
-    this.depensesObserver = this.service.depensesSubject.subscribe((depenses: any[]) => {
-      this.depenses = depenses;
-    });
-    this.service.getArrierees(this.filterForm.value);
-    this.service.emitDepensesSubject();
 
     this.sharedService.getClients().subscribe((clients: Client[]) => this.clients = clients, error => console.error(error));
     this.sharedService.getAgences().subscribe((agences: Agence[]) => this.agences = agences, error => console.error(error));
   }
 
   onFilter() {
-    let  params = this.filterForm.value;
-
-    params = {
-      ...params,
-      startDate: `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`,
-      endDate: `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`
-    };
-
+    const  params = this.filterForm.value;
     console.log('fetching with params ', params);
-
-    this.service.getArrierees(params);
-  }
-
-  ngOnDestroy(): void {
-    this.depensesObserver.unsubscribe();
   }
 
   onDateSelection(date: NgbDate) {

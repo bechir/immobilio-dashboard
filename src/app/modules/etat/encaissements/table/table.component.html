@@ -1,4 +1,4 @@
-<table *ngIf="arrierees" class="table table-striped table-responsive table-hover ka-datatable">
+<table *ngIf="encaissements" class="table table-striped table-responsive table-hover ka-datatable">
     <thead>
         <tr>
             <th>N°</th>
@@ -6,7 +6,7 @@
             <th>Espace loué</th>
             <th>Loyer</th>
             <th>Caution</th>
-            <th>Montant dû</th>
+            <th>Total encaissements</th>
             <th>Nb. mois</th>
             <th>Date dernier paiement</th>
             <th>Montant dernier paiement</th>
@@ -16,13 +16,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of arrierees; let i = index">
+        <tr *ngFor="let item of encaissements; let i = index">
             <td>{{ i + 1 }}</td>
             <td>{{ item.nomClient }}</td>
             <td>{{ item.espaceLoue }}</td>
             <td>{{ item.loyer }}</td>
             <td>{{ item.cotion || '0' }}</td>
-            <td>{{ item.montantDu }}</td>
+            <td>{{ item.totalEncaissements }}</td>
             <td>{{ item.nombreMois }}</td>
             <td>{{ item.dateDernierPaiement }}</td>
             <td>{{ item.montantDernierPaiement }}</td>
