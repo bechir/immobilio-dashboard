@@ -15,7 +15,9 @@ import { SignupComponent } from './modules/auth/signup/signup.component';
 import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SharedModule } from './modules/shared/shared.module';
 
-import { NgbCollapseModule, NgbDatepickerModule, NgbModule, NgbDatepickerMonth, NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCollapseModule, NgbDatepickerModule, NgbModule, NgbDatepickerMonth, NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { FilterFormComponent } from './modules/etat/components/filter-form/filter-form.component';
+import { RecapComponent } from './modules/etat/components/recap/recap.component'
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { NgbCollapseModule, NgbDatepickerModule, NgbModule, NgbDatepickerMonth, 
     SidebarItemComponent,
     SignupComponent,
     SigninComponent,
+    FilterFormComponent,
+    RecapComponent,
   ],
   imports: [
     BrowserModule,

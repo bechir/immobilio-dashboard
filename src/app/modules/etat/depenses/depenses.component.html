@@ -1,9 +1,9 @@
 <div class="container-fluid mt-3 pb-5">
     <app-heading icon="fa fa-cash-register" title="Dépenses"></app-heading>
     <div class="main">
-        <form class="form-inline" [formGroup]="filterForm" (ngSubmit)="onFilter()">
-            <div class="d-flex flex-wrap justify-content-start mb-5">
-                <div class="d-flex mb-3">
+        <form class="form-inline mb-5" [formGroup]="filterForm" (ngSubmit)="onFilter()">
+            <div class="d-flex flex-wrap justify-content-start w-100 mb-1">
+                <div class="d-flex mb-2">
                     <div class="form-group hidden">
                         <div class="input-group">
                             <input name="datepicker"
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ml-3">
+                <div class="ml-lg-3">
                     <div class="form-group">
                         <label for="" class="mr-1">Client</label>
                         <select class="custom-select custom-select-sm" formControlName="clientId">
@@ -68,7 +68,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="ml-3">
+                <div class="ml-md-3">
                     <div class="form-group">
                         <label for="" class="mr-1">Agence</label>
                         <select class="custom-select custom-select-sm" formControlName="agenceCode">
@@ -77,13 +77,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="ml-3">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-filter"></i>
-                        Filtrer
-                    </button>
-                </div>
             </div>
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-filter"></i>
+                Filtrer
+            </button>
         </form>
         <app-depenses-table [depenses]="depenses"></app-depenses-table>
     </div>
