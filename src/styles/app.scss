@@ -248,19 +248,47 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-top: -7rem !important;
 }
 
+.modal-content{
+    animation-name: example;
+    animation-duration: 0.3s;
+  }
+  
+  @keyframes example {
+    0%   {transform: scale(0.5)}
+    75%  {transform: scale(1.1)}
+    100% {transform: scale(1)}
+}
+
 /**
  * -------------------------------------
  * Datatable
  * -------------------------------------
  */
 .ka-datatable {
-    font-size: .9rem;
+
+    thead {
+        background-color: $gray;
+    }
+
+    font-size: .73rem;
     label{
         font-weight: normal;
     }
 
     thead th{
-        color: $bg-primary;
+        color: #fff;
+    }
+
+    td.button {
+        button {
+            color: $gray;
+            font-weight: bolder;
+            font-size: .75rem;
+
+            &:hover {
+                color: $primary;
+            }
+        }
     }
 }
 

@@ -5,9 +5,8 @@ import { DepensesRoutingModule } from './depenses-routing.module';
 import { DepensesComponent } from './depenses.component';
 import { SharedModule } from '../../shared/shared.module';
 import { TableComponent } from './table/table.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgbDatepickerModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,9 +18,11 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     DepensesRoutingModule,
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgbTooltipModule
   ]
 })
 export class DepensesModule { }

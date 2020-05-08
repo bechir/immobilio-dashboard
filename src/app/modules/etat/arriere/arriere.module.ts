@@ -7,14 +7,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
-import { FilterComponent } from './components/filter/filter.component';
 
 
 @NgModule({
   declarations: [
     ArriereComponent,
     TableComponent,
-    FilterComponent,
   ],
   imports: [
     CommonModule,

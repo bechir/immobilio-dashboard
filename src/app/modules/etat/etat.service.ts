@@ -7,11 +7,18 @@ import { AuthService } from 'src/app/services/auth.service';
   providedIn: 'root'
 })
 export class EtatService {
+  private arrieres?: any[];
+  public arrieresSubject = new Subject<any[]>()
+
   private depenses?: any[];
   public depensesSubject = new Subject<any[]>();
 
   private encaissements?: any[];
   public encaissementsSubject = new Subject<any[]>();
+
+  emitArrieresSubject() {
+    this.arrieresSubject.next(this.arrieres?.slice());
+  }
 
   emitDepensesSubject() {
     this.depensesSubject.next(this.depenses?.slice());
@@ -33,6 +40,19 @@ export class EtatService {
   constructor(private httpClient: HttpClient) { }
 
   getArrierees(params?: any) {
+    this.httpClient.get<any[]>(`${this.URL}/etat/arrieres`, {
+      params,
+      ...this.httpOptions
+    }).subscribe(data => {
+        this.arrieres = data;
+        console.log(data);
+        this.emitArrieresSubject();
+      },
+      error => console.error(error)
+    );
+  }
+
+  getDepenses(params?: any) {
     this.httpClient.get<any[]>(`${this.URL}/etat/decaissements`, {
       params,
       ...this.httpOptions

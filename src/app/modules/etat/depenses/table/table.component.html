@@ -1,32 +1,161 @@
-<table *ngIf="depenses" class="table table-striped table-responsive table-hover ka-datatable">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>Date</th>
-            <th>Bénéficiaire</th>
-            <th>Contact bénéf.</th>
-            <th>Montant</th>
-            <th>N° pièce justif.</th>
-            <th>Motif</th>
-            <th>Opérateur</th>
-            <th>Ordonnateur</th>
-            <th>Agence</th>
-            <th>SCI</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of depenses; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ item.date }}</td>
-            <td>{{ item.beneficiaire }}</td>
-            <td>{{ item.contact }}</td>
-            <td>{{ item.montant }}</td>
-            <td>{{ item.numFacturePiece }}</td>
-            <td>{{ item.motif }}</td>
-            <td>{{ item.operateur }}</td>
-            <td>{{ item.ordonnateur }}</td>
-            <td>{{ item.nomAgence }}</td>
-            <td>{{ item.sci }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="row justify-content-between">
+            <div class="col-sm-12 col-md-3">
+                <div id="dataTable_filter" class="dataTables_filter">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-search"></i></div>
+                        </div>
+                        <input [(ngModel)]="searchInput" type="text" class="border form-control form-control-sm ka-form-control-solid" placeholder="Recherche" aria-controls="dataTable">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn px-2 py-1 btn-outline-secondary btn-sm">
+                        <i class="fa fa-file-excel"></i>
+                    </button>
+                    <button type="button" class="btn px-2 py-1 btn-outline-secondary btn-sm">
+                        <i class="fa fa-file-pdf"></i>
+                    </button>
+                </div>
+
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn px-2 py-1 btn-outline-info btn-sm">
+                        <i class="fa fa-print"></i>
+                    </button>
+                </div>
+
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn px-2 py-1 btn-outline-primary btn-sm">
+                        <i class="fa fa-envelope"></i>
+                    </button>
+                    <button type="button" class="btn px-2 py-1 btn-outline-primary btn-sm">
+                        <i class="fa fa-sms"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table *ngIf="depenses" class="table table-striped table-hover table-responsive-lg ka-datatable">
+            <thead>
+                <tr>
+                    <th>Réf.</th>
+                    <th>Date</th>
+                    <th>Bénéficiaire</th>
+                    <th>Motif</th>
+                    <th>Montant</th>
+                    <th>N° Pièce Justif.</th>
+                    <th>Opérateur</th>
+                    <th>Ordonnateur</th>
+                    <th>Agence</th>
+                    <th>SCI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of depenses | appFilter : searchInput">
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsRef)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                    </td>
+                    <td>{{ item.date | dateFormatFR }}</td>
+                    <td>{{ item.beneficiaire }}</td>
+                    <td>{{ item.motif | slice:0:20 }}...</td>
+                    <td>{{ item.montant }}</td>
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsNumPiece)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.numFacturePiece }}</button>
+                    </td>
+                    <td>{{ item.operateur }}</td>
+                    <td>{{ item.ordonnateur }}</td>
+                    <td>{{ item.nomAgence }}</td>
+                    <td>{{ item.sci }}</td>
+                    <ng-template #detailsRef let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Date</th>
+                                        <td>{{ item.date | dateFormatFR }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bénéficiaire</th>
+                                        <td>{{ item.beneficiaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Bénéficiaire</th>
+                                        <td>{{ item.contact }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Motif</th>
+                                        <td>{{ item.motif }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Montant</th>
+                                        <td>{{ item.montant }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>N° pièce justificative</th>
+                                        <td>{{ item.numFacturePiece }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Opérateur</th>
+                                        <td>{{ item.operateur }}</td>
+                                    </tr>
+        
+                                    <tr>
+                                        <th>Ordonnateur</th>
+                                        <td>{{ item.ordonnateur }}</td>
+                                    </tr>
+        
+                                    <tr>
+                                        <th>Agence</th>
+                                        <td>{{ item.agence }}</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <th>SCI</th>
+                                        <td>{{ item.sci }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+        
+                    <ng-template #detailsNumPiece let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">N° pièce justificative: {{ item.numFacturePiece }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Moyent de paiement</th>
+                                        <td>{{ item.moyenPaiement }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Compte bancaire</th>
+                                        <td>{{ item.compteBancaire || '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>N° chèque virement</th>
+                                        <td>{{ item.numChequeVirement || '-' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

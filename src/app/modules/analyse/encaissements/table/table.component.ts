@@ -1,13 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-etat-encaissements-table',
+  selector: 'app-analyse-enc-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  @Input() encaissements: any[] | null;
-
+  @Input() bills: any[] | null;
   constructor() { }
 
   ngOnInit(): void {

@@ -14,7 +14,7 @@ export const sidebarItems: SideBarMenu[] = [
             {
                 icon: 'fa fa-chart-bar',
                 text: 'Statistiques',
-                link: '/analyse/statistics'
+                link: '/dashboard/statistics'
             }
         ]
     },
@@ -62,7 +62,7 @@ export const sidebarItems: SideBarMenu[] = [
             },
             {
                 icon: 'fa fa-landmark',
-                text: 'Arrières',
+                text: 'Arriérés',
                 link: '/etat/arriere'
             },
             {

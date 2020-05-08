@@ -1,32 +1,28 @@
-<table *ngIf="arrierees" class="table table-striped table-responsive table-hover ka-datatable">
+<table *ngIf="arrierees" class="table table-striped table-responsive-lg table-hover ka-datatable">
     <thead>
         <tr>
-            <th>N°</th>
+            <th>Réf.</th>
             <th>Client</th>
             <th>Espace loué</th>
             <th>Loyer</th>
-            <th>Caution</th>
             <th>Montant dû</th>
             <th>Nb. mois</th>
-            <th>Date dernier paiement</th>
-            <th>Montant dernier paiement</th>
-            <th>Contact client</th>
+            <th>Date Dern. Paie.</th>
+            <th>Mt. Dern. Paie.</th>
             <th>Agence</th>
             <th>SCI</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of arrierees; let i = index">
-            <td>{{ i + 1 }}</td>
+            <td>{{ item.reference }}</td>
             <td>{{ item.nomClient }}</td>
             <td>{{ item.espaceLoue }}</td>
             <td>{{ item.loyer }}</td>
-            <td>{{ item.cotion || '0' }}</td>
             <td>{{ item.montantDu }}</td>
             <td>{{ item.nombreMois }}</td>
             <td>{{ item.dateDernierPaiement }}</td>
             <td>{{ item.montantDernierPaiement }}</td>
-            <th>{{ item.contactClient }}</th>
             <td>{{ item.nomAgence }}</td>
             <td>{{ item.sci }}</td>
         </tr>

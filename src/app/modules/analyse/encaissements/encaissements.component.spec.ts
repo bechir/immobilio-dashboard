@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { EtatFilterFormComponent } from './etat-filter-form.component';
 
-describe('EtatFilterFormComponent', () => {
-  let component: EtatFilterFormComponent;
-  let fixture: ComponentFixture<EtatFilterFormComponent>;
+import { EncaissementsComponent } from './encaissements.component';
+
+describe('EncaissementsComponent', () => {
+  let component: EncaissementsComponent;
+  let fixture: ComponentFixture<EncaissementsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EtatFilterFormComponent ]
+      declarations: [ EncaissementsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EtatFilterFormComponent);
+    fixture = TestBed.createComponent(EncaissementsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

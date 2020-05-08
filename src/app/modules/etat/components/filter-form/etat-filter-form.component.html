@@ -1,5 +1,5 @@
 <form class="form-inline mb-5" [formGroup]="filterForm" (ngSubmit)="onFilter()">
-    <div class="d-flex flex-wrap justify-content-start align-items-center w-100 mb-1">
+    <div class="d-flex flex-wrap justify-content-start w-100 mb-1">
         <div class="d-flex mb-2">
             <div class="form-group hidden">
                 <div class="input-group">
@@ -28,9 +28,9 @@
             <div class="form-group">
                 <div class="input-group">
                     <input #dpFromDate
-                        class="form-control form-control-sm" placeholder="yyyy-mm-dd"
+                        class="form-control form-control-sm" placeholder="jj-mm-aaaa"
                         name="dpFromDate"
-                        [value]="formatter.format(fromDate)"
+                        [value]="formatter.format(fromDate) | dateFormatFR"
                         (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
                     <div class="input-group-append">
                     <button class="btn btn-sm btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
@@ -42,9 +42,9 @@
             <div class="form-group ml-2">
                 <div class="input-group">
                     <input #dpToDate
-                        class="form-control form-control-sm" placeholder="yyyy-mm-dd"
+                        class="form-control form-control-sm" placeholder="jj-mm-aaaa"
                         name="dpToDate"
-                        [value]="formatter.format(toDate)"
+                        [value]="formatter.format(toDate) | dateFormatFR"
                         (input)="toDate = validateInput(toDate, dpToDate.value)">
                     <div class="input-group-append">
                     <button class="btn btn-sm btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-sm">
+    <button type="submit" class="btn btn-success btn-sm">
         <i class="fa fa-filter"></i>
         Filtrer
     </button>
