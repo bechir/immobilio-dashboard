@@ -28,13 +28,13 @@
             <div class="form-group">
                 <div class="input-group">
                     <input #dpFromDate
-                        class="form-control form-control-sm" placeholder="jj-mm-aaaa"
+                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj-mm-aaaa"
                         name="dpFromDate"
                         [value]="formatter.format(fromDate) | dateFormatFR"
                         (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
                     <div class="input-group-append">
-                    <button class="btn btn-sm btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
-                        <i class="fa fa-calendar-alt"></i>
+                    <button class="btn btn-sm calendar input-group-text border-0" (click)="datepicker.toggle()" type="button">
+                        <i class="fa fa-calendar-alt text-muted"></i>
                     </button>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
             <div class="form-group ml-2">
                 <div class="input-group">
                     <input #dpToDate
-                        class="form-control form-control-sm" placeholder="jj-mm-aaaa"
+                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj-mm-aaaa"
                         name="dpToDate"
                         [value]="formatter.format(toDate) | dateFormatFR"
                         (input)="toDate = validateInput(toDate, dpToDate.value)">
                     <div class="input-group-append">
-                    <button class="btn btn-sm btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
-                        <i class="fa fa-calendar-alt"></i>
+                    <button class="btn btn-sm calendar input-group-text border-0" (click)="datepicker.toggle()" type="button">
+                        <i class="fa fa-calendar-alt text-muted"></i>
                     </button>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
         <div class="ml-lg-3">
             <div class="form-group">
                 <label for="" class="mr-1">Client</label>
-                <select class="custom-select custom-select-sm" formControlName="clientId">
+                <select class="custom-select custom-select-sm ka-form-control-solid" formControlName="clientId">
                     <option value="">Tous</option>
                     <ng-container *ngFor="let client of clients">
                         <option *ngIf="client.nom || client.prenom" [value]="client.id">{{ client.nom }} {{ client.prenom }}</option>
@@ -68,7 +68,7 @@
         <div class="ml-md-3">
             <div class="form-group">
                 <label for="" class="mr-1">Agence</label>
-                <select class="custom-select custom-select-sm" formControlName="agenceCode">
+                <select class="custom-select custom-select-sm ka-form-control-solid" formControlName="agenceCode">
                     <option value="">Tous</option>
                     <option *ngFor="let agence of agences" [value]="agence.code">{{ agence.name }}</option>
                 </select>

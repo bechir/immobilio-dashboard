@@ -5,33 +5,27 @@
                 <div id="dataTable_filter" class="dataTables_filter">
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fa fa-search"></i></div>
+                        <div class="input-group-text"><i class="feather-search text-muted"></i></div>
                         </div>
                         <input [(ngModel)]="searchInput" type="text" class="border form-control form-control-sm ka-form-control-solid" placeholder="Recherche" aria-controls="dataTable">
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
-                <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <button type="button" class="btn px-2 py-1 btn-outline-secondary btn-sm">
+                <div class="justify-content-between border rounded" [ngClass]="{'d-none': !selectionExists}">
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
                         <i class="fa fa-file-excel"></i>
                     </button>
-                    <button type="button" class="btn px-2 py-1 btn-outline-secondary btn-sm">
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
                         <i class="fa fa-file-pdf"></i>
                     </button>
-                </div>
-
-                <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <button type="button" class="btn px-2 py-1 btn-outline-info btn-sm">
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
                         <i class="fa fa-print"></i>
                     </button>
-                </div>
-
-                <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <button type="button" class="btn px-2 py-1 btn-outline-primary btn-sm">
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
                         <i class="fa fa-envelope"></i>
                     </button>
-                    <button type="button" class="btn px-2 py-1 btn-outline-primary btn-sm">
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
                         <i class="fa fa-sms"></i>
                     </button>
                 </div>
@@ -39,9 +33,14 @@
         </div>
     </div>
     <div class="card-body">
-        <table *ngIf="depenses" class="table table-striped table-hover table-responsive-lg ka-datatable">
+        <table class="table table-hover table-responsive-lg ka-datatable">
             <thead>
                 <tr>
+                    <th [ngClass]="{'checkbox': true, 'checked': isAllChecked }">
+                        <button ngbTooltip="Séléctionner" [openDelay]="300" (click)="onToggleCheckedAll()" class="btn mark-as-done d-flex justify-content-center align-items-center white">
+                            <i class="feather-check"></i>
+                        </button>
+                    </th>
                     <th>Réf.</th>
                     <th>Date</th>
                     <th>Bénéficiaire</th>
@@ -49,13 +48,18 @@
                     <th>Montant</th>
                     <th>N° Pièce Justif.</th>
                     <th>Opérateur</th>
-                    <th>Ordonnateur</th>
+                    <th>Ordon.</th>
                     <th>Agence</th>
                     <th>SCI</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of depenses | appFilter : searchInput">
+                <tr *ngFor="let item of items | checkable | appFilter : searchInput; let i = index" [ngClass]="{'active': item.checked}">
+                    <td [ngClass]="{'checkbox': true, 'checked': item.checked }">
+                        <button (click)="onToggleChecked(item)" class="btn mark-as-done d-flex justify-content-center align-items-center">
+                            <i class="feather-check"></i>
+                        </button>
+                    </td>
                     <td class="button">
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsRef)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
                     </td>

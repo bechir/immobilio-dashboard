@@ -12,6 +12,7 @@ import { DateFormatFRPipe, DateFormatENPipe } from 'src/app/pipes/date.pipe';
 import { EtatFilterFormComponent } from '../etat/components/filter-form/etat-filter-form.component';
 import { NgbDatepickerModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheckablePipe } from 'src/app/pipes/util.pipe';
 
 
 @NgModule({
@@ -22,9 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BarChartComponent,
     AgenceListingComponent,
     FilterPipe,
+    CheckablePipe,
     DateFormatFRPipe,
     DateFormatENPipe,
-    EtatFilterFormComponent
+    EtatFilterFormComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BarChartComponent,
     AgenceListingComponent,
     FilterPipe,
+    CheckablePipe,
     DateFormatFRPipe,
     DateFormatENPipe,
     EtatFilterFormComponent

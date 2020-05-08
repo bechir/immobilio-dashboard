@@ -45,7 +45,6 @@ export class EtatService {
       ...this.httpOptions
     }).subscribe(data => {
         this.arrieres = data;
-        console.log(data);
         this.emitArrieresSubject();
       },
       error => console.error(error)
@@ -58,7 +57,6 @@ export class EtatService {
       ...this.httpOptions
     }).subscribe(data => {
       this.depenses = data;
-      console.log(data);
       this.emitDepensesSubject();
     },
       error => console.error(error)
@@ -71,7 +69,6 @@ export class EtatService {
       ...this.httpOptions
     }).subscribe(data => {
       this.encaissements = data;
-      console.log(data);
       this.emitEncaissementsSubject();
     },
       error => console.error(error)
