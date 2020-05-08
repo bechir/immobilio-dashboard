@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3 pb-5">
     <app-heading icon="fa fa-cash-register" title="Dépenses"></app-heading>
     <div class="main">
-        <app-etat-filter-form [submitFilter]="onFilter" [onInitFilterForm]="onInitFilterForm"></app-etat-filter-form>
+        <app-etat-filter-form (onFilter)="onFilter($event)" [onInitFilterForm]="onInitFilterForm"></app-etat-filter-form>
         <app-etat-depenses-table [items]="depenses"></app-etat-depenses-table>
     </div>
 </div>

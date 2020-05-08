@@ -62,8 +62,8 @@
                     <td class="button">
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsRef)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
                     </td>
-                    <td>{{ item.nomClient }}</td>
-                    <td>{{ item.espaceLoue }}</td> <!-- (0, 27)-->
+                    <td>{{ item.nomClient | slice : 0 : 15 }}</td>
+                    <td>{{ item.espaceLoue | slice : 0 : 25 }}</td> <!-- (0, 27)-->
                     <!--<td>{{ item.loyer }}</td>-->
                     <!--<td>{{ item.cotion || '0' }}</td>-->
                     <td>{{ item.totalEncaissements }}</td>

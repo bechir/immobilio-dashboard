@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Agence } from 'src/app/models/agence';
@@ -10,7 +10,7 @@ import { SharedService } from 'src/app/modules/shared/shared.service';
   templateUrl: './etat-filter-form.component.html'
 })
 export class EtatFilterFormComponent implements OnInit {
-  @Input() submitFilter: CallableFunction;
+  @Output() onFilter: EventEmitter<any> = new EventEmitter();
   @Input() onInitFilterForm: CallableFunction;
 
   agences?: Agence[];
@@ -43,8 +43,8 @@ export class EtatFilterFormComponent implements OnInit {
     this.onInitFilterForm(this.getFilteredParams())
   }
 
-  onFilter() {
-    this.submitFilter(this.getFilteredParams());
+  doOnFilter() {
+    this.onFilter.emit(this.getFilteredParams());
   }
 
   getFilteredParams() {

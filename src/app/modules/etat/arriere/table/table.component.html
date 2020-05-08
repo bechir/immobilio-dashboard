@@ -63,8 +63,8 @@
                     <td class="button">
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsRef)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
                     </td>
-                    <td>{{ item.nomClient }}</td>
-                    <td>{{ item.espaceLoue }}</td>
+                    <td>{{ item.nomClient | slice : 0 : 15 }}</td>
+                    <td>{{ item.espaceLoue | slice : 0 : 25 }}</td>
                     <td>{{ item.loyer }}</td>
                     <td>{{ item.montantDu }}</td>
                     <td>{{ item.nombreMois }}</td>
@@ -80,44 +80,42 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Date</th>
                                         <td>{{ item.date | dateFormatFR }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Bénéficiaire</th>
-                                        <td>{{ item.beneficiaire }}</td>
+                                        <th>Espace loué</th>
+                                        <td>{{ item.espaceLoue }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Contact Bénéficiaire</th>
-                                        <td>{{ item.contact }}</td>
+                                        <th>Propriétaire de l'espace</th>
+                                        <td>{{ item.proprietaire }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Motif</th>
-                                        <td>{{ item.motif }}</td>
+                                        <th>Loyer</th>
+                                        <td>{{ item.loyer }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Montant</th>
-                                        <td>{{ item.montant }}</td>
+                                        <th>Montant dû</th>
+                                        <td>{{ item.montantDu }}</td>
                                     </tr>
                                     <tr>
-                                        <th>N° pièce justificative</th>
-                                        <td>{{ item.numFacturePiece }}</td>
+                                        <th>Nombre de mois</th>
+                                        <td>{{ item.nombreMois }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Opérateur</th>
-                                        <td>{{ item.operateur }}</td>
+                                        <th>Date dernier paiement</th>
+                                        <td>{{ item.dateDernierPaiement | dateFormatFR }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nom de l'agence</th>
+                                        <td>{{ item.nomAgence }}</td>
                                     </tr>
         
-                                    <tr>
-                                        <th>Ordonnateur</th>
-                                        <td>{{ item.ordonnateur }}</td>
-                                    </tr>
-        
-                                    <tr>
-                                        <th>Agence</th>
-                                        <td>{{ item.agence }}</td>
-                                    </tr>
-                                
                                     <tr>
                                         <th>SCI</th>
                                         <td>{{ item.sci }}</td>
