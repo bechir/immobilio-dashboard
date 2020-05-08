@@ -16,7 +16,7 @@ export class FilterPipe implements PipeTransform {
       const items = Object.values(val);
 
       items.forEach(item => {
-        rVal = rVal || item.toString().toLocaleLowerCase().includes(args);
+        rVal = rVal || item?.toString().toLocaleLowerCase().includes(args);
       })
 
       return rVal;

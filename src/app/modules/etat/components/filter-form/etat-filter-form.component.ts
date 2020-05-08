@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Agence } from 'src/app/models/agence';
 import { Client } from 'src/app/models/client';
 import { SharedService } from 'src/app/modules/shared/shared.service';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-etat-filter-form',
@@ -15,6 +16,10 @@ export class EtatFilterFormComponent implements OnInit {
 
   agences?: Agence[];
   clients?: Client[];
+  scis?: any[];
+
+  selectedAgences = [];
+  dropdownSettings: IDropdownSettings = {}
   
   filterForm: FormGroup;
 
@@ -33,14 +38,44 @@ export class EtatFilterFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({
-      clientId:  new FormControl(''),
-      agenceCode:  new FormControl('')
+      clients:  new FormControl(''),
+      scis: new FormControl(''),
+      agences: new FormControl('')
     });
 
-    this.sharedService.getClients().subscribe((clients: Client[]) => this.clients = clients, error => console.error(error));
+    this.sharedService.getClients().subscribe(
+      (clients: Client[]) => {
+        this.clients = clients.map((client: Client) => {
+          return {
+            ...client,
+            name: client.nom?.slice(0, 15) || client.prenom?.slice(0, 15)
+          };
+        });
+      },
+      error => console.error(error)
+    );
     this.sharedService.getAgences().subscribe((agences: Agence[]) => this.agences = agences, error => console.error(error));
+    this.sharedService.getScis().subscribe((scis: any[]) => this.scis = scis, error => console.error(error));
 
-    this.onInitFilterForm(this.getFilteredParams())
+    this.onInitFilterForm(this.getFilteredParams());
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Tout séléctionner',
+      unSelectAllText: 'Tout effacer',
+      itemsShowLimit: 1,
+      allowSearchFilter: true,
+      searchPlaceholderText: 'Rechercher...'
+    };
+  }
+
+  onItemSelect(item: any) {
+    // console.log(item);
+  }
+
+  onSelectAll(items: any) {
   }
 
   doOnFilter() {
@@ -52,9 +87,15 @@ export class EtatFilterFormComponent implements OnInit {
 
     params = {
       ...params,
+      clients: params.clients ? params.clients.map((c: Client) => c.id).join(',') : '',
+      agences: params.agences ? params.agences.map((a: Agence) => a.id).join(',') : '',
+      scis: params.scis ? params.scis.map((s: any) => s.id).join(',') : '',
       startDate: `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`,
       endDate: `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`
     };
+
+    console.log(params);
+    
 
     return params;
   }

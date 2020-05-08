@@ -55,27 +55,44 @@
             </div>
         </div>
         <div class="ml-lg-3">
-            <div class="form-group">
-                <label for="" class="mr-1">Client</label>
-                <select class="custom-select custom-select-sm ka-form-control-solid" formControlName="clientId">
-                    <option value="">Tous</option>
-                    <ng-container *ngFor="let client of clients">
-                        <option *ngIf="client.nom || client.prenom" [value]="client.id">{{ client.nom }} {{ client.prenom }}</option>
-                    </ng-container>
-                </select>
-            </div>
+            <ng-multiselect-dropdown
+                [placeholder]="'Tous les clients'"
+                [data]="clients"
+                formControlName="clients"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
         </div>
         <div class="ml-md-3">
             <div class="form-group">
-                <label for="" class="mr-1">Agence</label>
-                <select class="custom-select custom-select-sm ka-form-control-solid" formControlName="agenceCode">
-                    <option value="">Tous</option>
-                    <option *ngFor="let agence of agences" [value]="agence.code">{{ agence.name }}</option>
-                </select>
+                <ng-multiselect-dropdown
+                    [placeholder]="'Toutes les agences'"
+                    searchPlaceholderText="Rechercher..."
+                    [data]="agences"
+                    formControlName="agences"
+                    [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown>
             </div>
         </div>
+        <div class="ml-md-3">
+                <ng-multiselect-dropdown
+                    [placeholder]="'Toutes les SCI'"
+                    searchPlaceholderText="Rechercher..."
+                    [data]="scis"
+                    formControlName="scis"
+                    [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown>
+        </div>
     </div>
-    <button type="submit" class="btn btn-success btn-sm">
+    <button type="submit" class="btn btn-primary-2 btn-sm">
         <i class="fa fa-filter"></i>
         Filtrer
     </button>

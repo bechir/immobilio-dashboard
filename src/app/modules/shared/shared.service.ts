@@ -28,6 +28,14 @@ export class SharedService {
     return this.httpClient.get<Agence>(`${this.URL}/agences/${id}`, this.httpOptions);
   }
 
+  getScis() {
+    return this.httpClient.get<any[]>(`${this.URL}/scis/list`, this.httpOptions);
+  }
+
+  getSci(id) {
+    return this.httpClient.get<any>(`${this.URL}/scis/${id}`, this.httpOptions);
+  }
+
   getClients() {
     return this.httpClient.get<Client[]>(`${this.URL}/clients/list`, this.httpOptions);
   }

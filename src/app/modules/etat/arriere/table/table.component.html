@@ -128,6 +128,9 @@
                         </div>
                     </ng-template>
                 </tr>
+                <tr *ngIf="items && !items.length">
+                    <td>Pas de résultats.</td>
+                </tr>
             </tbody>
         </table>
     </div>

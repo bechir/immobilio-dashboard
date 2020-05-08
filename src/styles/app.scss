@@ -56,10 +56,44 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     cursor: pointer;
 }
 
-.ka-form-control-solid {
+.ka-form-control-solid,
+.multiselect-dropdown {
     background-color: #eef0f6;
     border-color: #eef0f6;
     border-width: 2px;
+
+    .selected-item {
+        font-size: .8rem;
+    }
+
+    .dropdown-btn {
+        border: 0!important;
+        height: calc(1.5em + 0.5rem + 2px);
+        font-size: 0.875rem;
+
+        & > span:last-child{
+            padding-right: 0!important;
+            padding-left: .25rem;
+        }
+        
+        span.dropdown-up,
+        span.dropdown-down {
+            display: none!important;
+            // border-top: .375rem solid $gray!important;
+            // border-left: .3rem solid transparent!important;
+            // border-right: .3rem solid transparent!important;
+        }
+    }
+
+    .dropdown-list {
+        min-width: 13rem;
+        &, .multiselect-item-checkbox {
+            font-size: .8rem;
+        }
+        .filter-textbox {
+            padding: 5px 0!important;
+        }
+    }
 
     &:focus{
         outline: none;
@@ -215,7 +249,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #fff;
     background-color: $lightblue;
 }
-
+.text-primary-2{
+    color: $primary-2!important;
+}
 .btn-lightblue {
     background-color: $lightblue;
     color: #FFF;
@@ -225,6 +261,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     &:active,
     &:focus {
         background-color: $lightblue-2;
+        color: #FFF;
+        @include shadow
+    }
+}
+.btn-primary-2 {
+    background-color: $primary-2;
+    opacity: .9;
+    color: #FFF;
+    @include shadow-md;
+
+    &:hover,
+    &:active,
+    &:focus {
+        opacity: 1;
         color: #FFF;
         @include shadow
     }
