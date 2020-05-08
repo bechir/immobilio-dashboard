@@ -1,3 +1,4 @@
+import { Config } from './../config';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
@@ -7,7 +8,7 @@ import { Subject } from 'rxjs';
 })
 export class AuthService {
 
-  URL: string = 'http://immobilio.local/api';
+  // URL: string = 'http://immobilio.local/api';
 
   authSubject = new Subject<boolean>();
   
@@ -20,11 +21,12 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   signin({ username, password }) {
-    return this.httpClient.post<any>(`${this.URL}/auth`, JSON.stringify({username, password}), this.httpOptions);
+    //return this.httpClient.post<any>(`${this.URL}/auth`, JSON.stringify({username, password}), this.httpOptions);
+    return this.httpClient.post<any>(`${Config.apiUrl}/auth`, JSON.stringify({username, password}), this.httpOptions);
   }
 
   signup({ username, password }) {
-    return this.httpClient.post<any>(`${this.URL}/register`, JSON.stringify({username, password}), this.httpOptions);
+    return this.httpClient.post<any>(`${Config.apiUrl}/register`, JSON.stringify({username, password}), this.httpOptions);
   }
 
   emitAuthStateChanged() {
