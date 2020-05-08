@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
+import { Config } from 'src/app/config';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,6 @@ export class EtatService {
     this.encaissementsSubject.next(this.encaissements?.slice());
   }
 
-  URL = 'http://immobilio.local/api';
-
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -40,7 +39,7 @@ export class EtatService {
   constructor(private httpClient: HttpClient) { }
 
   getArrierees(params?: any) {
-    this.httpClient.get<any[]>(`${this.URL}/etat/arrieres`, {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/etat/arrieres`, {
       params,
       ...this.httpOptions
     }).subscribe(data => {
@@ -52,7 +51,7 @@ export class EtatService {
   }
 
   getDepenses(params?: any) {
-    this.httpClient.get<any[]>(`${this.URL}/etat/decaissements`, {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/etat/decaissements`, {
       params,
       ...this.httpOptions
     }).subscribe(data => {
@@ -64,7 +63,7 @@ export class EtatService {
   }
 
   getEncaissements(params?: any) {
-    this.httpClient.get<any[]>(`${this.URL}/etat/encaissements`, {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/etat/encaissements`, {
       params,
       ...this.httpOptions
     }).subscribe(data => {
