@@ -333,6 +333,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
     thead th{
         color: #fff;
+        font-weight: 400;
     }
 
     td.button {
@@ -360,8 +361,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
             .mark-as-done {
                 border: 2px solid #ccc;
-                width: 1.25rem;
-                height: 1.25rem;
+                width: 1rem;
+                height: 1rem;
                 @include rounded;
                 @include transition(.1s);
                 cursor: pointer;
@@ -448,6 +449,25 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         &:not(.checkbox), .btn {
             padding-left: 0;
         }
+    }
+}
+
+.toolbar {
+    .pdf:hover i,
+    .active.pdf i {
+        color: $bg-danger;
+    }
+    .excel:hover i,
+    .active.exc:hover i{
+        color: $success;
+    }
+    .mail:hover i,
+    .active.mai:hover i {
+        color: $lightblue;
+    }
+    .sms:hover i,
+    .active.sms i {
+        color: $warning;
     }
 }
 

@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3 pb-5">
     <app-heading icon="fa fa-file-invoice-dollar" title="Facturations"></app-heading>
     <div class="main">
-        <app-analyse-billing-filter-form (onFilter)="onFilter($event)" [onInitFilterForm]="onInitFilterForm"></app-analyse-billing-filter-form>
+        <app-analyse-billing-filter-form (onFilter)="onFilter($event)" (onInitFilterForm)="onInitFilterForm($event)"></app-analyse-billing-filter-form>
         <app-analyse-bill-table [items]="factures"></app-analyse-bill-table>
     </div>
 </div>

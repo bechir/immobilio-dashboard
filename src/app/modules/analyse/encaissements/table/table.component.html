@@ -49,7 +49,7 @@
                     </td>
                     <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 10 }}</td>
                     <td></td>
-                    <td>{{ item.montant || '0' }}</td>
+                    <td>{{ (item.montant | number | amount) || '0' }}</td>
                     <td>{{ item.emisLe | dateFormatFR }}</td>
                     <td class="button">
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsEspaceLoue)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.espaceLoue | slice : 0 :20 }}</button>
@@ -73,44 +73,27 @@
                                 <tbody>
                                     <tr>
                                         <th>Client</th>
-                                        <td>{{ item.nomClient }}</td>
+                                        <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Date</th>
-                                        <td>{{ item.date | dateFormatFR }}</td>
+                                        <th>Montant</th>
+                                        <td>{{ item.montant | number | amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>N° pièce justificative</th>
+                                        <td>{{ item.numFacturePiece }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Émis le</th>
+                                        <td>{{ item.emisLe | dateFormatFR }}</td>
                                     </tr>
                                     <tr>
                                         <th>Espace loué</th>
                                         <td>{{ item.espaceLoue }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Propriétaire de l'espace</th>
-                                        <td>{{ item.proprietaire }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Loyer</th>
-                                        <td>{{ item.loyer }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Montant dû</th>
-                                        <td>{{ item.montantDu }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nombre de mois</th>
-                                        <td>{{ item.nombreMois }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Date dernier paiement</th>
-                                        <td>{{ item.dateDernierPaiement | dateFormatFR }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nom de l'agence</th>
+                                        <th>Agence</th>
                                         <td>{{ item.nomAgence }}</td>
-                                    </tr>
-        
-                                    <tr>
-                                        <th>SCI</th>
-                                        <td>{{ item.sci }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -122,14 +105,35 @@
 
                     <ng-template #detailsEspaceLoue let-modal>
                         <div class="modal-header">
-                            <h4 class="modal-title h6">{{ item.espaceLoue }}</h4>
+                            <h4 class="modal-title h6">{{ item.bienImmo }}</h4>
                         </div>
                         <div class="modal-body">
                             <table class="table">
                                 <tbody>
                                     <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Espace loué</th>
+                                        <td>{{ item.espaceLoue }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Bien immobilier</th>
                                         <td>{{ item.bienImmo }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loyer mensuel</th>
+                                        <td>{{ item.loyerMensuel | number | amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Propriétaire</th>
+                                        <td>{{ item.proprietaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <div class="card ml-2">
+                                            <img class="img-thumbnail img-responsive w-100" src="" alt="{{ item.espaceLoue }}">
+                                        </div>
                                     </tr>
                                 </tbody>
                             </table>

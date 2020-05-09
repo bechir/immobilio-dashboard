@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3 pb-5">
 	<app-heading icon="fa fa-donate" title="Encaissements"></app-heading>
 	<div class="main">
-        <app-etat-filter-form (onFilter)="onFilter($event)" [onInitFilterForm]="onInitFilterForm"></app-etat-filter-form>
+        <app-etat-filter-form (onFilter)="onFilter($event)" (onInitFilterForm)="onInitFilterForm($event)"></app-etat-filter-form>
         <app-etat-encaissements-table [items]="encaissements"></app-etat-encaissements-table>
 	</div>
 </div>

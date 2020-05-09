@@ -50,7 +50,7 @@
                     <td>{{ item.date | dateFormatFR }}</td>
                     <td>{{ item.beneficiaire }}</td>
                     <td>{{ item.motif | slice:0:20 }}...</td>
-                    <td>{{ item.montant }}</td>
+                    <td>{{ item.montant | number | amount }}</td>
                     <td class="button">
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsNumPiece)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.numFacturePiece }}</button>
                     </td>
@@ -83,7 +83,7 @@
                                     </tr>
                                     <tr>
                                         <th>Montant</th>
-                                        <td>{{ item.montant }}</td>
+                                        <td>{{ item.montant | number | amount }}</td>
                                     </tr>
                                     <tr>
                                         <th>N° pièce justificative</th>

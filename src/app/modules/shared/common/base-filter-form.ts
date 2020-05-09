@@ -8,7 +8,7 @@ import { SharedService } from 'src/app/modules/shared/shared.service';
 
 export class BaseFilterForm implements OnInit {
   @Output() onFilter: EventEmitter<any> = new EventEmitter();
-  @Input() onInitFilterForm: CallableFunction;
+  @Output() onInitFilterForm: EventEmitter<any> = new EventEmitter();
 
   clients?: Client[];
   facturesStatus?: any[];
@@ -59,7 +59,7 @@ export class BaseFilterForm implements OnInit {
       error => console.error(error)
     );
 
-    this.onInitFilterForm(this.getFilteredParams());
+    this.onInitFilterForm.emit(this.getFilteredParams());
 
     this.dropdownSettings = {
       singleSelection: false,

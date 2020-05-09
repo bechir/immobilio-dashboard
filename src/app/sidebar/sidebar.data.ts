@@ -69,6 +69,11 @@ export const sidebarItems: SideBarMenu[] = [
                 icon: 'fa fa-cash-register',
                 text: 'Dépenses',
                 link: '/etat/depenses'
+            },
+            {
+                icon: 'fa fa-cash-register',
+                text: 'Situations des caisses',
+                link: '/etat/situations-caisse'
             } 
         ]
     }

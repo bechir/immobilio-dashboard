@@ -38,11 +38,11 @@
             }
         }
 
-        // &.active, &:hover, &:focus{
-        //     .nav-icon, .feather {
-        //         color: $primary-2;
-        //     }
-        // }
+        &.active, &:hover, &:focus{
+            .nav-icon, .feather {
+                color: $success;
+            }
+        }
     }    
 
     &__nav {
@@ -99,13 +99,13 @@
 
         .nav-link:not(.active) {
             &.feather, &.fa-lg{
-                color: #7f7f7f;
+                color: $sidebar--width;
             }
         }
 
         .nav-link {
             &.active, &:hover, &:focus{
-                color: $primary-2;
+                color: $success;
             }
         }
     }
@@ -127,7 +127,7 @@
         
         .nav-link {
             &.active, &:hover, &:focus {
-                color: #9bbff4;
+                color: $success;
             }
         }
     }

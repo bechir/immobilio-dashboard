@@ -24,11 +24,13 @@ export class DepensesComponent extends BaseModule {
     this.depensesObserver = this.service.depensesSubject.subscribe((depenses: any[]) => {
       this.depenses = depenses;
     });
-    this.service.emitDepensesSubject();
-    this.service.getDepenses(this.initialFilterParams);
   }
 
-  onFilter(params: any[]) {
+  public onInitFilterForm(params: any) {
+    this.service.getDepenses(params);
+  }
+
+  onFilter(params: any) {
     this.service.getDepenses(params);
   }
 

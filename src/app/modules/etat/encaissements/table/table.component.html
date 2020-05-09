@@ -44,19 +44,22 @@
                         </button>
                     </td>
                     <td class="button">
-                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsRef)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsFacture)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
                     </td>
                     <td>{{ item.nomClient | slice : 0 : 15 }}</td>
-                    <td>{{ item.espaceLoue | slice : 0 : 25 }}</td> <!-- (0, 27)-->
-                    <!--<td>{{ item.loyer }}</td>-->
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsEspaceLoue)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.espaceLoue | slice : 0 :20 }}</button>
+                    </td>
+                    <!--<td>{{ item.loyerMensuel }}</td>-->
                     <!--<td>{{ item.cotion || '0' }}</td>-->
-                    <td>{{ item.totalEncaissements }}</td>
+                    <td>{{ item.totalEncaissements | number | amount }}</td>
                     <td>{{ item.dateDernierPaiement }}</td>
-                    <td>{{ item.montantDernierPaiement }}</td>
+                    <td>{{ item.montantDernierPaiement | number | amount }}</td>
                     <!--<th>{{ item.contactClient }}</th>-->
                     <td>{{ item.nomAgence }}</td>
                     <td>{{ item.sci }}</td>
-                    <ng-template #detailsRef let-modal>
+
+                    <ng-template #detailsFacture let-modal>
                         <div class="modal-header">
                             <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
                         </div>
@@ -80,8 +83,24 @@
                                         <td>{{ item.motif }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact client</th>
+                                        <td>{{ item.contactClient }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cotion</th>
+                                        <td>{{ item.cotion }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Motif</th>
+                                        <td>{{ item.motif }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Montant</th>
-                                        <td>{{ item.montant }}</td>
+                                        <td>{{ item.montant | number | amount }}</td>
                                     </tr>
                                     <tr>
                                         <th>N° pièce justificative</th>
@@ -91,20 +110,57 @@
                                         <th>Opérateur</th>
                                         <td>{{ item.operateur }}</td>
                                     </tr>
-        
                                     <tr>
                                         <th>Ordonnateur</th>
                                         <td>{{ item.ordonnateur }}</td>
                                     </tr>
-        
                                     <tr>
                                         <th>Agence</th>
-                                        <td>{{ item.agence }}</td>
+                                        <td>{{ item.nomAgence }}</td>
                                     </tr>
-                                
                                     <tr>
                                         <th>SCI</th>
                                         <td>{{ item.sci }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #detailsEspaceLoue let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">{{ item.bienImmo }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Espace loué</th>
+                                        <td>{{ item.espaceLoue }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bien immobilier</th>
+                                        <td>{{ item.bienImmo }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loyer mensuel</th>
+                                        <td>{{ item.loyerMensuel | number | amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Propriétaire</th>
+                                        <td>{{ item.proprietaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <div class="card ml-2">
+                                            <img class="img-thumbnail img-responsive w-100" src="" alt="{{ item.espaceLoue }}">
+                                        </div>
                                     </tr>
                                 </tbody>
                             </table>

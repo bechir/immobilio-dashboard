@@ -102,7 +102,7 @@
                                     </tr>
                                     <tr>
                                         <th>Montant dû</th>
-                                        <td>{{ item.montantDu }}</td>
+                                        <td>{{ item.montantDu | number | amount }}</td>
                                     </tr>
                                     <tr>
                                         <th>Nombre de mois</th>
@@ -150,14 +150,35 @@
 
                     <ng-template #detailsEspaceLoue let-modal>
                         <div class="modal-header">
-                            <h4 class="modal-title h6">{{ item.espaceLoue }}</h4>
+                            <h4 class="modal-title h6">{{ item.bienImmo }}</h4>
                         </div>
                         <div class="modal-body">
                             <table class="table">
                                 <tbody>
                                     <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Espace loué</th>
+                                        <td>{{ item.espaceLoue }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Bien immobilier</th>
                                         <td>{{ item.bienImmo }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loyer mensuel</th>
+                                        <td>{{ item.loyerMensuel | number | amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Propriétaire</th>
+                                        <td>{{ item.proprietaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <div class="card ml-2">
+                                            <img class="img-thumbnail img-responsive w-100" src="" alt="{{ item.espaceLoue }}">
+                                        </div>
                                     </tr>
                                 </tbody>
                             </table>
@@ -190,7 +211,7 @@
             <td>{{ item.reference }}</td>
             <td>{{ item.contratRef }}</td>
             <td>{{ item.nomClient +' '+ item.prenomClient }}</td>
-            <td>{{ item.montant || '0' }}</td>
+            <td>{{ (item.montant | number | amount) || '0' }}</td>
             <td>{{ item.bienImmo }}</td>
             <td>{{ item.espaceLoue }}</td>
             <td>{{ item.emisLe }}</td>

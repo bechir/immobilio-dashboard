@@ -23,12 +23,13 @@ export class BillingComponent extends BaseModule {
     this.facturesObserver = this.service.facturesSubject.subscribe((factures: any[]) => {
       this.factures = factures;
     });
-
-    this.service.emitFacturesSubject();
-    this.service.getFactures(this.initialFilterParams);
   }
 
-  onFilter(params: any[]) {
+  public onInitFilterForm(params: any) {
+    this.service.getFactures(params);
+  }
+
+  onFilter(params: any) {
     this.service.getFactures(params);
   }
 

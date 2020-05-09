@@ -24,12 +24,13 @@ export class EncaissementsComponent extends BaseModule {
     this.encaissementsObserver = this.service.encaissementsSubject.subscribe((encaissements: any[]) => {
       this.encaissements = encaissements;
     });
-
-    this.service.emitEncaissementsSubject();
-    this.service.getEncaissements(this.initialFilterParams);
   }
 
-  onFilter(params: any[]) {
+  public onInitFilterForm(params: any) {
+    this.service.getEncaissements(params);
+  }
+
+  onFilter(params: any) {
     this.service.getEncaissements(params);
   }
 

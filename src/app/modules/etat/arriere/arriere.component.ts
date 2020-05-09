@@ -24,12 +24,13 @@ export class ArriereComponent extends BaseModule {
     this.arriereesObserver = this.service.arrieresSubject.subscribe((arrierees: any[]) => {
       this.arrierees = arrierees;
     });
-
-    this.service.emitArrieresSubject();
-    this.service.getArrierees(this.initialFilterParams);
   }
 
-  onFilter(params: any[]) {
+  public onInitFilterForm(params: any) {
+    this.service.getArrierees(params);
+  }
+
+  onFilter(params: any) {
     this.service.getArrierees(params);
   }
 
