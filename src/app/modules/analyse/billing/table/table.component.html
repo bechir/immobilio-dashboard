@@ -29,8 +29,8 @@
                     <th>Contrat</th>
                     <th>Client</th>
                     <th>Montant</th>
-                    <th>Bien immo.</th>
-                    <!--<th>Espace</th>-->
+                    <!-- <th>Bien immo.</th> -->
+                    <th>Espace loué</th>
                     <th>Emis le</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -51,8 +51,10 @@
                     </td>
                     <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 10 }}</td>
                     <td>{{ item.montant || '0' }}</td>
-                    <td>{{ item.bienImmo }}</td>
-                    <!--<td>{{ item.espaceLoue | slice : 0 :20 }}</td>-->
+                    <!--<td>{{ item.bienImmo }}</td>-->
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsEspaceLoue)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.espaceLoue | slice : 0 :20 }}</button>
+                    </td>
                     <td>{{ item.emisLe }}</td>
                     <td>
                         <span class="badge badge-pill px-2 py-1" [ngClass]="{
@@ -140,6 +142,25 @@
                                     <tr>
                                         <th>Client</th>
                                         <td>{{ item.nomClient }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #detailsEspaceLoue let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">{{ item.espaceLoue }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Bien immobilier</th>
+                                        <td>{{ item.bienImmo }}</td>
                                     </tr>
                                 </tbody>
                             </table>

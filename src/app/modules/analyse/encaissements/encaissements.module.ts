@@ -6,7 +6,7 @@ import { EncaissementsComponent } from './encaissements.component';
 import { TableComponent } from './table/table.component';
 import { SharedModule } from '../../shared/shared.module';
 import { FilterFormComponent } from './filter-form/filter-form.component';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
@@ -20,7 +20,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgbDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    NgbTooltipModule
   ]
 })
 export class EncaissementsModule { }
