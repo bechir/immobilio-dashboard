@@ -68,26 +68,15 @@
         <div class="ml-md-3">
             <div class="form-group">
                 <ng-multiselect-dropdown
-                    [placeholder]="'Toutes les agences'"
-                    [data]="agences"
-                    formControlName="agences"
+                    [placeholder]="'Status'"
+                    [data]="status"
+                    formControlName="status"
                     [settings]="dropdownSettings"
                     (onSelect)="onItemSelect($event)"
                     (onSelectAll)="onSelectAll($event)"
                 >
                 </ng-multiselect-dropdown>
             </div>
-        </div>
-        <div class="ml-md-3">
-                <ng-multiselect-dropdown
-                    [placeholder]="'Toutes les SCI'"
-                    [data]="scis"
-                    formControlName="scis"
-                    [settings]="dropdownSettings"
-                    (onSelect)="onItemSelect($event)"
-                    (onSelectAll)="onSelectAll($event)"
-                >
-                </ng-multiselect-dropdown>
         </div>
     </div>
     <button type="submit" class="btn btn-primary-2 btn-sm">

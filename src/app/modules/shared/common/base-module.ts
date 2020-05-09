@@ -1,19 +1,17 @@
 import { OnInit, OnDestroy } from '@angular/core';
 import { Agence } from 'src/app/models/agence';
 import { Client } from 'src/app/models/client';
-import { EtatService } from './etat.service';
-import { SharedService } from '../shared/shared.service';
+import { SharedService } from '../shared.service';
 
-export abstract class AbstractEtat implements OnInit, OnDestroy {
+export abstract class BaseModule implements OnInit, OnDestroy {
   agences?: Agence[];
   clients?: Client[];
-  
+
   initialFilterParams: any[];
 
   ngOnInit() {}
 
   constructor(
-    protected service: EtatService,
     protected sharedService: SharedService) {
   }
 

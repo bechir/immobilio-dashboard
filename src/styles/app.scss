@@ -351,7 +351,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         &:not(.checkbox), .btn {
             padding-left: 0;
         }
-        .btn {
+        &:not(.actions) .btn {
             padding: 0;
         }
 
@@ -416,29 +416,29 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                     text-decoration: none;
                 }
             }
+        }
 
-            .action {
-                opacity: .5;
-                transition: .3s;
-                color: $gray;
+        .action {
+            opacity: .5;
+            transition: .3s;
+            color: $gray;
 
-                &:hover {
-                    opacity: 1;
-                    transform: scale(1.2);
-                }
+            &:hover {
+                opacity: 1;
+                transform: scale(1.2);
             }
+        }
 
-            .trash:hover {
-                color: var(--danger);
-            }
+        .trash:hover {
+            color: var(--danger);
+        }
 
-            .archive:hover {
-                color: var(--warning);
-            }
+        .archive:hover {
+            color: var(--warning);
+        }
 
-            .edit:hover {
-                color: $lightblue;
-            }
+        .edit:hover {
+            color: $lightblue;
         }
     }
 }

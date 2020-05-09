@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BaseModule } from '../../shared/common/base-module';
+import { SharedService } from '../../shared/shared.service';
+import { AnalyseService } from '../analyse.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-billing',
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.scss']
 })
-export class BillingComponent implements OnInit {
+export class BillingComponent extends BaseModule {
+  factures: any[] | null = null;
+  private facturesObserver: Subscription;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    protected sharedService: SharedService,
+    private service: AnalyseService) {
+    super(sharedService);
   }
 
+  ngOnInit(): void {
+    this.facturesObserver = this.service.facturesSubject.subscribe((factures: any[]) => {
+      this.factures = factures;
+    });
+
+    this.service.emitFacturesSubject();
+    this.service.getFactures(this.initialFilterParams);
+  }
+
+  onFilter(params: any[]) {
+    this.service.getFactures(params);
+  }
+
+  ngOnDestroy(): void {
+    this.facturesObserver.unsubscribe();
+  }
 }

@@ -1,39 +1,171 @@
-<table class="table table-striped table-responsive table-hover ka-datatable">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>Référence</th>
-            <th>Contrat</th>
-            <th>Client</th>
-            <th>Montant</th>
-            <th>Bien immo.</th>
-            <th>Espace</th>
-            <th>Emis le</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of bills; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ item.reference }}</td>
-            <td>{{ item.contrat }}</td>
-            <td>{{ item.client }}</td>
-            <td>{{ item.montant || '0' }}</td>
-            <td>{{ item.bienImmo }}</td>
-            <td>{{ item.espace }}</td>
-            <td>{{ item.dateEmis }}</td>
-            <td>{{ item.status }}</td>
-            <td>
-                <div ngbdropdown class="d-inline-block">
-                    <button class="btn btn-outline-primary" [id]="'action' + i" ngbdropdowntoggle>Actions</button>
-                    <div ngbdropdownmenu [attr.aria-labelledby]="'action' + i">
-                        <button ngbdropdownitem>Action - 1</button>
-                        <button ngbdropdownitem>Action - 2</button>
-                        <button ngbdropdownitem>Action - 3</button>
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="row justify-content-between">
+            <div class="col-sm-12 col-md-3">
+                <div id="dataTable_filter" class="dataTables_filter">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="feather-search text-muted"></i></div>
+                        </div>
+                        <input [(ngModel)]="searchInput" type="text" class="border form-control form-control-sm ka-form-control-solid" placeholder="Recherche" aria-controls="dataTable">
                     </div>
                 </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
+                <div class="justify-content-between border rounded" [ngClass]="{'d-none': !selectionExists}">
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+                        <i class="fa fa-file-excel"></i>
+                    </button>
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+                        <i class="fa fa-file-pdf"></i>
+                    </button>
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+                        <i class="fa fa-print"></i>
+                    </button>
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+                        <i class="fa fa-envelope"></i>
+                    </button>
+                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+                        <i class="fa fa-sms"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-responsive-lg ka-datatable">
+            <thead>
+                <tr>
+                    <th [ngClass]="{'checkbox': true, 'checked': isAllChecked }">
+                        <button ngbTooltip="Séléctionner" [openDelay]="300" (click)="onToggleCheckedAll()" class="btn mark-as-done d-flex justify-content-center align-items-center white">
+                            <i class="feather-check"></i>
+                        </button>
+                    </th>
+                    <th>Réf.</th>
+                    <th>Contrat</th>
+                    <th>Client</th>
+                    <th>Montant</th>
+                    <th>Bien immo.</th>
+                    <th>Espace</th>
+                    <th>Emis le</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items | checkable | appFilter : searchInput; let i = index" [ngClass]="{'active': item.checked}">
+                    <td [ngClass]="{'checkbox': true, 'checked': item.checked }">
+                        <button (click)="onToggleChecked(item)" class="btn mark-as-done d-flex justify-content-center align-items-center">
+                            <i class="feather-check"></i>
+                        </button>
+                    </td>
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsFacture)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                    </td>
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsContrat)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.contratRef }}</button>
+                    </td>
+                    <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 10 }}</td>
+                    <td>{{ item.montant || '0' }}</td>
+                    <td>{{ item.bienImmo }}</td>
+                    <td>{{ item.espaceLoue | slice : 0 :20 }}</td>
+                    <td>{{ item.emisLe }}</td>
+                    <td>
+                        <span class="badge badge-pill px-2 py-1" [ngClass]="{
+                            'badge-success': item.status == 'Payée',
+                            'badge-warning': item.status == 'Payée en partie',
+                            'badge-danger': item.status == 'Non payée'
+                        }">
+                            {{ item.status }}
+                        </span>
+                    </td>
+                    <td class="actions">
+                        <button class="btn action edit" ngbTooltip="Modifier">
+                            <i class="feather-edit"></i>
+                        </button>
+                        <button class="btn action archive" ngbTooltip="Archiver">
+                            <i class="feather-archive"></i>
+                        </button>
+                        <button class="btn action trash" ngbTooltip="Supprimer">
+                            <i class="feather-trash-2"></i>
+                        </button>      
+                    </td>
+                    <ng-template #detailsFacture let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date</th>
+                                        <td>{{ item.date | dateFormatFR }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Espace loué</th>
+                                        <td>{{ item.espaceLoue }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Propriétaire de l'espace</th>
+                                        <td>{{ item.proprietaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loyer</th>
+                                        <td>{{ item.loyer }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Montant dû</th>
+                                        <td>{{ item.montantDu }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nombre de mois</th>
+                                        <td>{{ item.nombreMois }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date dernier paiement</th>
+                                        <td>{{ item.dateDernierPaiement | dateFormatFR }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nom de l'agence</th>
+                                        <td>{{ item.nomAgence }}</td>
+                                    </tr>
+        
+                                    <tr>
+                                        <th>SCI</th>
+                                        <td>{{ item.sci }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #detailsContrat let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Client</th>
+                                        <td>{{ item.nomClient }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
