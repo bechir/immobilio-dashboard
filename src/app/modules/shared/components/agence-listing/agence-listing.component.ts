@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Agence } from 'src/app/models/agence';
-import { StatisticsRepository } from '../../dashboard/statistics/statistics-repository.service';
+import { StatisticsRepository } from '../../../dashboard/statistics/statistics-repository.service';
 
 @Component({
   selector: 'app-agence-listing',

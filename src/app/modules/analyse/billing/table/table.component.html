@@ -12,23 +12,7 @@
                 </div>
             </div>
             <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
-                <div class="justify-content-between border rounded" [ngClass]="{'d-none': !selectionExists}">
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-file-excel"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-file-pdf"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-print"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-envelope"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-sms"></i>
-                    </button>
-                </div>
+                <app-table-toolbar [isVisible]="selectionExists"></app-table-toolbar>
             </div>
         </div>
     </div>
@@ -46,7 +30,7 @@
                     <th>Client</th>
                     <th>Montant</th>
                     <th>Bien immo.</th>
-                    <th>Espace</th>
+                    <!--<th>Espace</th>-->
                     <th>Emis le</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -68,7 +52,7 @@
                     <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 10 }}</td>
                     <td>{{ item.montant || '0' }}</td>
                     <td>{{ item.bienImmo }}</td>
-                    <td>{{ item.espaceLoue | slice : 0 :20 }}</td>
+                    <!--<td>{{ item.espaceLoue | slice : 0 :20 }}</td>-->
                     <td>{{ item.emisLe }}</td>
                     <td>
                         <span class="badge badge-pill px-2 py-1" [ngClass]="{
@@ -80,11 +64,11 @@
                         </span>
                     </td>
                     <td class="actions">
-                        <button class="btn action edit" ngbTooltip="Modifier">
-                            <i class="feather-edit"></i>
+                        <button class="btn action status" ngbTooltip="Changer le status">
+                            <i class="feather-more-vertical"></i>
                         </button>
-                        <button class="btn action archive" ngbTooltip="Archiver">
-                            <i class="feather-archive"></i>
+                        <button class="btn action edit" ngbTooltip="Modifier">
+                            <i class="feather-edit-3"></i>
                         </button>
                         <button class="btn action trash" ngbTooltip="Supprimer">
                             <i class="feather-trash-2"></i>

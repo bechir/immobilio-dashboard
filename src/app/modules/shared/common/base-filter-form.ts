@@ -11,6 +11,7 @@ export class BaseFilterForm implements OnInit {
   @Input() onInitFilterForm: CallableFunction;
 
   clients?: Client[];
+  facturesStatus?: any[];
 
   selectedAgences = [];
   dropdownSettings: IDropdownSettings = {}
@@ -31,11 +32,13 @@ export class BaseFilterForm implements OnInit {
   }
 
   ngOnInit(): void {
+      this.initComponents();
   }
 
-  initComponents(controls): void {
+  initComponents(controls?: any): void {
       this.filterForm = new FormGroup({
           clients: new FormControl(''),
+          facturesStatus: new FormControl(''),
           ...controls
       });
 
@@ -46,8 +49,13 @@ export class BaseFilterForm implements OnInit {
               ...client,
               name: client.nom?.slice(0, 15) || client.prenom?.slice(0, 15)
             };
-          });
+          }).filter((client: Client) => client.nom || client.prenom);
         },
+        error => console.error(error)
+      );
+
+      this.sharedService.getFacturesStatus().subscribe(
+        status => this.facturesStatus = status,
         error => console.error(error)
       );
 
@@ -83,12 +91,12 @@ export class BaseFilterForm implements OnInit {
       ...params,
       ...args,
       clients: params.clients ? params.clients.map((c: Client) => c.id).join(',') : '',
+      facturesStatus: params.facturesStatus ? params.facturesStatus.map((s: any) => s.id).join(',') : '',
       startDate: `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`,
       endDate: `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`
     };
 
     console.log(params);
-    
 
     return params;
   }

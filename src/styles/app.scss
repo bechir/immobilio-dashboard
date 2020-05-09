@@ -348,9 +348,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     td {
         border: 0 !important;
         padding: 1rem;
-        &:not(.checkbox), .btn {
-            padding-left: 0;
-        }
         &:not(.actions) .btn {
             padding: 0;
         }
@@ -429,6 +426,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
             }
         }
 
+        .status:hover {
+            color: var(--primary-2);
+        }
+
         .trash:hover {
             color: var(--danger);
         }
@@ -439,6 +440,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
         .edit:hover {
             color: $lightblue;
+        }
+    }
+    &:not(.basic) {
+        &:not(.checkbox), .btn {
+            padding-left: 0;
         }
     }
 }

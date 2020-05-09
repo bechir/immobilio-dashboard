@@ -12,23 +12,7 @@
                 </div>
             </div>
             <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
-                <div class="justify-content-between border rounded" [ngClass]="{'d-none': !selectionExists}">
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-file-excel"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-file-pdf"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-print"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-envelope"></i>
-                    </button>
-                    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-                        <i class="fa fa-sms"></i>
-                    </button>
-                </div>
+                <app-table-toolbar [isVisible]="selectionExists"></app-table-toolbar>
             </div>
         </div>
     </div>
