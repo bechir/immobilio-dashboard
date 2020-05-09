@@ -120,13 +120,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     border-width: 2px;
     color: rgba(34, 39, 46, 0.7) !important;
 
-    &:hover, &:focus {
-        background-color: rgba($color: #000000, $alpha: .1);
-    }
-    &:focus {
-        color:$primary!important;
-        box-shadow: none;
-        -webkit-appearance: none;
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: rgba($color: #000000, $alpha: .1);
+        }
+        &:focus {
+            color:$primary!important;
+            box-shadow: none;
+            -webkit-appearance: none;
+        }
     }
 }
 

@@ -16,3 +16,16 @@ export class CheckablePipe implements PipeTransform {
     return items;
   }
 }
+
+@Pipe({
+  name: 'amount'
+})
+export class AmountPipe implements PipeTransform {
+
+  transform(num, currency: string = 'CFA'): string {
+    // Not working on Safari
+    // return String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ') + ` ${currency}`;
+
+    return String(num).split(',').join(' ') + ` ${currency}`;
+  }
+}

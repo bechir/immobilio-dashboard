@@ -32,45 +32,45 @@ export class BaseFilterForm implements OnInit {
   }
 
   ngOnInit(): void {
-      this.initComponents();
+    this.initComponents();
   }
 
   initComponents(controls?: any): void {
-      this.filterForm = new FormGroup({
-          clients: new FormControl(''),
-          facturesStatus: new FormControl(''),
-          ...controls
-      });
+    this.filterForm = new FormGroup({
+        clients: new FormControl(''),
+        facturesStatus: new FormControl(''),
+        ...controls
+    });
 
-      this.sharedService.getClients().subscribe(
-        (clients: Client[]) => {
-          this.clients = clients.map((client: Client) => {
-            return {
-              ...client,
-              name: client.nom?.slice(0, 15) || client.prenom?.slice(0, 15)
-            };
-          }).filter((client: Client) => client.nom || client.prenom);
-        },
-        error => console.error(error)
-      );
+    this.sharedService.getClients().subscribe(
+      (clients: Client[]) => {
+        this.clients = clients.map((client: Client) => {
+          return {
+            ...client,
+            name: client.nom?.slice(0, 15) || client.prenom?.slice(0, 15)
+          };
+        }).filter((client: Client) => client.nom || client.prenom); // Skip blank customer fullname
+      },
+      error => console.error(error)
+    );
 
-      this.sharedService.getFacturesStatus().subscribe(
-        status => this.facturesStatus = status,
-        error => console.error(error)
-      );
+    this.sharedService.getFacturesStatus().subscribe(
+      status => this.facturesStatus = status,
+      error => console.error(error)
+    );
 
-      this.onInitFilterForm(this.getFilteredParams());
-  
-      this.dropdownSettings = {
-        singleSelection: false,
-        idField: 'id',
-        textField: 'name',
-        selectAllText: 'Tout séléctionner',
-        unSelectAllText: 'Tout effacer',
-        itemsShowLimit: 1,
-        allowSearchFilter: true,
-        searchPlaceholderText: 'Rechercher...'
-      };
+    this.onInitFilterForm(this.getFilteredParams());
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Tout séléctionner',
+      unSelectAllText: 'Tout effacer',
+      itemsShowLimit: 1,
+      allowSearchFilter: true,
+      searchPlaceholderText: 'Rechercher...'
+    };
   }
 
   onItemSelect(item: any) {
@@ -84,7 +84,7 @@ export class BaseFilterForm implements OnInit {
     this.onFilter.emit(this.getFilteredParams());
   }
 
-  getFilteredParams(args?: any[]) {
+  getFilteredParams(args?: any) {
     let  params = this.filterForm.value;
 
     params = {

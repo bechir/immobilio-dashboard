@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AbstractEtat } from '../abstract-etat';
+import { BaseModule } from '../../shared/common/base-module';
+import { SharedService } from '../../shared/shared.service';
+import { EtatService } from '../etat.service';
 
 @Component({
   selector: 'app-depenses',
   templateUrl: './depenses.component.html',
   styleUrls: ['./depenses.component.scss']
 })
-export class DepensesComponent extends AbstractEtat {
+export class DepensesComponent extends BaseModule {
 
   depenses: any[] | null = null;
   private depensesObserver: Subscription;
 
-  ngOnInit(): void {
-    super.ngOnInit();
+  constructor(
+    protected sharedService: SharedService,
+    private service: EtatService) {
+    super(sharedService);
+  }
 
+  ngOnInit(): void {
     this.depensesObserver = this.service.depensesSubject.subscribe((depenses: any[]) => {
       this.depenses = depenses;
     });

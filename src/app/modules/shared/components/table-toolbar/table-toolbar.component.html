@@ -1,17 +1,17 @@
-<div class="justify-content-between border rounded" [ngClass]="{'d-none': !isVisible}">
-    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+<div class="justify-content-between border rounded" [ngClass]="{'d-none': false}">
+    <button type="button" [disabled]="!isVisible" ngbTooltip="Exporter sous format Excel" (click)="actionClicked('excel')" class="btn ka-btn-icon ka-btn-transparent-dark">
         <i class="far fa-file-excel"></i>
     </button>
-    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+    <button type="button" [disabled]="!isVisible" ngbTooltip="Télécharger comme PDF" (click)="actionClicked('pdf')" class="btn ka-btn-icon ka-btn-transparent-dark">
         <i class="far fa-file-pdf"></i>
     </button>
-    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+    <button type="button" [disabled]="!isVisible" ngbTooltip="Imprimer la séléction" (click)="actionClicked('print')" class="btn ka-btn-icon ka-btn-transparent-dark">
         <i class="feather-printer"></i>
     </button>
-    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
+    <button type="button" [disabled]="!isVisible" ngbTooltip="Envoyer par mail" (click)="actionClicked('email')" class="btn ka-btn-icon ka-btn-transparent-dark">
         <i class="far fa-envelope"></i>
     </button>
-    <button type="button" class="btn ka-btn-icon ka-btn-transparent-dark">
-        <i class="far fa-sms"></i>
+    <button type="button" [disabled]="!isVisible" ngbTooltip="Envoyer par SMS" (click)="actionClicked('sms')" class="btn ka-btn-icon ka-btn-transparent-dark">
+        <i class="fa fa-sms"></i>
     </button>
 </div>

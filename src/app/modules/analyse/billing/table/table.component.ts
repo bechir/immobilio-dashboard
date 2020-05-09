@@ -7,5 +7,5 @@ import { BaseTable } from 'src/app/modules/shared/common/base-table';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent extends BaseTable {
-
+  title = 'Facturations';
 }

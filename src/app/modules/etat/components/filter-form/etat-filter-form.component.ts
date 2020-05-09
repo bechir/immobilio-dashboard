@@ -1,100 +1,41 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import { FormControl } from '@angular/forms';
 import { Agence } from 'src/app/models/agence';
-import { Client } from 'src/app/models/client';
-import { SharedService } from 'src/app/modules/shared/shared.service';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { BaseFilterForm } from 'src/app/modules/shared/common/base-filter-form';
 
 @Component({
   selector: 'app-etat-filter-form',
   templateUrl: './etat-filter-form.component.html'
 })
-export class EtatFilterFormComponent implements OnInit {
-  @Output() onFilter: EventEmitter<any> = new EventEmitter();
-  @Input() onInitFilterForm: CallableFunction;
-
+export class EtatFilterFormComponent extends BaseFilterForm {
+  
   agences?: Agence[];
-  clients?: Client[];
   scis?: any[];
 
   selectedAgences = [];
-  dropdownSettings: IDropdownSettings = {}
-  
-  filterForm: FormGroup;
-
-  hoveredDate: NgbDate | null = null;
-
-  fromDate: NgbDate | null;
-  toDate: NgbDate | null;
-
-  constructor(
-    private calendar: NgbCalendar,
-    private sharedService: SharedService,
-    public formatter: NgbDateParserFormatter) {
-    this.fromDate = calendar.getPrev(calendar.getToday(), 'm');
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 0);
-  }
 
   ngOnInit(): void {
-    this.filterForm = new FormGroup({
-      clients:  new FormControl(''),
+    const controls = {
       scis: new FormControl(''),
       agences: new FormControl('')
-    });
+    };
 
-    this.sharedService.getClients().subscribe(
-      (clients: Client[]) => {
-        this.clients = clients.map((client: Client) => {
-          return {
-            ...client,
-            name: client.nom?.slice(0, 15) || client.prenom?.slice(0, 15)
-          };
-        });
-      },
-      error => console.error(error)
-    );
+    super.initComponents(controls);
+
     this.sharedService.getAgences().subscribe((agences: Agence[]) => this.agences = agences, error => console.error(error));
     this.sharedService.getScis().subscribe((scis: any[]) => this.scis = scis, error => console.error(error));
-
-    this.onInitFilterForm(this.getFilteredParams());
-
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      selectAllText: 'Tout séléctionner',
-      unSelectAllText: 'Tout effacer',
-      itemsShowLimit: 1,
-      allowSearchFilter: true,
-      searchPlaceholderText: 'Rechercher...'
-    };
-  }
-
-  onItemSelect(item: any) {
-    // console.log(item);
-  }
-
-  onSelectAll(items: any) {
-  }
-
-  doOnFilter() {
-    this.onFilter.emit(this.getFilteredParams());
   }
 
   getFilteredParams() {
-    let  params = this.filterForm.value;
+    const {agences, scis} = this.filterForm.value;
 
-    params = {
-      ...params,
-      clients: params.clients ? params.clients.map((c: Client) => c.id).join(',') : '',
-      agences: params.agences ? params.agences.map((a: Agence) => a.id).join(',') : '',
-      scis: params.scis ? params.scis.map((s: any) => s.id).join(',') : '',
-      startDate: `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`,
-      endDate: `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`
+    const params = {
+      agences: agences ? agences.map((a: Agence) => a.id).join(',') : '',
+      scis: scis ? scis.map((s: any) => s.id).join(',') : ''
     };
 
-    return params;
+    return super.getFilteredParams(params);
   }
 
   onDateSelection(date: NgbDate) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table-toolbar',
@@ -7,10 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TableToolbarComponent implements OnInit {
   @Input() isVisible: boolean = true
+  @Output() onAction: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  actionClicked(clickedButton: string) {
+    this.onAction.emit(clickedButton);
+  }
 }
