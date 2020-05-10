@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.scss']
 })
-export class BillingComponent extends BaseModule {
+export class AnalyseBillingComponent extends BaseModule {
   factures: any[] | null = null;
   private facturesObserver: Subscription;
 

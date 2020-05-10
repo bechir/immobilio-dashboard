@@ -22,32 +22,32 @@ export const sidebarItems: SideBarMenu[] = [
     {
         icon: 'fa fa-chart-pie',
         text: 'Analyse',
-        id: 'Analyse',
+        id: 'analyses',
         submenu: [
             {
                 icon: 'fa fa-file-invoice-dollar',
                 text: 'Facturation',
-                link: '/analyse/billing'
+                link: 'facturation'
             },
             {
                 icon: 'fa fa-donate',
                 text: 'Encaissements',
-                link: '/analyse/encaissements'
+                link: 'encaissements'
             },
             {
                 icon: 'fa fa-cash-register',
                 text: 'Dépenses',
-                link: '/analyse/expenses'
+                link: 'depenses'
             },
             {
                 icon: 'fa fa-address-book',
                 text: 'Clients et Contrats',
-                link: '/analyse/customers'
+                link: 'clients-et-contrats'
             },
             {
                 icon: 'fa fa-building',
                 text: 'Patrimoine',
-                link: '/analyse/building'
+                link: 'patrimoine'
             }
         ],
         collapseDefault: true

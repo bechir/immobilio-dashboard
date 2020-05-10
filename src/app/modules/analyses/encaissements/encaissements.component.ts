@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './encaissements.component.html',
   styleUrls: ['./encaissements.component.scss']
 })
-export class EncaissementsComponent extends BaseModule {
+export class AnalyseEncaissementsComponent extends BaseModule {
   encaissements: any[] | null = null;
   private encaissementsObserver: Subscription;
 

@@ -4,10 +4,10 @@ import { BaseFilterForm, I18n, DatepickerI18nFrench } from 'src/app/modules/shar
 import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-analyse-billing-filter-form',
+  selector: 'app-analyse-encaissements-filter-form',
   templateUrl: './filter-form.component.html',
   styleUrls: ['./filter-form.component.scss'],
   providers: [I18n, {provide: NgbDatepickerI18n, useClass: DatepickerI18nFrench}]
 })
-export class FilterFormComponent extends BaseFilterForm {
+export class AnalyseEncaissementFilterFormComponent extends BaseFilterForm {
 }
