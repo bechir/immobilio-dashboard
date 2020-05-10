@@ -337,11 +337,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .ka-datatable {
 
     thead {
-        background-color: rgba(0, 0, 0, .425);
+        background-color: rgba(0, 0, 0, .375);
     }
 
     tr.active {
-        background-color: rgba(0, 0, 0, 0.075) !important;
+        background-color: rgba($color: $primary-2, $alpha: .25)!important;
     }
 
     font-size: .73rem;
@@ -365,6 +365,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     td {
         border: 0 !important;
         padding: .425rem;
+        max-width: 13rem;
         &:not(.actions) .btn {
             padding: 0;
         }
@@ -384,22 +385,22 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
                 &:hover {
                     border-color: $gray;
+                    @include transform(scale(1.2))
                 }
+                &:focus { box-shadow: none; }
 
                 &.white {
                     &:hover {
-                        border-color: $light;
+                        border-color: $light
                     }
                 }
 
                 .feather-check {
                     opacity: 0;
-                    stroke-width: 3px;
+                    stroke-width: 2px;
                     color: $gray;
                     margin-top: -.125rem;
-                }
-                &:hover {
-                    @include transform(scale(1.2))
+                    transform: scale(.8);
                 }
             }
 
@@ -580,4 +581,18 @@ table {
 // NgbDatePicker
 .ngb-dp-weekday{
     color: $gray !important;
+}
+
+// Navs
+.nav-tabs {
+    .nav-link {
+        // border-width: 0;
+        border-top-width: .175rem;
+        &:not(.active){
+            color: $primary-2;
+        }
+        &.active{
+            border-top-color: $success!important;
+        }
+    }
 }

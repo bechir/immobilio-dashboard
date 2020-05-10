@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbDatepickerModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbTooltipModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -14,13 +14,16 @@ import { AnalyseBillingFilterFormComponent } from './billing/filter-form/filter-
 import { AnalyseEncaissementsTableComponent } from './encaissements/table/table.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AnalysePatrimoineComponent } from './patrimoine/patrimoine.component';
-import { AnalyseCustomersComponent } from './customers/customers.component';
 import { AnalyseExpensesComponent } from './expenses/expenses.component';
+import { AnalyseExpensesTableComponent } from './expenses/table/table.component';
+import { AnalyseExpensesFilterFormComponent } from './expenses/filter-form/filter-form.component';
+import { AnalyseClientsContratsComponent } from './clients-contrats/clients-contrats.component';
+import { AnalyseClientsTableComponent } from './clients-contrats/clients-table/clients-table.component';
+import { AnalyseContratsTableComponent } from './clients-contrats/contrats-table/contrats-table.component';
 
 
 @NgModule({
   declarations: [
-    AnalyseCustomersComponent,
     AnalyseExpensesComponent,
     AnalyseBillingComponent,
     AnalyseBillingTableComponent,
@@ -29,6 +32,11 @@ import { AnalyseExpensesComponent } from './expenses/expenses.component';
     AnalyseEncaissementsTableComponent,
     AnalyseEncaissementFilterFormComponent,
     AnalysePatrimoineComponent,
+    AnalyseExpensesTableComponent,
+    AnalyseExpensesFilterFormComponent,
+    AnalyseClientsContratsComponent,
+    AnalyseClientsTableComponent,
+    AnalyseContratsTableComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +48,7 @@ import { AnalyseExpensesComponent } from './expenses/expenses.component';
     ReactiveFormsModule,
     NgbDatepickerModule,
     NgbTooltipModule,
+    NgbNavModule,
     NgMultiSelectDropDownModule
   ]
 })

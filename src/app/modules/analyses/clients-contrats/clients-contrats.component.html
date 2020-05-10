@@ -1,0 +1,24 @@
+<div class="container-fluid mt-3 pb-5">
+    <app-heading icon="fa fa-address-book" title="Clients et Contrats"></app-heading>
+    <div class="main">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs nav-fill">
+            <li [ngbNavItem]="'clients'">
+              <a ngbNavLink [attr.aria-selected]="activeTab == 'clients'" [ngClass]="{'active': activeTab == 'clients'}">
+                <i class="fa fa-address-card"></i> Clients
+              </a>
+              <ng-template ngbNavContent>
+                <app-analyse-clients-table [items]="clients"></app-analyse-clients-table>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="'contrats'">
+                <a ngbNavLink>
+                  <i class="fa fa-pencil-alt"></i> Contrats
+                </a>
+              <ng-template ngbNavContent>
+                <app-analyse-contrats-table [items]="contrats"></app-analyse-contrats-table>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+</div>

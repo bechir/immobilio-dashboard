@@ -7,8 +7,14 @@ import { Config } from 'src/app/config';
   providedIn: 'root'
 })
 export class AnalyseService {
-  private depenses?: any[];
-  public depensesSubject = new Subject<any[]>();
+  private clients?: any[];
+  public clientsSubject = new Subject<any[]>();
+
+  private contrats?: any[];
+  public contratsSubject = new Subject<any[]>();
+
+  private expenses?: any[];
+  public expensesSubject = new Subject<any[]>();
 
   private encaissements?: any[];
   public encaissementsSubject = new Subject<any[]>();
@@ -16,8 +22,16 @@ export class AnalyseService {
   private factures?: any[];
   public facturesSubject = new Subject<any[]>();
 
-  emitDepensesSubject() {
-    this.depensesSubject.next(this.depenses?.slice());
+  emitClientsSubject() {
+    this.clientsSubject.next(this.clients?.slice());
+  }
+
+  emitContratsSubject() {
+    this.contratsSubject.next(this.contrats?.slice());
+  }
+
+  emitExpensesSubject() {
+    this.expensesSubject.next(this.expenses?.slice());
   }
 
   emitEncaissementsSubject() {
@@ -30,13 +44,37 @@ export class AnalyseService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getDepenses(params?: any) {
-    this.httpClient.get<any[]>(`${Config.apiUrl}/analyse/depenses`, {
+  getClients(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/clients/analyse`, {
       params,
       ...Config.httpOptionsWithAuthorization
     }).subscribe(data => {
-      this.depenses = data;
-      this.emitDepensesSubject();
+      this.clients = data;
+      this.emitClientsSubject();
+    },
+      error => console.error(error)
+    );
+  }
+
+  getContrats(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/analyse/factures`, {
+      params,
+      ...Config.httpOptionsWithAuthorization
+    }).subscribe(data => {
+      this.contrats = data;
+      this.emitContratsSubject();
+    },
+      error => console.error(error)
+    );
+  }
+
+  getExpenses(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/operation-caisse/depenses`, {
+      params,
+      ...Config.httpOptionsWithAuthorization
+    }).subscribe(data => {
+      this.expenses = data;
+      this.emitExpensesSubject();
     },
       error => console.error(error)
     );

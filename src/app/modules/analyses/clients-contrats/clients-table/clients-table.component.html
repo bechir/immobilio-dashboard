@@ -25,12 +25,13 @@
                             <i class="feather-check"></i>
                         </button>
                     </th>
-                    <th>Caisse</th>
-                    <th>Réf.</th>
-                    <th>Libellé</th>
-                    <th>Date</th>
-                    <th>Nature</th>
-                    <th>Solde</th>
+                    <th>#</th>
+                    <th>Raison Sociale</th>
+                    <th>Localisation</th>
+                    <th>Interlocuteur 1</th>
+                    <th>Tel / Email</th>
+                    <th>Affecté à</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,39 +41,20 @@
                             <i class="feather-check"></i>
                         </button>
                     </td>
-                    <td>{{ item.caisse }}</td>
-                    <td class="button">
-                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsOperation)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.raisonSociale }}</td>
+                    <td>{{ item.localisation }}</td>
+                    <td>{{ item.interlocuteur }}</td>
+                    <td>{{ item.tel }} <br>/ {{ item.email }}</td>
+                    <td>{{ item.affecteA }}</td>
+                    <td class="actions">
+                        <button class="btn action edit" ngbTooltip="Modifier">
+                            <i class="feather-edit-3"></i>
+                        </button>
+                        <button class="btn action trash" ngbTooltip="Supprimer">
+                            <i class="feather-trash-2"></i>
+                        </button>      
                     </td>
-                    <td>{{ item.libelle }}</td>
-                    <td>{{ item.date | dateFormatFR }}</td>
-                    <td>
-                        <span class="badge badge-pill px-2 py-1" [ngClass]="{
-                            'badge-success': item.nature == 'Débit',
-                            'badge-warning': item.nature == 'Crédit'
-                        }">
-                            {{ item.nature }}
-                        </span>
-                    </td>
-                    <td>{{ (item.solde | number | amount) || '0' }}</td>
-                    <ng-template #detailsOperation let-modal>
-                        <div class="modal-header">
-                            <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>Date</th>
-                                        <td>{{ item.date | dateFormatFR }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
-                        </div>
-                    </ng-template>
                 </tr>
                 <tr *ngIf="items && !items.length">
                     <td>Pas de résultats.</td>
@@ -84,22 +66,21 @@
     <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
         <thead>
             <tr>
-                <th>Caisse</th>
-                <th>Réf.</th>
-                <th>Libellé</th>
-                <th>Date</th>
-                <th>Nature</th>
-                <th>Solde</th>
+                <th>#</th>
+                <th>Raison Sociale</th>
+                <th>Localisation</th>
+                <th>Interlocuteur 1</th>
+                <th>Tel / Email</th>
+                <th>Affecté à</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of selectedItems">
-                <td>{{ item.caisse }}</td>
-                <td>{{ item.reference }}</td>
-                <td>{{ item.libelle }}</td>
-                <td>{{ item.date | dateFormatFR }}</td>
-                <td>{{ item.nature }}</td>
-                <td>{{ (item.solde | number | amount) || '0' }}</td>
+                <td>{{ item.raisonSociale }}</td>
+                <td>{{ item.localisation }}</td>
+                <td>{{ item.interlocuteur }}</td>
+                <td>{{ item.tel + ' / ' + item.email }}</td>
+                <td>{{ item.affecteA }}</td>
             </tr>
         </tbody>
     </table>

@@ -5,10 +5,10 @@ import { AnalyseEncaissementsComponent } from './encaissements/encaissements.com
 import { AnalyseBillingComponent } from './billing/billing.component';
 import { AnalysePatrimoineComponent } from './patrimoine/patrimoine.component';
 import { AnalyseExpensesComponent } from './expenses/expenses.component';
-import { AnalyseCustomersComponent } from './customers/customers.component';
+import { AnalyseClientsContratsComponent } from './clients-contrats/clients-contrats.component';
 
 const routes: Routes = [
-  { path: 'clients-et-contrats', component: AnalyseCustomersComponent },
+  { path: 'clients-et-contrats', component: AnalyseClientsContratsComponent },
   { path: 'facturation', component: AnalyseBillingComponent },
   { path: 'encaissements', component: AnalyseEncaissementsComponent },
   { path: 'depenses', component: AnalyseExpensesComponent },
