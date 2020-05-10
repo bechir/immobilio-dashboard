@@ -11,6 +11,7 @@
                         (dateSelect)="onDateSelection($event)"
                         [displayMonths]="2"
                         [dayTemplate]="t"
+                        [footerTemplate]="footerTemplate" #d="ngbDatepicker"
                         outsideDays="hidden"
                         [startDate]="fromDate!">
                     <ng-template #t let-date let-focused="focused">
@@ -28,8 +29,9 @@
             <div class="form-group">
                 <div class="input-group">
                     <input #dpFromDate
-                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj-mm-aaaa"
+                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj/mm/aaaa"
                         name="dpFromDate"
+                        formControlName="startDate"
                         [value]="formatter.format(fromDate) | dateFormatFR"
                         (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
                     <div class="input-group-append">
@@ -42,8 +44,9 @@
             <div class="form-group ml-2">
                 <div class="input-group">
                     <input #dpToDate
-                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj-mm-aaaa"
+                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj/mm/aaaa"
                         name="dpToDate"
+                        formControlName="endDate"
                         [value]="formatter.format(toDate) | dateFormatFR"
                         (input)="toDate = validateInput(toDate, dpToDate.value)">
                     <div class="input-group-append">
@@ -95,3 +98,7 @@
         Filtrer
     </button>
 </form>
+<ng-template #footerTemplate>
+    <hr class="my-0">
+    <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Fermer</button>
+</ng-template>

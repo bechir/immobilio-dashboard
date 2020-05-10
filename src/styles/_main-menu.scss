@@ -23,6 +23,7 @@
         width: 100%;
         font-weight: 300;
         font-size: 0.85rem;
+        cursor: pointer;
 
         .nav-icon {
             display: -webkit-inline-flex;
@@ -88,6 +89,15 @@
         }
     }
 
+    .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+
+        .nav-link {
+            font-weight: 400;
+        }
+    }
+
     &.main-menu-light {
         .main-menu__nav {
             background-color: #fff;
@@ -95,12 +105,6 @@
 
         .nav-link {
             color: $dark-2;
-        }
-
-        .nav-link:not(.active) {
-            &.feather, &.fa-lg{
-                color: $sidebar--width;
-            }
         }
 
         .nav-link {

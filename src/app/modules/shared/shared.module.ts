@@ -15,6 +15,7 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { AgenceListingComponent } from './components/agence-listing/agence-listing.component';
 import { EtatFilterFormComponent } from '../etat/components/filter-form/etat-filter-form.component';
 import { TableToolbarComponent } from './components/table-toolbar/table-toolbar.component';
+import { TableSelectionInfoComponent } from './components/table-selection-info/table-selection-info.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TableToolbarComponent } from './components/table-toolbar/table-toolbar.
     DateFormatENPipe,
     EtatFilterFormComponent,
     TableToolbarComponent,
+    TableSelectionInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -53,7 +55,9 @@ import { TableToolbarComponent } from './components/table-toolbar/table-toolbar.
     DateFormatFRPipe,
     DateFormatENPipe,
     EtatFilterFormComponent,
-    TableToolbarComponent
-  ]
+    TableToolbarComponent,
+    TableSelectionInfoComponent
+  ],
+  providers: [DateFormatENPipe, DateFormatFRPipe]
 })
 export class SharedModule { }

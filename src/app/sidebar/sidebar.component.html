@@ -2,16 +2,15 @@
     <nav class="main-menu__nav pt-3">
         <div class="nav accordion" id="accordionSideNav">
             <ng-container *ngFor="let item of items">
-                <app-sidebar-item class="w-100" [item]="item"></app-sidebar-item>
+                <app-sidebar-item class="w-100" [isCollapsed]="item.collapseDefault" [item]="item"></app-sidebar-item>
             </ng-container>
         </div>
+        <div class="sidebar-footer nav">
+            <a [routerLink]="" class="nav-link">
+                <div class="nav-icon align-items-baseline">
+                    <i class="fa fa-cogs mr-1"></i>Paramètres et Préférences
+                </div>
+            </a>
+        </div>
     </nav>
-    <div class="sidebar-footer d-none nav">
-        <a href="javascript:void()" class="nav-link">
-            <div class="nav-icon">
-                <i class="feather-cog"></i>
-                &nbsp;&nbsp;Paramètres
-            </div>
-        </a>
-    </div>
 </div>

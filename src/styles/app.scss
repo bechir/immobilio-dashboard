@@ -121,11 +121,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: rgba(34, 39, 46, 0.7) !important;
 
     &:not([disabled]) {
-        &:hover, &:focus {
+        &:hover {
             background-color: rgba($color: #000000, $alpha: .1);
+            // color:$primary;
         }
         &:focus {
-            color:$primary!important;
             box-shadow: none;
             -webkit-appearance: none;
         }
@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     left: 0;
 }
 
-.main-menu-toggled .main-content {
+.main-menu-toggled .main-content{
     margin-left: 0;
 }
 
@@ -176,6 +176,23 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         }
     }
 }
+
+.copyright {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $bg-success;
+    height: 1.5rem;
+    font-size: .7rem;
+    color: #eee;
+
+    // .app-name {color: $dark-2;}
+    .company{color: $warning;}
+    a{color: #eee!important}
+}
+
 @include media-breakpoint-down(sm) {
     .main-content {
         margin-left: 0;
@@ -187,7 +204,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         @include transform(translateX(0));
     }
 }
-
+.hidden{visibility: hidden;}
+.text-small{font-size: small;}
 .text-t-initial{
     text-transform: initial!important;
 }
@@ -319,7 +337,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .ka-datatable {
 
     thead {
-        background-color: $gray;
+        background-color: rgba(0, 0, 0, .425);
     }
 
     tr.active {
@@ -338,19 +356,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
     td.button {
         button {
-            color: $gray;
+            color: $primary-2;
             font-weight: bolder;
             font-size: .75rem;
-
-            &:hover {
-                color: $primary;
-            }
         }
     }
     th,
     td {
         border: 0 !important;
-        padding: 1rem;
+        padding: .425rem;
         &:not(.actions) .btn {
             padding: 0;
         }
@@ -453,20 +467,19 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .toolbar {
-    .pdf:hover i,
-    .active.pdf i {
+    &.active {
+        border-color: rgba(40, 167, 69, .5)!important;
+    }
+    .pdf i {
         color: $bg-danger;
     }
-    .excel:hover i,
-    .active.exc:hover i{
+    .excel i{
         color: $success;
     }
-    .mail:hover i,
-    .active.mai:hover i {
+    .mail i{
         color: $lightblue;
     }
-    .sms:hover i,
-    .active.sms i {
+    .sms i{
         color: $warning;
     }
 }
@@ -562,4 +575,9 @@ table {
 .table-link {
     color: $primary;
     &:hover{ text-decoration: none };
+}
+
+// NgbDatePicker
+.ngb-dp-weekday{
+    color: $gray !important;
 }

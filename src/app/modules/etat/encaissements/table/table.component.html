@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
-                <app-table-toolbar [isVisible]="selectionExists"></app-table-toolbar>
+                <app-table-toolbar (onAction)="onToolbarAction($event)" [isVisible]="selectionExists"></app-table-toolbar>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                     <!--<td>{{ item.loyerMensuel }}</td>-->
                     <!--<td>{{ item.cotion || '0' }}</td>-->
                     <td>{{ item.totalEncaissements | number | amount }}</td>
-                    <td>{{ item.dateDernierPaiement }}</td>
+                    <td>{{ item.dateDernierPaiement | dateFormatFR }}</td>
                     <td>{{ item.montantDernierPaiement | number | amount }}</td>
                     <!--<th>{{ item.contactClient }}</th>-->
                     <td>{{ item.nomAgence }}</td>

@@ -7,9 +7,8 @@ import { SideBarMenu } from '../sidebar-item';
   styleUrls: ['./sidebar-item.component.scss']
 })
 export class SidebarItemComponent implements OnInit {
-  @Input() item: SideBarMenu
-
-  public isCollapsed = false;
+  @Input() item: SideBarMenu;
+  @Input() isCollapsed: boolean = true;
 
   constructor() { }
 

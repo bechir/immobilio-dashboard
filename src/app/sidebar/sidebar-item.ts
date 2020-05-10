@@ -4,6 +4,7 @@ export interface SideBarMenu {
     link?: string;
     id?: string;
     submenu?: SideBarMenuItem[];
+    collapseDefault?: boolean;
 }
 
 export interface SideBarMenuItem {

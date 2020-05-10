@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
-                <app-table-toolbar [isVisible]="selectionExists"></app-table-toolbar>
+                <app-table-toolbar (onAction)="onToolbarAction($event)" [isVisible]="selectionExists"></app-table-toolbar>
             </div>
         </div>
     </div>
@@ -48,13 +48,13 @@
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsFacture)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
                     </td>
                     <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 10 }}</td>
-                    <td></td>
+                    <td>{{ item.libelle | slice : 0 :20 }}</td>
                     <td>{{ (item.montant | number | amount) || '0' }}</td>
                     <td>{{ item.emisLe | dateFormatFR }}</td>
                     <td class="button">
                         <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsEspaceLoue)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.espaceLoue | slice : 0 :20 }}</button>
                     </td>
-                    <td>{{ item.agence }}</td>
+                    <td>{{ item.nomAgence }}</td>
                     <td>{{ item.creePar }}</td>
                     <td class="actions">
                         <button class="btn action edit" ngbTooltip="Modifier">
@@ -78,6 +78,10 @@
                                     <tr>
                                         <th>Montant</th>
                                         <td>{{ item.montant | number | amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Libellé</th>
+                                        <td>{{ item.libelle }}</td>
                                     </tr>
                                     <tr>
                                         <th>N° pièce justificative</th>
@@ -146,4 +150,33 @@
             </tbody>
         </table>
     </div>
+
+    <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
+        <thead>
+            <tr>
+                <th>Réf.</th>
+                <th>Client</th>
+                <th>Libellé</th>
+                <th>Montant</th>
+                <th>Date</th>
+                <th>Bien immobilier</th>
+                <th>Espace loué</th>
+                <th>Agence</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items | appFilter : searchInput">
+                <td class="button">
+                    {{ item.reference }}
+                </td>
+                <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
+                <td>{{ item.libelle }}</td>
+                <td>{{ (item.montant | number | amount) || '0' }}</td>
+                <td>{{ item.emisLe | dateFormatFR }}</td>
+                <td>{{ item.bienImmo }}</td>
+                <td>{{ item.espaceLoue }}</td>
+                <td>{{ item.nomAgence }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

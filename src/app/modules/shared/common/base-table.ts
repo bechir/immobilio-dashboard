@@ -9,6 +9,7 @@ export class BaseTable {
 
   @Input() items: any[] | null;
   selectedItems: any[] = [];
+  nbSelections: number = 0;
 
   title: string = 'Données';
 
@@ -21,7 +22,7 @@ export class BaseTable {
   onToolbarAction(action) {
     this.selectedItems = this.items.filter(item => item.checked);
 
-    setTimeout(() => {
+    // setTimeout(() => {
       switch (action) {
         case 'excel':
           return this.exportToExcel();
@@ -35,10 +36,12 @@ export class BaseTable {
           return this.print();
         default: break;
       }
-    }, 300);
+    // }, 300);
   }
 
   exportToExcel() {
+    console.log('excel');
+    
     const ws: xlsx.WorkSheet = xlsx.utils.table_to_sheet(this.itemsTable.nativeElement);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws);
@@ -87,9 +90,11 @@ export class BaseTable {
     item.checked = !item.checked;
     this.isAllChecked = false;
     if(item.checked) {
-      this.selectionExists = true
+      this.selectionExists = true;
+      ++this.nbSelections;
     } else {
       this.selectionExists = false;
+      --this.nbSelections;
       this.items?.forEach(i => {
         if(i.checked) {
           this.selectionExists = true;
@@ -106,8 +111,10 @@ export class BaseTable {
     });
     if(this.isAllChecked) {
       this.selectionExists = true;
+      this.nbSelections = this.items.length
     } else {
       this.selectionExists = false
+      this.nbSelections = 0;
     }
   }
 }

@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
-                <app-table-toolbar [isVisible]="selectionExists"></app-table-toolbar>
+                <app-table-toolbar (onAction)="onToolbarAction($event)" [isVisible]="selectionExists"></app-table-toolbar>
             </div>
         </div>
     </div>

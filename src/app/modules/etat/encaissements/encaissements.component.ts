@@ -31,6 +31,8 @@ export class EncaissementsComponent extends BaseModule {
   }
 
   onFilter(params: any) {
+    console.log(params);
+    
     this.service.getEncaissements(params);
   }
 

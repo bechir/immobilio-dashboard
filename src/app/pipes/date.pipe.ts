@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, Injectable } from '@angular/core';
 
 @Pipe({
   name: 'dateFormatFR'
@@ -18,6 +18,7 @@ export class DateFormatFRPipe implements PipeTransform {
 @Pipe({
   name: 'dateFormatEN'
 })
+@Injectable()
 export class DateFormatENPipe implements PipeTransform {
 
   transform(value: string, separator: string = '-'): string {
