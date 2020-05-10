@@ -22,7 +22,7 @@ export class BaseTable {
   onToolbarAction(action) {
     this.selectedItems = this.items.filter(item => item.checked);
 
-    // setTimeout(() => {
+    setTimeout(() => {
       switch (action) {
         case 'excel':
           return this.exportToExcel();
@@ -36,7 +36,7 @@ export class BaseTable {
           return this.print();
         default: break;
       }
-    // }, 300);
+    }, 300);
   }
 
   exportToExcel() {
@@ -58,7 +58,7 @@ export class BaseTable {
     };
 
     const pdfTable = this.itemsTable.nativeElement;
-    // autoTable(pdfTable, {html: pdfTable});
+    autoTable(pdfTable, {html: pdfTable});
 
     doc.fromHTML(pdfTable.innerHTML, 15, 15, {
       width: 200,

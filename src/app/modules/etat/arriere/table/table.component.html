@@ -161,4 +161,35 @@
         </table>
         <app-table-selection-info [nbSelections]="nbSelections" [totalItems]="items?.length"></app-table-selection-info>
     </div>
+    <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
+        <thead>
+            <tr>
+                <th>Réf.</th>
+                <th>Client</th>
+                <th>Espace loué</th>
+                <th>Loyer</th>
+                <th>Montant dû</th>
+                <th>Nombre mois</th>
+                <th>Date Dernier Paiement</th>
+                <th>Montant Dernier Paiement</th>
+                <th>Agence</th>
+                <th>SCI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of selectedItems">
+                <td>{{ item.reference }}</td>
+                <td>{{ item.contratRef }}</td>
+                <td>{{ item.nomClient +' '+ item.prenomClient }}</td>
+                <td>{{ item.espaceLoue }}</td>
+                <td>{{ item.loyerMensuel | number | amount }}</td>
+                <td>{{ (item.montantDu | number | amount) || '0' }}</td>
+                <td>{{ item.nombreMois }}</td>
+                <td>{{ item.dateDernierPaiement | dateFormatFR }}</td>
+                <td>{{ item.montantDernierPaiement | number | amount }}</td>
+                <td>{{ item.nomAgence }}</td>
+                <td>{{ item.sci }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

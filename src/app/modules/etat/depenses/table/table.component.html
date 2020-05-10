@@ -148,5 +148,38 @@
                 </tr>
             </tbody>
         </table>
+        <app-table-selection-info [nbSelections]="nbSelections" [totalItems]="items?.length"></app-table-selection-info>
     </div>
+    <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
+        <thead>
+            <tr>
+                <th>Réf.</th>
+                <th>Date</th>
+                <th>Bénéficiaire</th>
+                <th>Motif</th>
+                <th>Montant</th>
+                <th>N° Pièce Justificative</th>
+                <th>Opérateur</th>
+                <th>Ordonnateur</th>
+                <th>Agence</th>
+                <th>SCI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of selectedItems">
+                <td>
+                    <button class="btn btn-link">{{ item.reference }}</button>
+                </td>
+                <td>{{ item.date | dateFormatFR }}</td>
+                <td>{{ item.beneficiaire }}</td>
+                <td>{{ item.motif }}</td>
+                <td>{{ item.montant | number | amount }}</td>
+                <td>{{ item.numFacturePiece }}</td>
+                <td>{{ item.operateur }}</td>
+                <td>{{ item.ordonnateur }}</td>
+                <td>{{ item.nomAgence }}</td>
+                <td>{{ item.sci }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
