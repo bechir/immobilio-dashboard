@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './recap.component.html',
   styleUrls: ['./recap.component.scss']
 })
-export class RecapComponent implements OnInit {
+export class EtatRecapComponent implements OnInit {
 
   constructor() { }
 

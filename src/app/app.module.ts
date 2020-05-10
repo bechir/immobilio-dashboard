@@ -16,7 +16,6 @@ import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SharedModule } from './modules/shared/shared.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RecapComponent } from './modules/etat/components/recap/recap.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { RecapComponent } from './modules/etat/components/recap/recap.component'
     SidebarItemComponent,
     SignupComponent,
     SigninComponent,
-    RecapComponent
   ],
   imports: [
     BrowserModule,

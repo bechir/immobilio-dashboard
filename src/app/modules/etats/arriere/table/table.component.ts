@@ -6,6 +6,6 @@ import { BaseTable } from 'src/app/modules/shared/common/base-table';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent extends BaseTable {
+export class EtatArrieresTableComponent extends BaseTable {
   
 }

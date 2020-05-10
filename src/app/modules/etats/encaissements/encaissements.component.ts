@@ -9,7 +9,7 @@ import { EtatService } from '../etat.service';
   templateUrl: './encaissements.component.html',
   styleUrls: ['./encaissements.component.scss']
 })
-export class EncaissementsComponent extends BaseModule {
+export class EtatEncaissementsComponent extends BaseModule {
 
   encaissements: any[] | null = null;
   private encaissementsObserver: Subscription;

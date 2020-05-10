@@ -9,7 +9,7 @@ import { SharedService } from '../../shared/shared.service';
   templateUrl: './arriere.component.html',
   styleUrls: ['./arriere.component.scss']
 })
-export class ArriereComponent extends BaseModule {
+export class EtatArriereComponent extends BaseModule {
 
   arrierees: any[] | null = null;
   private arriereesObserver: Subscription;

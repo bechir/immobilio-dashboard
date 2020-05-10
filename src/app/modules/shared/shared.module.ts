@@ -13,7 +13,7 @@ import { DateFormatFRPipe, DateFormatENPipe } from 'src/app/pipes/date.pipe';
 import { BasicHBarChartComponent } from './components/basic-h-bar-chart/basic-h-bar-chart.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { AgenceListingComponent } from './components/agence-listing/agence-listing.component';
-import { EtatFilterFormComponent } from '../etat/components/filter-form/etat-filter-form.component';
+import { EtatFilterFormComponent } from '../etats/components/filter-form/etat-filter-form.component';
 import { TableToolbarComponent } from './components/table-toolbar/table-toolbar.component';
 import { TableSelectionInfoComponent } from './components/table-selection-info/table-selection-info.component';
 

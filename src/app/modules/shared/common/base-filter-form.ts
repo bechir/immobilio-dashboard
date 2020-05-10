@@ -112,11 +112,11 @@ export class BaseFilterForm implements OnInit {
     };
   }
 
-  onItemSelect() {
+  onItemSelect(item) {
     // console.log(item);
   }
 
-  onSelectAll() {
+  onSelectAll(items) {
   }
 
   doOnFilter() {

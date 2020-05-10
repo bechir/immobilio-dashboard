@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { BaseTable } from 'src/app/modules/shared/common/base-table';
 
 @Component({
-  selector: 'app-etat-encaissements-table',
+  selector: 'app-etat-depenses-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent extends BaseTable {
+export class EtatDepensesTableComponent extends BaseTable {
+
 }

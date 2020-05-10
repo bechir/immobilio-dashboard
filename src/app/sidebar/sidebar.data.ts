@@ -55,27 +55,27 @@ export const sidebarItems: SideBarMenu[] = [
     {
         icon: 'fa fa-columns',
         text: 'États',
-        id: 'Etats',
+        id: 'etats',
         submenu: [
             {
                 icon: 'fa fa-donate',
                 text: 'Encaissements',
-                link: '/etat/encaissements'
+                link: 'encaissements'
             },
             {
                 icon: 'fa fa-landmark',
                 text: 'Arriérés',
-                link: '/etat/arriere'
+                link: 'arrieres'
             },
             {
                 icon: 'fa fa-cash-register',
                 text: 'Dépenses',
-                link: '/etat/depenses'
+                link: 'depenses'
             },
             {
                 icon: 'fa fa-cash-register',
                 text: 'Situations des caisses',
-                link: '/etat/situations-caisse'
+                link: 'situations-caisses'
             } 
         ],
         collapseDefault: false

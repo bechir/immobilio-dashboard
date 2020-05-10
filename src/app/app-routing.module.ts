@@ -19,13 +19,14 @@ const routes: Routes = [
   { path: 'analyse/customers', data: {title: 'Clients et Contrats'}, loadChildren: () => import('./modules/analyse/customers/customers.module').then(m => m.CustomersModule), canActivate: [AuthGuardService] },
   { path: 'analyse/building', data: {title: 'Patrimoine'}, loadChildren: () => import('./modules/analyse/building/building.module').then(m => m.BuildingModule), canActivate: [AuthGuardService] },
   
-  { path: 'etat/arriere', loadChildren: () => import('./modules/etat/arriere/arriere.module').then(m => m.ArriereModule), canActivate: [AuthGuardService] },
-  { path: 'etat/depenses', loadChildren: () => import('./modules/etat/depenses/depenses.module').then(m => m.DepensesModule), canActivate: [AuthGuardService] },
-  { path: 'etat/encaissements', loadChildren: () => import('./modules/etat/encaissements/encaissements.module').then(m => m.EncaissementsModule), canActivate: [AuthGuardService] },
   
+  // { path: 'etatsss', loadChildren: () => import('./modules/etat/etat.module').then(m => m.EtatModule), canActivate: [AuthGuardService] },
+
   { path: 'dashboard/pilotage-alert', loadChildren: () => import('./modules/dashboard/pilotage-alert/pilotage-alert.module').then(m => m.PilotageAlertModule), canActivate: [AuthGuardService] },
   { path: 'dashboard/statistics', loadChildren: () => import('./modules/dashboard/statistics/statistics.module').then(m => m.StatisticsModule), canActivate: [AuthGuardService] },
-
+  
+  { path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule), canActivate: [AuthGuardService] },
+  { path: 'etats', loadChildren: () => import('./modules/etats/etats.module').then(m => m.EtatsModule) },
 
   { path: '**', redirectTo: '/404' }
 ]

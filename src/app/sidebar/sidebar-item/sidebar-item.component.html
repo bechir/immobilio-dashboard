@@ -19,7 +19,7 @@
     </a>
     <div class="collapse" [id]="'collapse' + item.id" [ngbCollapse]="isCollapsed">
         <nav class="nav subnav">
-            <a routerLinkActive="active" [routerLink]="subItem.link" class="nav-link" *ngFor="let subItem of item.submenu" >
+            <a routerLinkActive="active" [routerLink]="[item.id, subItem.link]" class="nav-link" *ngFor="let subItem of item.submenu" >
                 <div class="nav-icon">
                     <i [ngClass]="subItem.icon"></i>
                 </div>
