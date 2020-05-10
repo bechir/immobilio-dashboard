@@ -1,1 +1,24 @@
-<p>settings works!</p>
+<div class="container-fluid mt-3 pb-5">
+    <app-heading icon="fa fa-tools" title="Paramètres et Préférences"></app-heading>
+    <div class="main">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+            <li [ngbNavItem]="'notifications'">
+              <a ngbNavLink [attr.aria-selected]="activeTab == 'notifications'" [ngClass]="{'active': activeTab == 'notifications'}">
+                <i class="far fa-bell"></i> Notifications
+              </a>
+              <ng-template ngbNavContent>
+                <app-settings-notifications></app-settings-notifications>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="'preferences'">
+                <a ngbNavLink>
+                  <i class="fa fa-sliders-h"></i> Préférences
+                </a>
+                <ng-template ngbNavContent>
+                  <app-settings-preferences></app-settings-preferences>
+                </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+</div>
