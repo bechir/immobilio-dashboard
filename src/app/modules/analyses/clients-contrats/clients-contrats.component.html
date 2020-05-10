@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3 pb-5">
     <app-heading icon="fa fa-address-book" title="Clients et Contrats"></app-heading>
     <div class="main">
-        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs nav-fill">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
             <li [ngbNavItem]="'clients'">
               <a ngbNavLink [attr.aria-selected]="activeTab == 'clients'" [ngClass]="{'active': activeTab == 'clients'}">
                 <i class="fa fa-address-card"></i> Clients

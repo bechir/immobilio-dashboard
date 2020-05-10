@@ -57,7 +57,7 @@ export class AnalyseService {
   }
 
   getContrats(params?: any) {
-    this.httpClient.get<any[]>(`${Config.apiUrl}/analyse/factures`, {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/clients/contrats`, {
       params,
       ...Config.httpOptionsWithAuthorization
     }).subscribe(data => {

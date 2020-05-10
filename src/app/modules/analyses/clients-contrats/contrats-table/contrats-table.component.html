@@ -25,14 +25,15 @@
                             <i class="feather-check"></i>
                         </button>
                     </th>
-                    <th>Réf.</th>
-                    <th>Contrat</th>
+                    <td>#</td>
+                    <th>N° Conrat</th>
+                    <th>Référence</th>
                     <th>Client</th>
+                    <th>Contenu</th>
+                    <th>Espace(s)</th>
                     <th>Montant</th>
-                    <!-- <th>Bien immo.</th> -->
-                    <th>Espace loué</th>
-                    <th>Emis le</th>
-                    <th>Status</th>
+                    <th>Date Sign.</th>
+                    <th>Enregistré le</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -43,28 +44,17 @@
                             <i class="feather-check"></i>
                         </button>
                     </td>
+                    <td>{{ i + 1 }}</td>
                     <td class="button">
-                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsFacture)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsContrat)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.numContrat }}</button>
                     </td>
-                    <td class="button">
-                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsContrat)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.contratRef }}</button>
-                    </td>
+                    <td>{{ item.reference }}</td>
                     <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 10 }}</td>
+                    <td>{{ item.contenu }}</td>
+                    <td>{{ item.nbEspaces }} Espaces loués</td>
                     <td>{{ (item.montant | number | amount ) || '0' }}</td>
-                    <!--<td>{{ item.bienImmo }}</td>-->
-                    <td class="button">
-                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsEspaceLoue)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.espaceLoue | slice : 0 :20 }}</button>
-                    </td>
-                    <td>{{ item.emisLe | dateFormatFR }}</td>
-                    <td>
-                        <span class="badge badge-pill px-2 py-1" [ngClass]="{
-                            'badge-success': item.status == 'Payée',
-                            'badge-warning': item.status == 'Payée en partie',
-                            'badge-danger': item.status == 'Non payée'
-                        }">
-                            {{ item.status }}
-                        </span>
-                    </td>
+                    <td>{{ item.dateSign | dateFormatFR }}</td>
+                    <td>{{ item.dateEnreg | dateFormatFR }}</td>
                     <td class="actions">
                         <button class="btn action edit" ngbTooltip="Modifier">
                             <i class="feather-edit-3"></i>
@@ -73,62 +63,6 @@
                             <i class="feather-trash-2"></i>
                         </button>      
                     </td>
-                    <ng-template #detailsFacture let-modal>
-                        <div class="modal-header">
-                            <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>Client</th>
-                                        <td>{{ item.nomClient }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Date</th>
-                                        <td>{{ item.date | dateFormatFR }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Espace loué</th>
-                                        <td>{{ item.espaceLoue }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Propriétaire de l'espace</th>
-                                        <td>{{ item.proprietaire }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Loyer</th>
-                                        <td>{{ item.loyer }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Montant dû</th>
-                                        <td>{{ item.montantDu | number | amount }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nombre de mois</th>
-                                        <td>{{ item.nombreMois }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Date dernier paiement</th>
-                                        <td>{{ item.dateDernierPaiement | dateFormatFR }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nom de l'agence</th>
-                                        <td>{{ item.nomAgence }}</td>
-                                    </tr>
-        
-                                    <tr>
-                                        <th>SCI</th>
-                                        <td>{{ item.sci }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
-                        </div>
-                    </ng-template>
-
                     <ng-template #detailsContrat let-modal>
                         <div class="modal-header">
                             <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
@@ -138,47 +72,7 @@
                                 <tbody>
                                     <tr>
                                         <th>Client</th>
-                                        <td>{{ item.nomClient }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
-                        </div>
-                    </ng-template>
-
-                    <ng-template #detailsEspaceLoue let-modal>
-                        <div class="modal-header">
-                            <h4 class="modal-title h6">{{ item.bienImmo }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>Client</th>
-                                        <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Espace loué</th>
-                                        <td>{{ item.espaceLoue }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Bien immobilier</th>
-                                        <td>{{ item.bienImmo }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Loyer mensuel</th>
-                                        <td>{{ item.loyerMensuel | number | amount }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Propriétaire</th>
-                                        <td>{{ item.proprietaire }}</td>
-                                    </tr>
-                                    <tr>
-                                        <div class="card ml-2">
-                                            <img class="img-thumbnail img-responsive w-100" src="" alt="{{ item.espaceLoue }}">
-                                        </div>
+                                        <td>{{ (item.nomClient || item.prenomClient) }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -198,26 +92,27 @@
     <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
         <thead>
             <tr>
+                <td>#</td>
+                <th>N° Conrat</th>
                 <th>Référence</th>
-                <th>Contrat</th>
                 <th>Client</th>
+                <th>Contenu</th>
+                <th>Espace(s)</th>
                 <th>Montant</th>
-                <th>Bien immobilier</th>
-                <th>Espace loué</th>
-                <th>Emis le</th>
-                <th>Status</th>
+                <th>Date Sign.</th>
+                <th>Enregistré le</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of selectedItems">
                 <td>{{ item.reference }}</td>
-                <td>{{ item.contratRef }}</td>
-                <td>{{ item.nomClient +' '+ item.prenomClient }}</td>
-                <td>{{ (item.montant | number | amount) || '0' }}</td>
-                <td>{{ item.bienImmo }}</td>
-                <td>{{ item.espaceLoue }}</td>
-                <td>{{ item.emisLe | dateFormatFR }}</td>
-                <td>{{ item.status }}</td>
+                <td>{{ item.reference }}</td>
+                <td>{{ (item.nomClient || item.prenomClient) }}</td>
+                <td>{{ item.contenu }}</td>
+                <td>{{ item.nbEspaces }} Espaces loués</td>
+                <td>{{ (item.montant | number | amount ) || '0' }}</td>
+                <td>{{ item.dateSign | dateFormatFR }}</td>
+                <td>{{ item.dateEnreg | dateFormatFR }}</td>
             </tr>
         </tbody>
     </table>
