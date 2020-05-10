@@ -1,0 +1,7 @@
+<div class="container-fluid mt-3 pb-5">
+	<app-heading icon="fa fa-balance-scale-left" title="Situations des caisses"></app-heading>
+	<div class="main">
+		<app-etat-filter-form (onFilter)="onFilter($event)" (onInitFilterForm)="onInitFilterForm($event)"></app-etat-filter-form>
+		<app-etats-situations-table [items]="situationsCaisses"></app-etats-situations-table>
+	</div>
+</div>

@@ -31,8 +31,6 @@ export class EtatEncaissementsComponent extends BaseModule {
   }
 
   onFilter(params: any) {
-    console.log(params);
-    
     this.service.getEncaissements(params);
   }
 

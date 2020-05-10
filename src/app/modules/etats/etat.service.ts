@@ -16,6 +16,9 @@ export class EtatService {
   private encaissements?: any[];
   public encaissementsSubject = new Subject<any[]>();
 
+  private situationsCaisses?: any[];
+  public situationsCaissesSubject = new Subject<any[]>();
+
   emitArrieresSubject() {
     this.arrieresSubject.next(this.arrieres?.slice());
   }
@@ -26,6 +29,10 @@ export class EtatService {
 
   emitEncaissementsSubject() {
     this.encaissementsSubject.next(this.encaissements?.slice());
+  }
+
+  emitSituationsCaissesSubject() {
+    this.situationsCaissesSubject.next(this.situationsCaisses?.slice());
   }
 
   constructor(private httpClient: HttpClient) { }
@@ -61,6 +68,18 @@ export class EtatService {
     }).subscribe(data => {
       this.encaissements = data;
       this.emitEncaissementsSubject();
+    },
+      error => console.error(error)
+    );
+  }
+
+  getSituationsCaisses(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/etat/situations-caisses`, {
+      params,
+      ...Config.httpOptionsWithAuthorization
+    }).subscribe(data => {
+      this.situationsCaisses = data;
+      this.emitSituationsCaissesSubject();
     },
       error => console.error(error)
     );

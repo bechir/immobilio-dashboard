@@ -73,7 +73,7 @@ export const sidebarItems: SideBarMenu[] = [
                 link: 'depenses'
             },
             {
-                icon: 'fa fa-cash-register',
+                icon: 'fa fa-balance-scale-left',
                 text: 'Situations des caisses',
                 link: 'situations-caisses'
             } 

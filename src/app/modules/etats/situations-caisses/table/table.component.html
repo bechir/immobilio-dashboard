@@ -1,0 +1,103 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="row justify-content-between">
+            <div class="col-sm-12 col-md-3">
+                <div id="dataTable_filter" class="dataTables_filter">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="feather-search text-muted"></i></div>
+                        </div>
+                        <input [(ngModel)]="searchInput" type="text" class="border form-control form-control-sm ka-form-control-solid" placeholder="Recherche" aria-controls="dataTable">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-md-end align-items-center">
+                <app-table-toolbar (onAction)="onToolbarAction($event)" [isVisible]="selectionExists"></app-table-toolbar>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-responsive-lg ka-datatable">
+            <thead>
+                <tr>
+                    <th [ngClass]="{'checkbox': true, 'checked': isAllChecked }">
+                        <button ngbTooltip="Séléctionner" [openDelay]="300" (click)="onToggleCheckedAll()" class="btn mark-as-done d-flex justify-content-center align-items-center white">
+                            <i class="feather-check"></i>
+                        </button>
+                    </th>
+                    <th>Caisse</th>
+                    <th>Réf.</th>
+                    <th>Libellé</th>
+                    <th>Date</th>
+                    <th>Nature</th>
+                    <th>Solde</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items | checkable | appFilter : searchInput; let i = index" [ngClass]="{'active': item.checked}">
+                    <td [ngClass]="{'checkbox': true, 'checked': item.checked }">
+                        <button (click)="onToggleChecked(item)" class="btn mark-as-done d-flex justify-content-center align-items-center">
+                            <i class="feather-check"></i>
+                        </button>
+                    </td>
+                    <td>{{ item.caisse }}</td>
+                    <td class="button">
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsOperation)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                    </td>
+                    <td>{{ item.libelle }}</td>
+                    <td>{{ item.date | dateFormatFR }}</td>
+                    <td>
+                        <span class="badge badge-pill px-2 py-1" [ngClass]="{
+                            'badge-success': item.nature == 'Débit',
+                            'badge-warning': item.nature == 'Crédit'
+                        }">
+                            {{ item.nature }}
+                        </span>
+                    </td>
+                    <td>{{ (item.solde | number | amount) || '0' }}</td>
+                    <ng-template #detailsOperation let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Date</th>
+                                        <td>{{ item.date | dateFormatFR }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Fermer</button>
+                        </div>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+        <app-table-selection-info [nbSelections]="nbSelections" [totalItems]="items?.length"></app-table-selection-info>
+    </div>
+    <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
+        <thead>
+            <tr>
+                <th>Caisse</th>
+                <th>Réf.</th>
+                <th>Libellé</th>
+                <th>Date</th>
+                <th>Nature</th>
+                <th>Solde</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of selectedItems">
+                <td>{{ item.caisse }}</td>
+                <td>{{ item.reference }}</td>
+                <td>{{ item.libelle }}</td>
+                <td>{{ item.date | dateFormatFR }}</td>
+                <td>{{ item.nature }}</td>
+                <td>{{ (item.solde | number | amount) || '0' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

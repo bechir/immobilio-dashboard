@@ -11,6 +11,8 @@ import { EtatEncaissementsTableComponent } from './encaissements/table/table.com
 import { EtatDepensesTableComponent } from './depenses/table/table.component';
 import { EtatArriereComponent } from './arriere/arriere.component';
 import { EtatArrieresTableComponent } from './arriere/table/table.component';
+import { EtatSituationsCaissesComponent } from './situations-caisses/situations-caisses.component';
+import { EtatSituationsTableComponent } from './situations-caisses/table/table.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { EtatArrieresTableComponent } from './arriere/table/table.component';
     EtatDepensesTableComponent,
     EtatEncaissementsComponent,
     EtatEncaissementsTableComponent,
+    EtatSituationsCaissesComponent,
+    EtatSituationsTableComponent,
   ],
   imports: [
     CommonModule,
