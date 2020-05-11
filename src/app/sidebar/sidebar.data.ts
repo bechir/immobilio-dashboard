@@ -5,6 +5,7 @@ export const sidebarItems: SideBarMenu[] = [
         icon: 'fa fa-home',
         text: 'Tableau de bord',
         link: '/dashboard',
+        id: 'dashboard',
         submenu: [
             // {
             //     icon: 'fa fa-exclamation-circle',
@@ -14,7 +15,7 @@ export const sidebarItems: SideBarMenu[] = [
             {
                 icon: 'fa fa-chart-bar',
                 text: 'Statistiques',
-                link: '/dashboard/statistics'
+                link: 'statistiques',
             }
         ],
         collapseDefault: true

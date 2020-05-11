@@ -8,11 +8,11 @@ import { AnalyseExpensesComponent } from './expenses/expenses.component';
 import { AnalyseClientsContratsComponent } from './clients-contrats/clients-contrats.component';
 
 const routes: Routes = [
-  { path: 'clients-et-contrats', component: AnalyseClientsContratsComponent },
-  { path: 'facturation', component: AnalyseBillingComponent },
-  { path: 'encaissements', component: AnalyseEncaissementsComponent },
-  { path: 'depenses', component: AnalyseExpensesComponent },
-  { path: 'patrimoine', component: AnalysePatrimoineComponent },
+  { path: 'clients-et-contrats', component: AnalyseClientsContratsComponent, data: {title: 'Clients et Contrats'} },
+  { path: 'facturation', component: AnalyseBillingComponent, data: {title: 'Facturation'} },
+  { path: 'encaissements', component: AnalyseEncaissementsComponent, data: {title: 'Encaissements'} },
+  { path: 'depenses', component: AnalyseExpensesComponent, data: {title: 'Dépenses'} },
+  { path: 'patrimoine', component: AnalysePatrimoineComponent, data: {title: 'Patrimoine'} },
 ];
 
 @NgModule({

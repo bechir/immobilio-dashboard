@@ -5,10 +5,10 @@ import { EtatDepensesComponent } from './depenses/depenses.component';
 import { EtatSituationsCaissesComponent } from './situations-caisses/situations-caisses.component';
 
 const routes: Routes = [
-  { path: 'arrieres', component: EtatEncaissementsComponent },
-  { path: 'depenses', component: EtatDepensesComponent },
-  { path: 'encaissements', component: EtatEncaissementsComponent },
-  { path: 'situations-caisses', component: EtatSituationsCaissesComponent }
+  { path: 'arrieres', component: EtatEncaissementsComponent, data: {title: 'Arriérés'} },
+  { path: 'depenses', component: EtatDepensesComponent, data: {title: 'Dépenses'} },
+  { path: 'encaissements', component: EtatEncaissementsComponent, data: {title: 'Encaissements'} },
+  { path: 'situations-caisses', component: EtatSituationsCaissesComponent, data: {title: 'Situations des caisses'} }
 ];
 
 @NgModule({
