@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authService.isAuthenticated()) {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['/etats/situations-caisses']);
     }
     this.initForm();
   }
@@ -37,7 +37,9 @@ export class SigninComponent implements OnInit {
           try {
             localStorage.setItem('token', data.token);
             this.authService.emitAuthStateChanged();
-            this.router.navigate(['/dashboard']);
+            // this.router.navigate(['/etats/situations-caisses']);
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+            this.router.navigate(['/etats/situations-caisses']))
           } catch (e) {
             alert('Votre navigateur ne supporte pas le stockage local. Êtes-vous en mode navigation privée?');
           }

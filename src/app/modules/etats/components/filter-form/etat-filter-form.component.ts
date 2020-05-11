@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
 import { Agence } from 'src/app/models/agence';
-import { BaseFilterForm, I18n, DatepickerI18nFrench } from 'src/app/modules/shared/common/base-filter-form';
+import { BaseFilterForm } from 'src/app/modules/shared/common/base-filter-form';
 
 @Component({
   selector: 'app-etat-filter-form',
-  templateUrl: './etat-filter-form.component.html',
-  providers: [I18n, {provide: NgbDatepickerI18n, useClass: DatepickerI18nFrench}]
+  templateUrl: './etat-filter-form.component.html'
 })
 export class EtatFilterFormComponent extends BaseFilterForm {
   

@@ -30,6 +30,10 @@ export class AuthService {
     return this.getAuthToken() !== null;
   }
 
+  static isAuth(): boolean {
+    return localStorage.getItem('token') !== null;
+  }
+
   getAuthToken(): string {
     return localStorage.getItem('token');
   }

@@ -20,6 +20,11 @@ import { AnalyseExpensesFilterFormComponent } from './expenses/filter-form/filte
 import { AnalyseClientsContratsComponent } from './clients-contrats/clients-contrats.component';
 import { AnalyseClientsTableComponent } from './clients-contrats/clients-table/clients-table.component';
 import { AnalyseContratsTableComponent } from './clients-contrats/contrats-table/contrats-table.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -49,7 +54,12 @@ import { AnalyseContratsTableComponent } from './clients-contrats/contrats-table
     NgbDatepickerModule,
     NgbTooltipModule,
     NgbNavModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatTabsModule,
+    MatNativeDateModule,
   ]
 })
 export class AnalysesModule { }

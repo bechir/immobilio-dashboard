@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
@@ -16,6 +16,10 @@ import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SharedModule } from './modules/shared/shared.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,11 +39,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     ChartsModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

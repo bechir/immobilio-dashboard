@@ -7,5 +7,7 @@ import { BaseTable } from 'src/app/modules/shared/common/base-table';
   styleUrls: ['./table.component.scss']
 })
 export class EtatSituationsTableComponent extends BaseTable {
-  title = 'Situations des Caisses'
+  title = 'Situations des Caisses';
+
+  // displayedColumns = ['caisse', 'reference', 'libelle', 'date', 'nature', 'solde']
 }

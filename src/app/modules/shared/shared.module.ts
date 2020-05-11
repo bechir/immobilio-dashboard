@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbDatepickerModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HeadingComponent } from './components/heading/heading.component';
@@ -16,6 +16,16 @@ import { AgenceListingComponent } from './components/agence-listing/agence-listi
 import { EtatFilterFormComponent } from '../etats/components/filter-form/etat-filter-form.component';
 import { TableToolbarComponent } from './components/table-toolbar/table-toolbar.component';
 import { TableSelectionInfoComponent } from './components/table-selection-info/table-selection-info.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatTableModule } from "@angular/material/table";
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -31,7 +41,7 @@ import { TableSelectionInfoComponent } from './components/table-selection-info/t
     DateFormatENPipe,
     EtatFilterFormComponent,
     TableToolbarComponent,
-    TableSelectionInfoComponent,
+    TableSelectionInfoComponent
   ],
   imports: [
     CommonModule,
@@ -40,8 +50,18 @@ import { TableSelectionInfoComponent } from './components/table-selection-info/t
     FormsModule,
     ReactiveFormsModule,
     NgbDatepickerModule,
+    NgbModule,
     NgbTooltipModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatTabsModule,
+    MatTooltipModule
   ],
   exports: [
     HeadingComponent,

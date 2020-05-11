@@ -6,11 +6,11 @@ export const sidebarItems: SideBarMenu[] = [
         text: 'Tableau de bord',
         link: '/dashboard',
         submenu: [
-            {
-                icon: 'fa fa-exclamation-circle',
-                text: 'Pilotage et Alertes',
-                link: 'ii'
-            },
+            // {
+            //     icon: 'fa fa-exclamation-circle',
+            //     text: 'Pilotage et Alertes',
+            //     link: 'ii'
+            // },
             {
                 icon: 'fa fa-chart-bar',
                 text: 'Statistiques',

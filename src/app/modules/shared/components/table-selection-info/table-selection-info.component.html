@@ -1,4 +1,4 @@
-<div class="table-selection-info" [ngClass]="{'hidden': nbSelections <= 0}">
+<div class="table-selection-info" [ngClass]="{'hidden': !totalItems || totalItems > 0 && nbSelections <= 0}">
     <em class="text-muted text-small">
         {{ nbSelections }} élément{{ nbSelections > 1 ? 's' : '' }} séléctionné{{ nbSelections > 1 ? 's' : '' }} sur {{ totalItems }}
     </em>

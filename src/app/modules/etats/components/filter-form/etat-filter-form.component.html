@@ -1,61 +1,19 @@
 <form class="form-inline mb-5" [formGroup]="filterForm" (ngSubmit)="doOnFilter()">
-    <div class="d-flex flex-wrap justify-content-start w-100 mb-1">
+    <div class="d-flex flex-wrap justify-content-start align-items-baseline w-100 mb-1">
         <div class="d-flex mb-2">
-            <div class="form-group hidden">
-                <div class="input-group">
-                    <input name="datepicker"
-                        class="form-control"
-                        ngbDatepicker
-                        #datepicker="ngbDatepicker"
-                        [autoClose]="'outside'"
-                        (dateSelect)="onDateSelection($event)"
-                        [displayMonths]="2"
-                        [dayTemplate]="t"
-                        [footerTemplate]="footerTemplate" #d="ngbDatepicker"
-                        outsideDays="hidden"
-                        [startDate]="fromDate!">
-                    <ng-template #t let-date let-focused="focused">
-                    <span class="custom-day"
-                            [class.focused]="focused"
-                            [class.range]="isRange(date)"
-                            [class.faded]="isHovered(date) || isInside(date)"
-                            (mouseenter)="hoveredDate = date"
-                            (mouseleave)="hoveredDate = null">
-                        {{ date.day }}
-                    </span>
-                    </ng-template>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <input #dpFromDate
-                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj/mm/aaaa"
-                        name="dpFromDate"
-                        formControlName="startDate"
-                        [value]="formatter.format(fromDate) | dateFormatFR"
-                        (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
-                    <div class="input-group-append">
-                    <button class="btn btn-sm calendar input-group-text border-0" (click)="datepicker.toggle()" type="button">
-                        <i class="fa fa-calendar-alt text-muted"></i>
-                    </button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group ml-2">
-                <div class="input-group">
-                    <input #dpToDate
-                        class="form-control form-control-sm ka-form-control-solid" placeholder="jj/mm/aaaa"
-                        name="dpToDate"
-                        formControlName="endDate"
-                        [value]="formatter.format(toDate) | dateFormatFR"
-                        (input)="toDate = validateInput(toDate, dpToDate.value)">
-                    <div class="input-group-append">
-                    <button class="btn btn-sm calendar input-group-text border-0" (click)="datepicker.toggle()" type="button">
-                        <i class="fa fa-calendar-alt text-muted"></i>
-                    </button>
-                    </div>
-                </div>
-            </div>
+            <mat-form-field class="mr-3">
+                <mat-label>Date de début</mat-label>
+                <input matInput [required]="false" formControlName="startDate" [matDatepicker]="startPicker">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Date de fin</mat-label>
+                <input matInput [required]="false" formControlName="endDate" [matDatepicker]="endPicker">
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
         </div>
         <div class="ml-lg-3">
             <ng-multiselect-dropdown
@@ -98,7 +56,3 @@
         Filtrer
     </button>
 </form>
-<ng-template #footerTemplate>
-    <hr class="my-0">
-    <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Fermer</button>
-</ng-template>
