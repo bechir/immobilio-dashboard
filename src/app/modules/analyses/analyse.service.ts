@@ -7,20 +7,34 @@ import { Config } from 'src/app/config';
   providedIn: 'root'
 })
 export class AnalyseService {
+
+  // Clients et Contrats
   private clients?: any[];
   public clientsSubject = new Subject<any[]>();
 
   private contrats?: any[];
   public contratsSubject = new Subject<any[]>();
 
+  // Dépenses
   private expenses?: any[];
   public expensesSubject = new Subject<any[]>();
 
   private encaissements?: any[];
   public encaissementsSubject = new Subject<any[]>();
 
+  // Factures
   private factures?: any[];
   public facturesSubject = new Subject<any[]>();
+
+  // Patrimoine
+  private biensImmobiliers?: any[];
+  public biensImmobiliersSubject = new Subject<any[]>();
+
+  private espacesLocatifs?: any[];
+  public espacesLocatifsSubject = new Subject<any[]>();
+
+  private proprietaires?: any[];
+  public proprietairesSubject = new Subject<any[]>();
 
   emitClientsSubject() {
     this.clientsSubject.next(this.clients?.slice());
@@ -40,6 +54,18 @@ export class AnalyseService {
 
   emitFacturesSubject() {
     this.facturesSubject.next(this.factures?.slice());
+  }
+
+  emitBiensImmobiliersSubject() {
+    this.biensImmobiliersSubject.next(this.biensImmobiliers?.slice());
+  }
+
+  emitEspacesLocatifsSubject() {
+    this.espacesLocatifsSubject.next(this.espacesLocatifs?.slice());
+  }
+
+  emitProprietairesSubject() {
+    this.proprietairesSubject.next(this.proprietaires?.slice());
   }
 
   constructor(private httpClient: HttpClient) { }
@@ -99,6 +125,42 @@ export class AnalyseService {
     }).subscribe(data => {
       this.factures = data;
       this.emitFacturesSubject();
+    },
+      error => console.error(error)
+    );
+  }
+
+  getBiensImmobiliers(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/patrimoine/biens-immobiliers`, {
+      params,
+      ...Config.httpOptionsWithAuthorization
+    }).subscribe(data => {
+      this.biensImmobiliers = data;
+      this.emitBiensImmobiliersSubject();
+    },
+      error => console.error(error)
+    );
+  }
+
+  getEspacesLocatifs(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/patrimoine/espaces-locatifs`, {
+      params,
+      ...Config.httpOptionsWithAuthorization
+    }).subscribe(data => {
+      this.espacesLocatifs = data;
+      this.emitEspacesLocatifsSubject();
+    },
+      error => console.error(error)
+    );
+  }
+
+  getProprietaires(params?: any) {
+    this.httpClient.get<any[]>(`${Config.apiUrl}/patrimoine/proprietaires`, {
+      params,
+      ...Config.httpOptionsWithAuthorization
+    }).subscribe(data => {
+      this.proprietaires = data;
+      this.emitProprietairesSubject();
     },
       error => console.error(error)
     );

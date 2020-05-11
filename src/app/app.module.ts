@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { AuthInterceptor } from './services/auth.interceptor';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     SharedModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule
   ],
   providers: [
     FormsModule,

@@ -28,12 +28,10 @@ export class AnalyseClientsContratsComponent extends BaseModule {
     this.clientsObserver = this.service.clientsSubject.subscribe((clients: any[]) => {
       this.clients = clients;
     });
+
     this.contratsObserver = this.service.contratsSubject.subscribe((contrats: any[]) => {
       this.contrats = contrats;
     });
-
-    this.service.getClients();
-    this.service.getContrats();
   }
 
   public onInitFilterForm(params: any) {

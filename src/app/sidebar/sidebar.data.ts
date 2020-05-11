@@ -51,7 +51,7 @@ export const sidebarItems: SideBarMenu[] = [
                 link: 'patrimoine'
             }
         ],
-        collapseDefault: false
+        collapseDefault: true
     },
     {
         icon: 'fa fa-columns',

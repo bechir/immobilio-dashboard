@@ -26,6 +26,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BiensImmobiliersComponent } from './patrimoine/biens-immobiliers/biens-immobiliers.component';
+import { EspacesLocatifsComponent } from './patrimoine/espaces-locatifs/espaces-locatifs.component';
+import { ProprietairesComponent } from './patrimoine/proprietaires/proprietaires.component';
+import { BiensImmobiliersTableComponent } from './patrimoine/biens-immobiliers/table/table.component';
+import { ProprietairesTableComponent } from './patrimoine/proprietaires/table/table.component';
+import { EspacesLocatifsTableComponent } from './patrimoine/espaces-locatifs/table/table.component';
 
 
 @NgModule({
@@ -42,7 +48,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     AnalyseExpensesFilterFormComponent,
     AnalyseClientsContratsComponent,
     AnalyseClientsTableComponent,
-    AnalyseContratsTableComponent
+    AnalyseContratsTableComponent,
+    BiensImmobiliersComponent,
+    BiensImmobiliersTableComponent,
+    EspacesLocatifsComponent,
+    EspacesLocatifsTableComponent,
+    ProprietairesComponent,
+    ProprietairesTableComponent
   ],
   imports: [
     CommonModule,

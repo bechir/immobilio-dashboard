@@ -1,5 +1,35 @@
 <div class="container-fluid mt-3 pb-5">
     <app-heading icon="fa fa-building" title="Patrimoine"></app-heading>
     <div class="main">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+            <li [ngbNavItem]="'biens'">
+              <a ngbNavLink [attr.aria-selected]="activeTab == 'biens'" [ngClass]="{'active': activeTab == 'biens'}">
+                Biens immobiliers
+              </a>
+              <ng-template ngbNavContent>
+                <app-base-filter-form (onFilter)="onBiensFilter($event)" (onInitFilterForm)="onInitFilterForm($event)"></app-base-filter-form>
+                <app-analyse-biens-table [items]="biensImmobiliers"></app-analyse-biens-table>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="'espacesLocatifs'">
+                <a ngbNavLink>
+                  Espaces Locatifs
+                </a>
+              <ng-template ngbNavContent>
+                <app-base-filter-form (onFilter)="onEspacesFilter($event)" (onInitFilterForm)="onInitFilterForm($event)"></app-base-filter-form>
+                <app-analyse-espaces-table [items]="espacesLocatifs"></app-analyse-espaces-table>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="'proprietaires'">
+                <a ngbNavLink>
+                  Propriétaires
+                </a>
+              <ng-template ngbNavContent>
+                <app-base-filter-form (onFilter)="onProprietairesFilter($event)" (onInitFilterForm)="onInitFilterForm($event)"></app-base-filter-form>
+                <app-analyse-proprietaires-table [items]="proprietaires"></app-analyse-proprietaires-table>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
 </div>

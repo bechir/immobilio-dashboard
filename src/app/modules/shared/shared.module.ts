@@ -26,6 +26,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DateRangeFilterComponent } from './components/date-range-filter/date-range-filter.component';
+import { BaseFilterFormComponent } from './components/base-filter-form/base-filter-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     DateFormatENPipe,
     EtatFilterFormComponent,
     TableToolbarComponent,
-    TableSelectionInfoComponent
+    TableSelectionInfoComponent,
+    DateRangeFilterComponent,
+    BaseFilterFormComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +65,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatNativeDateModule,
     MatTableModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonModule
   ],
   exports: [
     HeadingComponent,
@@ -76,7 +81,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     DateFormatENPipe,
     EtatFilterFormComponent,
     TableToolbarComponent,
-    TableSelectionInfoComponent
+    TableSelectionInfoComponent,
+    BaseFilterFormComponent
   ],
   providers: [DateFormatENPipe, DateFormatFRPipe]
 })

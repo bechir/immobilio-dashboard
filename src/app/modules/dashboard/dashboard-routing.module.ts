@@ -7,7 +7,7 @@ import { PilotageAlertComponent } from './pilotage-alert/pilotage-alert.componen
 
 const routes: Routes = [
   { path: 'statistiques', component: StatisticsComponent, data: {title: 'Statistiques'} },
-  { path: 'agence/:id', component: AgenceReportComponent },
+  { path: 'statistiques/agence/:id', component: AgenceReportComponent },
   { path: 'pilotage-et-alert', component: PilotageAlertComponent, data: {title: 'Pilotage et Alert'} }
 ];
 

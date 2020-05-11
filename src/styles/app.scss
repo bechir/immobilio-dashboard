@@ -291,24 +291,26 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #FFF;
     @include shadow-md;
 
-    &:hover,
-    &:active,
-    &:focus {
-        opacity: 1;
-        color: #FFF;
-        @include shadow
+    :not([disabled]){
+        &:hover,
+        &:active,
+        &:focus {
+            opacity: 1;
+            color: #FFF;
+            @include shadow
+        }
     }
 }
 
 .btn-outline-lightblue {
-    color: $lightblue;
-    border-color: $lightblue;
+    color: $primary-2;
+    border:  1px solid $primary-2 !important;
     @include shadow-md;
 
     &:hover,
     &:active,
     &:focus {
-        background-color: $lightblue;
+        background-color: $primary-2;
         color: #FFF;
         @include shadow
     }
@@ -432,6 +434,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                     text-decoration: none;
                 }
             }
+        }
+
+        &.actions .btn{
+            padding-top: 0;
+            padding-bottom: 0;
         }
 
         .action {

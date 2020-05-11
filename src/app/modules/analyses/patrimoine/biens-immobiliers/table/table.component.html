@@ -25,14 +25,13 @@
                             <i class="feather-check"></i>
                         </button>
                     </th>
-                    <th>Réf.</th>
-                    <th>Type Op.</th>
-                    <th>Client</th>
+                    <th>#</th>
+                    <th>Référence</th>
                     <th>Libellé</th>
-                    <th>Montant</th>
-                    <th>Date</th>
-                    <th>Agence</th>
-                    <th>Crée par</th>
+                    <th>Description</th>
+                    <th>Adresse</th>
+                    <th>Proprietaire</th>
+                    <th>SCI</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -43,16 +42,15 @@
                             <i class="feather-check"></i>
                         </button>
                     </td>
+                    <td>{{ i + 1 }}</td>
                     <td class="button">
-                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsOperation)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
+                        <button class="btn btn-link" [openDelay]="300" (click)="openDetails(detailsBiens)" ngbTooltip="Cliquez pour voir les détails" placement="bottom">{{ item.reference }}</button>
                     </td>
-                    <td>{{ item.typeOp }}</td>
-                    <td>{{ (item.nomClient || item.prenomClient) | slice : 0 : 15 }}</td>
-                    <td>{{ item.libelle | slice : 0 :20 }}</td>
-                    <td>{{ (item.montant | number | amount) || '0' }}</td>
-                    <td>{{ item.date | dateFormatFR }}</td>
-                    <td>{{ item.agence }}</td>
-                    <td>{{ item.creePar }}</td>
+                    <td>{{ item.libelle | slice : 0 : 20 }}</td>
+                    <td>{{ item.description | slice : 0 : 20 }}</td>
+                    <td>{{ item.adresse }}</td>
+                    <td>{{ item.proprietaire }}</td>
+                    <td>{{ item.sci }}</td>
                     <td class="actions">
                         <button class="btn action edit" ngbTooltip="Modifier">
                             <i class="feather-edit-3"></i>
@@ -61,7 +59,7 @@
                             <i class="feather-trash-2"></i>
                         </button>      
                     </td>
-                    <ng-template #detailsOperation let-modal>
+                    <ng-template #detailsBiens let-modal>
                         <div class="modal-header">
                             <h4 class="modal-title h6">Référence: {{ item.reference }}</h4>
                         </div>
@@ -69,32 +67,24 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>Type opération</th>
-                                        <td>{{ item.typeOp }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Client</th>
-                                        <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Montant</th>
-                                        <td>{{ item.montant | number | amount }}</td>
-                                    </tr>
-                                    <tr>
                                         <th>Libellé</th>
                                         <td>{{ item.libelle }}</td>
                                     </tr>
                                     <tr>
-                                        <th>N° pièce justificative</th>
-                                        <td>{{ item.numFacturePiece }}</td>
+                                        <th>Description</th>
+                                        <td>{{ item.description }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Date</th>
-                                        <td>{{ item.date | dateFormatFR }}</td>
+                                        <th>Adresse</th>
+                                        <td>{{ item.adresse }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Agence</th>
-                                        <td>{{ item.agence }}</td>
+                                        <th>Propriétaire</th>
+                                        <td>{{ item.proprietaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>SCI</th>
+                                        <td>{{ item.sci }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -111,30 +101,25 @@
         </table>
         <app-table-selection-info [nbSelections]="nbSelections" [totalItems]="items?.length"></app-table-selection-info>
     </div>
-
     <table id="itemsTable" class="table d-none table-striped ka-datatable table-responsive-lg" #itemsTable>
         <thead>
             <tr>
-                <th>Réf.</th>
-                <th>Type Opération</th>
-                <th>Client</th>
+                <th>Référence</th>
                 <th>Libellé</th>
-                <th>Montant</th>
-                <th>Date</th>
-                <th>Agence</th>
-                <th>Crée par</th>
+                <th>Description</th>
+                <th>Adresse</th>
+                <th>Proprietaire</th>
+                <th>SCI</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of selectedItems">
                 <td>{{ item.reference }}</td>
-                <td>{{ item.typeOp }}</td>
-                <td>{{ item.nomClient + ' ' + item.prenomClient }}</td>
                 <td>{{ item.libelle }}</td>
-                <td>{{ (item.montant | number | amount) || '0' }}</td>
-                <td>{{ item.date | dateFormatFR }}</td>
-                <td>{{ item.agence }}</td>
-                <td>{{ item.creePar }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.adresse }}</td>
+                <td>{{ item.proprietaire }}</td>
+                <td>{{ item.sci }}</td>
             </tr>
         </tbody>
     </table>

@@ -15,17 +15,6 @@
                 <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
         </div>
-        <div class="ml-lg-3">
-            <ng-multiselect-dropdown
-                [placeholder]="'Tous les clients'"
-                [data]="clients"
-                formControlName="clients"
-                [settings]="dropdownSettings"
-                (onSelect)="onItemSelect($event)"
-                (onSelectAll)="onSelectAll($event)"
-            >
-            </ng-multiselect-dropdown>
-        </div>
         <div class="ml-md-3">
             <div class="form-group">
                 <ng-multiselect-dropdown
