@@ -89,16 +89,23 @@ export class BaseFilterForm implements OnInit {
     this.onFilter.emit(this.getFilteredParams());
   }
 
-  getFilteredParams(args?: any) {
+  getFilteredParams(args?: any, updateDate: boolean = true) {
     let  params = this.filterForm.value;
+    let startDate = '';
+    let endDate = '';
+
+    if(updateDate) {
+      startDate = this.parseDateEN(params.startDate);
+      endDate = this.parseDateEN(params.endDate);
+    }
 
     return {
       ...params,
       ...args,
       clients: params.clients ? params.clients.map((c: Client) => c.id).join(',') : '',
       facturesStatus: params.facturesStatus ? params.facturesStatus.map((s: any) => s.id).join(',') : '',
-      startDate: this.parseDateEN(params.startDate),
-      endDate: this.parseDateEN(params.endDate),
+      startDate,
+      endDate
     };
   }
 
@@ -106,7 +113,7 @@ export class BaseFilterForm implements OnInit {
     if(typeof(date) == 'string') {
       return this.dateFormatEN.transform(date);
     } else {
-      return `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`;
+      return date ? `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}` : '';
     }
   }
 }

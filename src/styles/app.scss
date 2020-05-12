@@ -609,25 +609,28 @@ button:focus{
     outline: none!important;
 }
 
+.mat-form-field-infix {
+    width: 130px!important;
+}
+
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding-bottom: 1.2rem;
+}
+.btn.filter{
+    line-height: initial!important;
+    padding: .395rem 1rem!important;
 }
 
 .auth-wrapper{
     padding-top: 40px;
-    min-height: 400px;
-    height: 500px;
-    margin: 0 19rem;
-
-    .pub-block {
-        min-width: 260px;
-        /* background: #1ba1e2; */
+    padding-bottom: 5rem;
+    .img {
         border: 1px solid #1ba1e2;
-        padding: 8px;
-        display: inline-block;
-        height: 100%;
-        vertical-align: top;
     }
+    .auth-logo {
+        width: 200px;
+    }
+
     input {
         width: 320px;
     }
@@ -640,7 +643,6 @@ button:focus{
         margin-bottom: 15px;
         font-size: 1.3rem;
     }
-    .clear{ clear: both;}
 }
 #copyright{
     background: #0b8383;
@@ -662,4 +664,16 @@ button:focus{
 }
 .fg-amber {
     color: #f0a30a !important;
+}
+
+.main {
+    .form-inline .d-flex.flex-wrap {
+        margin-top: 0.5rem !important;
+    }
+    .card-header {
+        margin-top: 0.5rem !important
+    }
+    .card-header, .card-body{
+        padding: .25rem!important
+    }
 }

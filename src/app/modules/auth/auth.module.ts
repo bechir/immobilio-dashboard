@@ -5,10 +5,11 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { SigninComponent } from './signin/signin.component';
 
 
 @NgModule({
-  declarations: [AuthComponent],
+  declarations: [AuthComponent, SigninComponent],
   imports: [
     CommonModule,
     FormsModule,

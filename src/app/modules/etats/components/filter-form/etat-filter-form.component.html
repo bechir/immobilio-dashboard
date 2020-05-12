@@ -1,6 +1,6 @@
-<form class="form-inline mb-5" [formGroup]="filterForm" (ngSubmit)="doOnFilter()">
-    <div class="d-flex flex-wrap justify-content-start align-items-baseline w-100 mb-1">
-        <div class="d-flex mb-2">
+<form class="form-inline" [formGroup]="filterForm" (ngSubmit)="doOnFilter()">
+    <div class="d-flex flex-wrap justify-content-start align-items-baseline w-100">
+        <div class="d-flex ml-2">
             <mat-form-field class="mr-3">
                 <mat-label>Date de début</mat-label>
                 <input matInput [required]="false" formControlName="startDate" [matDatepicker]="startPicker">
@@ -15,7 +15,7 @@
                 <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
         </div>
-        <div class="ml-lg-3">
+        <div class="ml-lg-auto">
             <ng-multiselect-dropdown
                 [placeholder]="'Tous les clients'"
                 [data]="clients"
@@ -50,9 +50,11 @@
                 >
                 </ng-multiselect-dropdown>
         </div>
+        <div class="ml-md-3">
+            <button mat-button type="submit" class="btn btn-outline-lightblue filter btn-sm">
+                <i class="fa fa-filter"></i>
+                Filtrer
+            </button>
+        </div>
     </div>
-    <button mat-button type="submit" class="btn btn-outline-lightblue btn-sm">
-        <i class="fa fa-filter"></i>
-        Filtrer
-    </button>
 </form>

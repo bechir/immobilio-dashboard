@@ -9,10 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.component';
-import { SignupComponent } from './modules/auth/signup/signup.component';
-import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SharedModule } from './modules/shared/shared.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,10 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     SidebarComponent,
     TopNavComponent,
-    DashboardComponent,
-    SidebarItemComponent,
-    SignupComponent,
-    SigninComponent,
+    SidebarItemComponent
   ],
   imports: [
     BrowserModule,

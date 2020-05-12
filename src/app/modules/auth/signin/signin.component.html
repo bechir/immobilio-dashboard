@@ -1,36 +1,41 @@
-<div class="d-flex justify-content-between auth-wrapper">
-    <div class="pub-block">
-        <img src="../../../../assets/images/hippo_small.jpg" style="height:100%">
-    </div>
-    <div class="auth text-center">
-        <img src="../../../../assets/images/logo.png" style="max-width: 200px;max-height:200px"/>
+<div class="auth-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="img-container col-sm-6">
+                <img src="../../../../assets/images/hippo_small.jpg" class="img img-fluid img-thumbnail">
+            </div>
+            <div class="auth col-sm-6 ml-auto">
+                <div class="pl-md-5">
+                    <img src="../../../../assets/images/logo.png" class="auth-logo"/>
+                    <div class="form mt-3">
+                        <h1 class="border-bottom d-inline-block">ImmoBiLio | Connexion</h1>
+                        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
 
-        <div class="form mt-5 text-left">
-            <h1 class="border-bottom">ImmoBiLio | Connexion</h1>
-            <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="text" placeholder="Nom d'utilisateur ou adresse e-mail" id="username" formControlName="username" class="form-control rounded-0 ka-form-control-solid">
+                            </div>
 
-                <div class="form-group">
-                    <input type="text" placeholder="Nom d'utilisateur ou adresse e-mail" id="username" formControlName="username" class="form-control rounded-0 ka-form-control-solid">
+                            <div class="form-group">
+                                <input type="password" placeholder="Mot de passe" id="password" formControlName="password" class="form-control ka-form-control-solid rounded-0">
+                            </div>
+
+                            <div class="error-text" style="height: 30px;">
+                                <p class="text-danger fadeIn" *ngIf="errorMessage">{{ errorMessage }}</p>
+                            </div>
+
+                            <div class="form-group d-flex align-items-center justify-content-between mb-0">
+                                <button mat-button type="submit" [disabled]="signinForm.invalid" class="text-white rounded-0 btn btn-primary-2">
+                                    <span class="feather-log-in"></span> Se connecter
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <input type="password" placeholder="Mot de passe" id="password" formControlName="password" class="form-control ka-form-control-solid rounded-0">
-                </div>
-
-                <div class="error-text" style="height: 40px;">
-                    <p class="text-danger fadeIn" *ngIf="errorMessage">{{ errorMessage }}</p>
-                </div>
-
-                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                    <button mat-button type="submit" [disabled]="signinForm.invalid" class="text-white rounded-0 btn btn-primary-2">
-                        <span class="feather-log-in"></span> Se connecter
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 <div id="copyright">
-    Copyright&nbsp; © &nbsp;&nbsp;<span class="fg-lightGreen">Immobiio 1.1.0</span>. All Rights reserved.&nbsp;
+    Copyright&nbsp; © &nbsp;&nbsp;<span class="fg-lightGreen">ImmoBiLio 1.1.0</span>. All Rights reserved.&nbsp;
     <a href="http://www.kutiwa.com" target="_blank" class="fg-amber">KuTiWa</a>. Terms of use | Privacy | Cookies
 </div>

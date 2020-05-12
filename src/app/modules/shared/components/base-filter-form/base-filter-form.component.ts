@@ -35,7 +35,7 @@ export class BaseFilterFormComponent extends BaseFilterForm {
       scis: scis ? scis.map((s: any) => s.id).join(',') : ''
     };
 
-    return super.getFilteredParams(params);
+    return super.getFilteredParams(params, false);
   }
 
 }

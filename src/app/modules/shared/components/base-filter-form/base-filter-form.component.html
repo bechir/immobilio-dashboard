@@ -1,21 +1,6 @@
-<form class="form-inline mb-5" [formGroup]="filterForm" (ngSubmit)="doOnFilter()">
-    <div class="d-flex flex-wrap justify-content-start align-items-baseline w-100 mb-1">
-        <div class="d-flex mb-2">
-            <mat-form-field class="mr-3">
-                <mat-label>Date de début</mat-label>
-                <input matInput [required]="false" formControlName="startDate" [matDatepicker]="startPicker">
-                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-                <mat-datepicker #startPicker></mat-datepicker>
-            </mat-form-field>
-            
-            <mat-form-field>
-                <mat-label>Date de fin</mat-label>
-                <input matInput [required]="false" formControlName="endDate" [matDatepicker]="endPicker">
-                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-                <mat-datepicker #endPicker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class="ml-md-3">
+<form class="form-inline" [formGroup]="filterForm" (ngSubmit)="doOnFilter()">
+    <div class="d-flex flex-wrap justify-content-start align-items-baseline w-100">
+        <div class="ml-md-auto">
             <div class="form-group">
                 <ng-multiselect-dropdown
                     [placeholder]="'Toutes les agences'"
@@ -39,9 +24,11 @@
                 >
                 </ng-multiselect-dropdown>
         </div>
+        <div class="ml-md-3">
+            <button mat-button type="submit" class="btn btn-outline-lightblue filter btn-sm">
+                <i class="fa fa-filter"></i>
+                Filtrer
+            </button>
+        </div>
     </div>
-    <button mat-button type="submit" class="btn btn-outline-lightblue btn-sm">
-        <i class="fa fa-filter"></i>
-        Filtrer
-    </button>
 </form>
